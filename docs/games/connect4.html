@@ -138,11 +138,6 @@ function draw() {
     ctx.fillText(c + 1, c * CELL + OFFSET_X, OFFSET_Y - CELL + 5);
   }
 
-  // Separator line
-  ctx.fillStyle = '#00ff00';
-  ctx.font = 'bold 12px monospace';
-  ctx.textAlign = 'left';
-  ctx.fillText('---------------------', OFFSET_X - RADIUS - 5, OFFSET_Y - CELL + 18);
 
   // Circles
   for (let r = 0; r < ROWS; r++) {
