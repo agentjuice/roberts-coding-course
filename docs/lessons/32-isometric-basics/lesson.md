@@ -63,6 +63,9 @@ Think of it like looking at a chess board from the corner instead of straight ab
 4. **Tile sizes** -- try `TILE_WIDTH = 128, TILE_HEIGHT = 64`. Bigger tiles! Then try `96x48`. How does the aspect ratio change the feel?
 5. **Click to paint** -- add click detection: when you click a tile, toggle its color between green and gray. You'll need to reverse the isometric formula (this is tricky!).
 
+!!! tip "🧮 Math Moment: Coordinate Transformation"
+    The isometric formulas `screen_x = (gx - gy) × (tile_width / 2)` and `screen_y = (gx + gy) × (tile_height / 2)` are a **coordinate transformation** — converting from one system (grid) to another (screen). This is the same math used in 3D graphics, map projections, and even GPS. When you rotate a Minecraft world to see it from an angle, the game is doing exactly this kind of transformation on every single block.
+
 ## Challenge
 
 Add **elevation**. Give some tiles a `height` value of 1 or 2. Draw those tiles higher on the screen (subtract `height * 16` from their screen_y). Then draw the sides of the raised tiles as darker rectangles to make them look like 3D blocks. You're basically building Minecraft at this point.
@@ -71,5 +74,3 @@ Add **elevation**. Give some tiles a `height` value of 1 or 2. Draw those tiles 
 
 👉 [Next: Isometric Dungeon](../33-isometric-dungeon/lesson.md)
 
-!!! tip "🧮 Math Moment: Coordinate Transformation"
-    The isometric formulas `screen_x = (gx - gy) × (tile_width / 2)` and `screen_y = (gx + gy) × (tile_height / 2)` are a **coordinate transformation** — converting from one system (grid) to another (screen). This is the same math used in 3D graphics, map projections, and even GPS. When you rotate a Minecraft world to see it from an angle, the game is doing exactly this kind of transformation on every single block.

@@ -53,6 +53,9 @@ def draw(self, screen, cam_x, cam_y):
 
 When an enemy dies, we roll the dice. `random.random()` gives a number between 0 and 1. If it's less than 0.4, that's a 40% chance — the enemy drops something:
 
+!!! tip "🧮 Math Moment: Probability & Loot Tables"
+    `if random.random() < 0.3` means "30% chance." This is **probability** — the same math that describes dice rolls and coin flips. Real games use loot tables: a sword might have a 5% drop rate, a health potion 30%, and gold 65%. Those numbers add up to 100%. Game designers spend weeks tuning these percentages to make the game feel rewarding but not too easy. You're doing the same thing.
+
 ```python
 if random.random() < 0.4:
     item_type = random.choice(["health_potion", "speed_boost", "power_sword"])
@@ -166,5 +169,3 @@ Add a **gold coin** item type (yellow color). Instead of going to inventory, coi
 
 👉 [Next: Multiple Rooms](../25-dungeon-v5-rooms/lesson.md)
 
-!!! tip "🧮 Math Moment: Probability & Loot Tables"
-    `if random.random() < 0.3` means "30% chance." This is **probability** — the same math that describes dice rolls and coin flips. Real games use loot tables: a sword might have a 5% drop rate, a health potion 30%, and gold 65%. Those numbers add up to 100%. Game designers spend weeks tuning these percentages to make the game feel rewarding but not too easy. You're doing the same thing.

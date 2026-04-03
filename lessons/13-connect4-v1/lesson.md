@@ -16,6 +16,9 @@ Remember lists from Lesson 10? A list is like a row of boxes. But a Connect 4 bo
 
 Minecraft uses the same concept — the world is a giant 3D array of blocks. Each position holds a block type (stone, dirt, air). Our Connect 4 board is a smaller, 2D version of the same idea.
 
+!!! tip "🧮 Math Moment: 2D Arrays"
+    The Connect 4 board is a **2D array** — a grid of rows and columns. To access a cell, you use two indices: `board[row][col]`. Checking for 4 in a row means checking neighbors: `board[y][x+1]`, `board[y][x+2]`, `board[y][x+3]`. This is the same math that Minecraft uses to check if 4 blocks are connected, or how chess programs check for valid moves.
+
 We're going to use a library called **numpy** to create our grid. A library is code that someone else wrote that we can use -- no need to reinvent the wheel. numpy is great at working with grids of numbers.
 
 ```python
@@ -243,5 +246,3 @@ Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 
 👉 [Next: Cleaning Up](../14-connect4-v2-functions/lesson.md)
 
-!!! tip "🧮 Math Moment: 2D Arrays"
-    The Connect 4 board is a **2D array** — a grid of rows and columns. To access a cell, you use two indices: `board[row][col]`. Checking for 4 in a row means checking neighbors: `board[y][x+1]`, `board[y][x+2]`, `board[y][x+3]`. This is the same math that Minecraft uses to check if 4 blocks are connected, or how chess programs check for valid moves.

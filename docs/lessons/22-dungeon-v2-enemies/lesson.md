@@ -22,6 +22,9 @@ If you've played Minecraft, zombies there work almost identically to what we're 
 
 **Skeleton (white):** Smarter and scarier. Every 20 frames, it looks at where you are and moves one tile closer. If you're to the right, the skeleton moves right. If you're above, it moves up. Skeletons hunt you down, and they're relentless.
 
+!!! tip "🧮 Math Moment: The Pythagorean Theorem"
+    How does the skeleton know how far away you are? **Distance formula**: `dist = sqrt((x2-x1)² + (y2-y1)²)`. That's the Pythagorean theorem — a² + b² = c². The horizontal distance is one side of the triangle, the vertical distance is the other, and the straight-line distance is the hypotenuse. You just used math from ancient Greece to make a video game enemy chase you. Pythagoras would be proud.
+
 ## Frame Counters
 
 You know how the game runs at 60 frames per second? If enemies moved every single frame, they'd be zooming around like maniacs. Instead, each enemy has a **move_timer** that counts up. When it hits a certain number, the enemy moves and the timer resets to 0.
@@ -189,5 +192,3 @@ Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly g
 
 👉 [Next: Combat](../23-dungeon-v3-combat/lesson.md)
 
-!!! tip "🧮 Math Moment: The Pythagorean Theorem"
-    How does the skeleton know how far away you are? **Distance formula**: `dist = sqrt((x2-x1)² + (y2-y1)²)`. That's the Pythagorean theorem — a² + b² = c². The horizontal distance is one side of the triangle, the vertical distance is the other, and the straight-line distance is the hypotenuse. You just used math from ancient Greece to make a video game enemy chase you. Pythagoras would be proud.

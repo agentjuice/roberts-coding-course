@@ -47,6 +47,9 @@ Two things end the game:
 1. **Wall collision** -- the new head is outside the grid bounds
 2. **Self collision** -- the new head lands on a segment that's already part of the snake's body
 
+!!! tip "🧮 Math Moment: Collision Detection"
+    How does the game know when the snake hits a wall? It checks: `if x < 0 or x >= width`. That's a **bounding box** check — is this point inside this rectangle? Every game uses this. In Mario, the game checks if Mario's rectangle overlaps with a Goomba's rectangle. In F1 games, it checks if your car's box overlaps with the barrier's box. Simple math, used billions of times per second across every game in the world.
+
 We check both before actually adding the new head to the snake.
 
 ## Step-by-Step Build
@@ -243,5 +246,3 @@ Add a **high score** that persists across restarts. Create a `high_score` variab
 
 👉 [Next: Classes](../20-snake-v2-classes/lesson.md)
 
-!!! tip "🧮 Math Moment: Collision Detection"
-    How does the game know when the snake hits a wall? It checks: `if x < 0 or x >= width`. That's a **bounding box** check — is this point inside this rectangle? Every game uses this. In Mario, the game checks if Mario's rectangle overlaps with a Goomba's rectangle. In F1 games, it checks if your car's box overlaps with the barrier's box. Simple math, used billions of times per second across every game in the world.

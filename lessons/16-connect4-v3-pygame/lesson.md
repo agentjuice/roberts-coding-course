@@ -31,6 +31,9 @@ That's it. Now you can `import pygame` in any Python file.
 
 Here's something important that trips people up. In Pygame, the **top-left corner** of the window is position `(0, 0)`. The x-axis goes right (like normal), but the **y-axis goes DOWN**, not up. So `(100, 200)` means 100 pixels to the right and 200 pixels *down* from the top-left.
 
+!!! tip "🧮 Math Moment: Position + Speed = Movement"
+    Every frame, the game does `position = position + speed`. That's the fundamental equation of game physics. In F1 games, a car's position on the track updates by its speed every frame. If speed is 5 pixels per frame and you run at 60 FPS, the object moves 300 pixels per second. `distance = speed × time` — the same formula from physics class, running 60 times a second inside every game you've ever played.
+
 Think of it like reading a book -- you start at the top-left and go right and down.
 
 !!! warning "⚠️ Watch Out"
@@ -243,5 +246,3 @@ You can see the complete file in [`connect4.py`](connect4.py). It puts all the s
 
 👉 [Next: Dropping Chips](../17-connect4-v4-animation/lesson.md)
 
-!!! tip "🧮 Math Moment: Position + Speed = Movement"
-    Every frame, the game does `position = position + speed`. That's the fundamental equation of game physics. In F1 games, a car's position on the track updates by its speed every frame. If speed is 5 pixels per frame and you run at 60 FPS, the object moves 300 pixels per second. `distance = speed × time` — the same formula from physics class, running 60 times a second inside every game you've ever played.
