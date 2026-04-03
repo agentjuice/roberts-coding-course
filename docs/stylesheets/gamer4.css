@@ -144,7 +144,13 @@ h3 {
   transform: translateX(8px);
 }
 
-/* Header Bar */
+/* Search alignment fix for large fonts */
+.md-search__input {
+  padding-top: 0.5rem !important;
+}
+.md-search__icon {
+  margin-top: 0.1rem !important;
+}
 .md-header {
   background: #0b0b13 !important;
   border-bottom: 4px solid #ff00ff;
