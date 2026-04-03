@@ -24,7 +24,7 @@ But we're not starting there. We're starting small, building up, and every singl
 
 - **Everything leads to a game.** The early lessons teach fundamentals like variables and loops, but every concept is building toward the games you'll make later.
 - **It's okay to be messy at first.** You'll write code that works, then later learn cleaner ways to do it. That's how real programmers learn too.
-- **Nothing is hidden.** You'll see how everything works under the hood — no magic, no shortcuts.
+- **You write every line.** No AI writing code for you. You'll be giving direct instructions to the computer, and you'll understand exactly what every line does.
 
 ---
 
