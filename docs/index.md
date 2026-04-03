@@ -34,6 +34,8 @@ Before you can write code, we need to install a couple of things. This only take
 
 ### Step 1: Install Python
 
+![Python download page](images/setup_python_download.png)
+
 Python is the programming language you're going to learn. Think of it like the language your computer speaks -- you'll write instructions in Python, and your computer will follow them.
 
 Here's how to install it:
@@ -49,6 +51,8 @@ Here's how to install it:
 Nice! Python is installed.
 
 ### Step 2: Make Sure Python Works
+
+![Terminal showing Python version](images/setup_terminal_python.png)
 
 Let's check that it actually installed. We're going to open something called the **Terminal**. Think of Terminal like a text message conversation with your computer -- you type a command, hit Enter, and your computer responds.
 
@@ -67,6 +71,8 @@ You should see something like `Python 3.12.0` (the exact number doesn't matter, 
 If you get an error, ask your dad to help troubleshoot -- sometimes Macs need an extra step.
 
 ### Step 3: Install VS Code
+
+![VS Code download page](images/setup_vscode_download.png)
 
 VS Code is where you'll actually write your code. Think of it like Google Docs, but for code instead of essays.
 
@@ -88,6 +94,8 @@ That's it! VS Code is ready.
 
 ### Step 4: Install Some Extra Tools
 
+![Installing pygame and numpy](images/setup_pip_install.png)
+
 Later in the course, you'll need a couple of extra tools for making games with graphics. Let's install them now so you don't have to worry about it later.
 
 Open Terminal again (Cmd + Space, type Terminal, hit Enter) and type this command, then hit Enter:
@@ -101,6 +109,8 @@ You'll see a bunch of text scroll by -- that's normal. It's downloading and inst
 If you see any red error text, ask your dad to help with this.
 
 ### Step 5: Create Your Coding Folder
+
+![Your coding-course folder on the Desktop](images/setup_folder.png)
 
 You need a place to save all your code. Let's make a folder on your Desktop. In Terminal, type this and hit Enter:
 
