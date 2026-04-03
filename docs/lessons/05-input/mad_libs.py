@@ -1,0 +1,16 @@
+print("=== MAD LIBS ===")
+print()
+
+animal = input("Give me an animal: ")
+food = input("Give me a food: ")
+number = input("Give me a number: ")
+verb = input("Give me a verb (like 'run' or 'dance'): ")
+place = input("Give me a place: ")
+
+print()
+print("=== YOUR STORY ===")
+print(f"One day, a {animal} walked into {place}.")
+print(f"It ordered {number} plates of {food}.")
+print(f'The waiter said "That\'s a lot of {food}!"')
+print(f"So the {animal} started to {verb} on the table.")
+print("The end.")

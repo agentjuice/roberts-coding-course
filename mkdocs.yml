@@ -38,37 +38,45 @@ markdown_extensions:
 nav:
   - Home: index.md
   - "Getting Started":
-    - "Lesson 1 — The Basics": lessons/01-the-basics/lesson.md
-    - "Lesson 2 — Conditions": lessons/02-conditions/lesson.md
-    - "Lesson 3 — Loops": lessons/03-loops/lesson.md
-    - "Lesson 4 — Lists": lessons/04-lists/lesson.md
+    - "#1 Hello World": lessons/01-hello-world/lesson.md
+    - "#2 Variables": lessons/02-variables/lesson.md
+    - "#3 Types": lessons/03-types/lesson.md
+    - "#4 f-strings": lessons/04-fstrings/lesson.md
+    - "#5 Input": lessons/05-input/lesson.md
+    - "#6 If / Else": lessons/06-if-else/lesson.md
+    - "#7 Comparisons": lessons/07-comparisons/lesson.md
+    - "#8 While Loops": lessons/08-while-loops/lesson.md
+    - "#9 For Loops": lessons/09-for-loops/lesson.md
+    - "#10 Lists: Basics": lessons/10-lists-basics/lesson.md
+    - "#11 Lists: Operations": lessons/11-lists-operations/lesson.md
+    - "#12 Build: Guessing Game": lessons/12-build-guessing-game/lesson.md
   - "Project 1: Connect 4":
-    - "Lesson 5 — Terminal Version": lessons/05-connect4-v1/lesson.md
-    - "Lesson 6 — Functions": lessons/06-connect4-v2-functions/lesson.md
-    - "Lesson 7 — Pygame": lessons/07-connect4-v3-pygame/lesson.md
-    - "Lesson 8 — Animation": lessons/08-connect4-v4-animation/lesson.md
-    - "Lesson 9 — Pygame + Functions": lessons/09-connect4-v5-pygame-functions/lesson.md
+    - "#13 Terminal Version": lessons/13-connect4-v1/lesson.md
+    - "#14 Functions": lessons/14-connect4-v2-functions/lesson.md
+    - "#15 Pygame": lessons/15-connect4-v3-pygame/lesson.md
+    - "#16 Animation": lessons/16-connect4-v4-animation/lesson.md
+    - "#17 Pygame + Functions": lessons/17-connect4-v5-pygame-functions/lesson.md
   - "Project 2: Snake":
-    - "Lesson 10 — Snake Game": lessons/10-snake-v1/lesson.md
-    - "Lesson 11 — Classes & OOP": lessons/11-snake-v2-classes/lesson.md
+    - "#18 Snake Game": lessons/18-snake-v1/lesson.md
+    - "#19 Classes & OOP": lessons/19-snake-v2-classes/lesson.md
   - "Project 3: Dungeon Crawler":
-    - "Lesson 12 — The Hero": lessons/12-dungeon-v1-hero/lesson.md
-    - "Lesson 13 — Enemies": lessons/13-dungeon-v2-enemies/lesson.md
-    - "Lesson 14 — Combat": lessons/14-dungeon-v3-combat/lesson.md
-    - "Lesson 15 — Loot & Items": lessons/15-dungeon-v4-loot/lesson.md
-    - "Lesson 16 — Multiple Rooms": lessons/16-dungeon-v5-rooms/lesson.md
-    - "Lesson 17 — The Boss": lessons/17-dungeon-v6-boss/lesson.md
-    - "Lesson 18 — Sprites & Art": lessons/18-dungeon-v7-sprites/lesson.md
-    - "Lesson 19 — Sound & Music": lessons/19-dungeon-v8-sound/lesson.md
-    - "Lesson 20 — Procedural Generation": lessons/20-dungeon-v9-procgen/lesson.md
-    - "Lesson 21 — Polish & Second Level": lessons/21-dungeon-v10-polish/lesson.md
-    - "Lesson 22 — Co-op Mode": lessons/22-dungeon-v11-coop/lesson.md
+    - "#20 The Hero": lessons/20-dungeon-v1-hero/lesson.md
+    - "#21 Enemies": lessons/21-dungeon-v2-enemies/lesson.md
+    - "#22 Combat": lessons/22-dungeon-v3-combat/lesson.md
+    - "#23 Loot & Items": lessons/23-dungeon-v4-loot/lesson.md
+    - "#24 Multiple Rooms": lessons/24-dungeon-v5-rooms/lesson.md
+    - "#25 The Boss": lessons/25-dungeon-v6-boss/lesson.md
+    - "#26 Sprites & Art": lessons/26-dungeon-v7-sprites/lesson.md
+    - "#27 Sound & Music": lessons/27-dungeon-v8-sound/lesson.md
+    - "#28 Procedural Generation": lessons/28-dungeon-v9-procgen/lesson.md
+    - "#29 Polish & Second Level": lessons/29-dungeon-v10-polish/lesson.md
+    - "#30 Co-op Mode": lessons/30-dungeon-v11-coop/lesson.md
 
 extra:
   social: []
 
 extra_css:
-  - stylesheets/gamer21.css
+  - stylesheets/gamer22.css
 
 
 
