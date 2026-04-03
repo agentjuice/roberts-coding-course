@@ -5,6 +5,7 @@
 
 
 ![Chips dropping in Connect 4](/images/connect4_drop.gif)
+
 *Watch the chips fall into place!*
 
 ## What's Wrong with the Old Version?
