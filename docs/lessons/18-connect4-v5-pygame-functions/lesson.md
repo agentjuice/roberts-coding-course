@@ -6,7 +6,7 @@
 
 **Here's an approximate demo of the game we'll be building by the end of this section:**
 
-<iframe src="/games/connect4.html" width="100%" height="480" style="border: 3px solid #ff00ff; border-radius: 12px; background: #0000ff;"></iframe>
+<iframe src="/games/connect4.html" width="100%" height="480" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe>
 
 *Click a column to drop a chip. Your Python version will look similar to this!*
 
