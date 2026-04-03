@@ -1,4 +1,4 @@
-# Lesson 16: Connect 4 v3 -- Pygame Edition
+# Adding Graphics
 
 !!! success "🎯 Mission"
     Rebuild Connect 4 with real graphics using Pygame -- a window, colors, and circles instead of terminal text.

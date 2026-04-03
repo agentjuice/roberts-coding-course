@@ -1,4 +1,4 @@
-# Lesson 18: Connect 4 v5 -- Pygame with Functions
+# The Final Version
 
 !!! success "🎯 Mission"
     Clean up our Pygame Connect 4 by organizing the code into functions -- the same trick we used in Lesson 14, but now with graphics.

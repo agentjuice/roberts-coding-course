@@ -1,4 +1,4 @@
-# Lesson 14: Connect 4 v2 -- Functions
+# Cleaning Up
 
 !!! success "🎯 Mission"
     Refactor our Connect 4 game by organizing the messy code into clean, reusable **functions**.

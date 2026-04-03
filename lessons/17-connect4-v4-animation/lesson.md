@@ -1,4 +1,4 @@
-# Lesson 17: Connect 4 v4 -- Falling Animation
+# Dropping Chips
 
 !!! success "🎯 Mission"
     Make chips fall down the board one row at a time, like a real Connect 4 game.

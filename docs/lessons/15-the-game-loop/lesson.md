@@ -1,4 +1,4 @@
-# Lesson 15: The Game Loop
+# The Game Loop
 
 !!! success "🎯 Mission"
     Understand the **game loop** -- the single most important concept in game programming. Every game ever made uses one, and after this lesson, you'll know exactly how it works.

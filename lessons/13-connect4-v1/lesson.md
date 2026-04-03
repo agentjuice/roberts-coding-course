@@ -1,4 +1,4 @@
-# Lesson 13: Connect 4 v1 -- Terminal Edition
+# Your First Game
 
 !!! success "🎯 Mission"
     Build a working two-player Connect 4 game that runs right in your terminal.
