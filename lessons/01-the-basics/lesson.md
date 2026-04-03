@@ -1,6 +1,8 @@
 # Lesson 1: The Basics
 
-**Goal:** Learn how Python works and build a number guessing game.
+!!! success "🎯 Mission"
+    Learn how Python works and build a number guessing game.
+
 
 ---
 
@@ -392,4 +394,4 @@ Play a few rounds!
 
 ## What's Next
 
-In Lesson 2, we'll learn about loops and lists -- and build a quiz game that keeps score. See you there!
+In Lesson 2, we'll learn about conditions -- making your programs choose what to do -- and build a choose-your-own-adventure story!
