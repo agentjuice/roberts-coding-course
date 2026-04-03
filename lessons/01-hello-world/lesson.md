@@ -18,6 +18,10 @@ You should see a dark panel at the bottom of VS Code. That's your terminal — i
 
 ## Your First Program
 
+![VS Code with hello.py and terminal output](/images/vscode_hello_world.png)
+
+*This is what it looks like: your code on top, the terminal output on the bottom.*
+
 Type this in `hello.py`:
 
 ```python
