@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0b0b13; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: 'Nunito', sans-serif; }
+  canvas { cursor: pointer; border-radius: 12px; }
+  #status { color: #f8f8f2; font-size: 18px; margin-top: 12px; font-weight: 700; letter-spacing: 1px; }
+  #restart { display: none; margin-top: 10px; padding: 8px 24px; background: #ff00ff; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; }
+  #restart:hover { background: #cc00cc; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="status">Player 1's turn</div>
+<button id="restart" onclick="init()">Play Again</button>
+<script>
+const ROWS = 6, COLS = 7, SIZE = 70, PAD = 8;
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+const status = document.getElementById('status');
+const restartBtn = document.getElementById('restart');
+
+canvas.width = COLS * SIZE + PAD * 2;
+canvas.height = (ROWS + 1) * SIZE + PAD * 2;
+
+let board, player, winner, animating, animCol, animRow, animY;
+
+function init() {
+  board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+  player = 1;
+  winner = 0;
+  animating = false;
+  restartBtn.style.display = 'none';
+  status.textContent = "Player 1's turn";
+  status.style.color = '#ff4444';
+  draw();
+}
+
+function getCol(x) {
+  return Math.floor((x - PAD) / SIZE);
+}
+
+canvas.addEventListener('click', (e) => {
+  if (winner || animating) return;
+  const rect = canvas.getBoundingClientRect();
+  const col = getCol(e.clientX - rect.left);
+  if (col < 0 || col >= COLS) return;
+  
+  // Find empty row
+  let row = -1;
+  for (let r = ROWS - 1; r >= 0; r--) {
+    if (board[r][col] === 0) { row = r; break; }
+  }
+  if (row === -1) return;
+  
+  // Animate drop
+  animating = true;
+  animCol = col;
+  animRow = row;
+  animY = SIZE + PAD;
+  animateDrop();
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (winner || animating) return;
+  const rect = canvas.getBoundingClientRect();
+  const col = getCol(e.clientX - rect.left);
+  draw(col);
+});
+
+function animateDrop() {
+  const targetY = (animRow + 1) * SIZE + PAD;
+  animY += 12;
+  if (animY >= targetY) {
+    animY = targetY;
+    board[animRow][animCol] = player;
+    animating = false;
+    
+    if (checkWin(animRow, animCol)) {
+      winner = player;
+      status.textContent = `Player ${player} wins! 🎉`;
+      status.style.color = '#39ff14';
+      restartBtn.style.display = 'inline-block';
+    } else if (board[0].every((_, c) => board[0][c] !== 0)) {
+      winner = -1;
+      status.textContent = "It's a draw!";
+      status.style.color = '#ffcc00';
+      restartBtn.style.display = 'inline-block';
+    } else {
+      player = player === 1 ? 2 : 1;
+      status.textContent = `Player ${player}'s turn`;
+      status.style.color = player === 1 ? '#ff4444' : '#ffcc00';
+    }
+    draw();
+    return;
+  }
+  draw();
+  // Draw falling chip
+  ctx.beginPath();
+  ctx.arc(animCol * SIZE + SIZE/2 + PAD, animY, SIZE/2 - 6, 0, Math.PI * 2);
+  ctx.fillStyle = player === 1 ? '#ff4444' : '#ffcc00';
+  ctx.fill();
+  ctx.strokeStyle = player === 1 ? '#cc0000' : '#cc9900';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  requestAnimationFrame(animateDrop);
+}
+
+function checkWin(r, c) {
+  const dirs = [[0,1],[1,0],[1,1],[1,-1]];
+  for (const [dr, dc] of dirs) {
+    let count = 1;
+    for (let i = 1; i < 4; i++) {
+      const nr = r + dr*i, nc = c + dc*i;
+      if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && board[nr][nc] === player) count++;
+      else break;
+    }
+    for (let i = 1; i < 4; i++) {
+      const nr = r - dr*i, nc = c - dc*i;
+      if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && board[nr][nc] === player) count++;
+      else break;
+    }
+    if (count >= 4) return true;
+  }
+  return false;
+}
+
+function draw(hoverCol) {
+  ctx.fillStyle = '#1a1a2e';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Board background
+  ctx.fillStyle = '#0044cc';
+  ctx.beginPath();
+  ctx.roundRect(PAD - 4, SIZE + PAD - 4, COLS * SIZE + 8, ROWS * SIZE + 8, 12);
+  ctx.fill();
+  
+  // Hover preview
+  if (hoverCol !== undefined && hoverCol >= 0 && hoverCol < COLS && !winner) {
+    ctx.beginPath();
+    ctx.arc(hoverCol * SIZE + SIZE/2 + PAD, SIZE/2 + PAD, SIZE/2 - 6, 0, Math.PI * 2);
+    ctx.fillStyle = player === 1 ? 'rgba(255,68,68,0.4)' : 'rgba(255,204,0,0.4)';
+    ctx.fill();
+  }
+  
+  // Column numbers
+  ctx.fillStyle = '#00ffcc';
+  ctx.font = 'bold 14px Nunito, sans-serif';
+  ctx.textAlign = 'center';
+  for (let c = 0; c < COLS; c++) {
+    ctx.fillText(c + 1, c * SIZE + SIZE/2 + PAD, SIZE/2 + PAD + 4);
+  }
+  
+  // Cells
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const x = c * SIZE + SIZE/2 + PAD;
+      const y = (r + 1) * SIZE + SIZE/2 + PAD;
+      
+      ctx.beginPath();
+      ctx.arc(x, y, SIZE/2 - 6, 0, Math.PI * 2);
+      
+      if (board[r][c] === 0) {
+        ctx.fillStyle = '#0b0b13';
+      } else if (board[r][c] === 1) {
+        ctx.fillStyle = '#ff4444';
+        ctx.fill();
+        ctx.strokeStyle = '#cc0000';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        continue;
+      } else {
+        ctx.fillStyle = '#ffcc00';
+        ctx.fill();
+        ctx.strokeStyle = '#cc9900';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        continue;
+      }
+      ctx.fill();
+    }
+  }
+}
+
+init();
+</script>
+</body>
+</html>
