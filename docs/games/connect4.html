@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0b0b13; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: 'Nunito', sans-serif; }
-  canvas { cursor: pointer; border-radius: 12px; }
-  #status { color: #f8f8f2; font-size: 18px; margin-top: 12px; font-weight: 700; letter-spacing: 1px; }
-  #restart { display: none; margin-top: 10px; padding: 8px 24px; background: #ff00ff; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; }
-  #restart:hover { background: #cc00cc; }
+  body { background: #0000ff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: monospace; }
+  canvas { cursor: pointer; }
+  #status { color: #00ff00; font-size: 16px; margin-top: 8px; font-weight: 700; font-family: monospace; }
+  #restart { display: none; margin-top: 8px; padding: 6px 20px; background: #00ff00; color: #000; border: none; font-size: 14px; font-weight: 700; cursor: pointer; font-family: monospace; }
+  #restart:hover { background: #00cc00; }
 </style>
 </head>
 <body>
@@ -16,14 +16,14 @@
 <div id="status">Player 1's turn</div>
 <button id="restart" onclick="init()">Play Again</button>
 <script>
-const ROWS = 6, COLS = 7, SIZE = 70, PAD = 8;
+const ROWS = 6, COLS = 6, SIZE = 50, PAD = 10;
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const status = document.getElementById('status');
 const restartBtn = document.getElementById('restart');
 
 canvas.width = COLS * SIZE + PAD * 2;
-canvas.height = (ROWS + 1) * SIZE + PAD * 2;
+canvas.height = ROWS * SIZE + PAD * 2 + 30;
 
 let board, player, winner, animating, animCol, animRow, animY;
 
@@ -59,7 +59,7 @@ canvas.addEventListener('click', (e) => {
   animating = true;
   animCol = col;
   animRow = row;
-  animY = SIZE + PAD;
+  animY = 30;
   animateDrop();
 });
 
@@ -71,7 +71,7 @@ canvas.addEventListener('mousemove', (e) => {
 });
 
 function animateDrop() {
-  const targetY = (animRow + 1) * SIZE + PAD;
+  const targetY = animRow * SIZE + SIZE/2 + 30;
   animY += 12;
   if (animY >= targetY) {
     animY = targetY;
@@ -99,12 +99,9 @@ function animateDrop() {
   draw();
   // Draw falling chip
   ctx.beginPath();
-  ctx.arc(animCol * SIZE + SIZE/2 + PAD, animY, SIZE/2 - 6, 0, Math.PI * 2);
-  ctx.fillStyle = player === 1 ? '#ff4444' : '#ffcc00';
+  ctx.arc(animCol * SIZE + SIZE/2 + PAD, animY, SIZE/2 - 4, 0, Math.PI * 2);
+  ctx.fillStyle = player === 1 ? '#ff0000' : '#ffff00';
   ctx.fill();
-  ctx.strokeStyle = player === 1 ? '#cc0000' : '#cc9900';
-  ctx.lineWidth = 2;
-  ctx.stroke();
   requestAnimationFrame(animateDrop);
 }
 
@@ -128,59 +125,49 @@ function checkWin(r, c) {
 }
 
 function draw(hoverCol) {
-  ctx.fillStyle = '#1a1a2e';
+  // Blue background (matches Python version)
+  ctx.fillStyle = '#0000ff';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-  // Board background
-  ctx.fillStyle = '#0044cc';
-  ctx.beginPath();
-  ctx.roundRect(PAD - 4, SIZE + PAD - 4, COLS * SIZE + 8, ROWS * SIZE + 8, 12);
-  ctx.fill();
-  
-  // Hover preview
-  if (hoverCol !== undefined && hoverCol >= 0 && hoverCol < COLS && !winner) {
-    ctx.beginPath();
-    ctx.arc(hoverCol * SIZE + SIZE/2 + PAD, SIZE/2 + PAD, SIZE/2 - 6, 0, Math.PI * 2);
-    ctx.fillStyle = player === 1 ? 'rgba(255,68,68,0.4)' : 'rgba(255,204,0,0.4)';
-    ctx.fill();
-  }
-  
-  // Column numbers
-  ctx.fillStyle = '#00ffcc';
-  ctx.font = 'bold 14px Nunito, sans-serif';
+  // Column numbers in green
+  ctx.fillStyle = '#00ff00';
+  ctx.font = 'bold 14px monospace';
   ctx.textAlign = 'center';
   for (let c = 0; c < COLS; c++) {
-    ctx.fillText(c + 1, c * SIZE + SIZE/2 + PAD, SIZE/2 + PAD + 4);
+    ctx.fillText(c + 1, c * SIZE + SIZE/2 + PAD, 18);
   }
   
   // Cells
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const x = c * SIZE + SIZE/2 + PAD;
-      const y = (r + 1) * SIZE + SIZE/2 + PAD;
+      const y = r * SIZE + SIZE/2 + 30;
       
       ctx.beginPath();
-      ctx.arc(x, y, SIZE/2 - 6, 0, Math.PI * 2);
+      ctx.arc(x, y, SIZE/2 - 4, 0, Math.PI * 2);
       
       if (board[r][c] === 0) {
-        ctx.fillStyle = '#0b0b13';
+        ctx.fillStyle = '#000000';
       } else if (board[r][c] === 1) {
-        ctx.fillStyle = '#ff4444';
-        ctx.fill();
-        ctx.strokeStyle = '#cc0000';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        continue;
+        ctx.fillStyle = '#ff0000';
       } else {
-        ctx.fillStyle = '#ffcc00';
-        ctx.fill();
-        ctx.strokeStyle = '#cc9900';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        continue;
+        ctx.fillStyle = '#ffff00';
       }
       ctx.fill();
     }
+  }
+  
+  // Winner/draw text in green at bottom
+  if (winner > 0) {
+    ctx.fillStyle = '#00ff00';
+    ctx.font = 'bold 16px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('WINNER - PLAYER: ' + winner, PAD, ROWS * SIZE + 55);
+  } else if (winner < 0) {
+    ctx.fillStyle = '#00ff00';
+    ctx.font = 'bold 16px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('DRAW', PAD, ROWS * SIZE + 55);
   }
 }
 
