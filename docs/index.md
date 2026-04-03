@@ -72,7 +72,9 @@ If you get an error, ask your dad to help troubleshoot -- sometimes Macs need an
 
 ### Step 3: Install VS Code
 
-![VS Code download page](images/setup_vscode_download.png)
+![VS Code when you first open it](images/setup_vscode_app.png)
+
+*This is what VS Code looks like when you first open it.*
 
 VS Code is where you'll actually write your code. Think of it like Google Docs, but for code instead of essays.
 
