@@ -1,0 +1,136 @@
+/* Robert's Coding Course — Custom Styles */
+
+/* Fun gradient header */
+.md-header {
+  background: linear-gradient(135deg, #6B21A8, #7C3AED, #2563EB) !important;
+}
+
+/* Colorful hero section on homepage */
+.md-content h1 {
+  background: linear-gradient(135deg, #7C3AED, #EC4899, #F59E0B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.2em !important;
+  font-weight: 800 !important;
+}
+
+/* Make h2 headers pop */
+.md-content h2 {
+  color: #A78BFA !important;
+  border-bottom: 2px solid #7C3AED33;
+  padding-bottom: 0.3em;
+}
+
+/* Lesson titles */
+.md-content h3 {
+  color: #F59E0B !important;
+}
+
+/* Code blocks with a fun border */
+.md-content pre {
+  border-left: 4px solid #7C3AED !important;
+  border-radius: 8px !important;
+}
+
+/* Fun colored admonitions */
+
+/* Tip boxes — green */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #10B981 !important;
+}
+.md-typeset .admonition.tip > .admonition-title,
+.md-typeset details.tip > summary {
+  background-color: #10B98120 !important;
+}
+
+/* Warning boxes — amber */
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: #F59E0B !important;
+}
+
+/* Info boxes — blue */
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-color: #3B82F6 !important;
+}
+
+/* Custom "challenge" style using abstract */
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract {
+  border-color: #EC4899 !important;
+}
+.md-typeset .admonition.abstract > .admonition-title,
+.md-typeset details.abstract > summary {
+  background-color: #EC489920 !important;
+}
+
+/* Custom "experiment" style using example */
+.md-typeset .admonition.example,
+.md-typeset details.example {
+  border-color: #8B5CF6 !important;
+}
+.md-typeset .admonition.example > .admonition-title,
+.md-typeset details.example > summary {
+  background-color: #8B5CF620 !important;
+}
+
+/* Navigation sidebar — colorful active states */
+.md-nav__link--active {
+  color: #7C3AED !important;
+  font-weight: 600 !important;
+}
+
+/* Fun hover effect on nav items */
+.md-nav__item .md-nav__link:hover {
+  color: #EC4899 !important;
+}
+
+/* Progress-like styling for lesson numbering */
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 700 !important;
+  color: #F59E0B !important;
+}
+
+/* Images — rounded with shadow */
+.md-content img {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  margin: 1em 0 !important;
+}
+
+/* Inline code — colorful */
+.md-typeset code:not(pre code) {
+  color: #F59E0B !important;
+  background-color: #F59E0B15 !important;
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+}
+
+/* Tables — cleaner look */
+.md-typeset table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.md-typeset table th {
+  background-color: #7C3AED !important;
+  color: white !important;
+}
+
+/* Footer link colors */
+.md-footer__link {
+  color: #A78BFA !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar-thumb {
+  background: #7C3AED !important;
+  border-radius: 4px;
+}
+
+/* Fun selection color */
+::selection {
+  background: #7C3AED40 !important;
+}

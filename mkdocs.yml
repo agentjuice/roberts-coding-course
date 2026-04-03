@@ -63,3 +63,6 @@ nav:
 
 extra:
   social: []
+
+extra_css:
+  - stylesheets/extra.css
