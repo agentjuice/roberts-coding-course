@@ -53,11 +53,11 @@ nav:
     - "Build: Guessing Game": lessons/12-build-guessing-game/lesson.md
   - "Connect 4":
     - "The Game Loop": lessons/15-the-game-loop/lesson.md
-    - "Terminal Version": lessons/13-connect4-v1/lesson.md
-    - "Functions": lessons/14-connect4-v2-functions/lesson.md
-    - "Pygame": lessons/16-connect4-v3-pygame/lesson.md
-    - "Animation": lessons/17-connect4-v4-animation/lesson.md
-    - "Pygame + Functions": lessons/18-connect4-v5-pygame-functions/lesson.md
+    - "Your First Game": lessons/13-connect4-v1/lesson.md
+    - "Cleaning Up": lessons/14-connect4-v2-functions/lesson.md
+    - "Adding Graphics": lessons/16-connect4-v3-pygame/lesson.md
+    - "Dropping Chips": lessons/17-connect4-v4-animation/lesson.md
+    - "The Final Version": lessons/18-connect4-v5-pygame-functions/lesson.md
   - "Snake":
     - "Snake Game": lessons/19-snake-v1/lesson.md
     - "Classes & OOP": lessons/20-snake-v2-classes/lesson.md
