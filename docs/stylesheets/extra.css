@@ -9,6 +9,9 @@
 body, .md-content {
   font-family: 'Nunito', sans-serif !important;
   background-color: #0b0b13 !important;
+  font-size: 1.2rem !important;
+  line-height: 1.7 !important;
+  color: #f8f8f2 !important;
 }
 
 /* Epic Headings */
@@ -103,7 +106,7 @@ h3 {
 
 /* Nav Sidebar */
 .md-nav__link {
-  font-size: 1.1rem !important;
+  font-size: 0.95rem !important;
   font-weight: 700 !important;
   border-radius: 8px;
   margin: 4px 0;
