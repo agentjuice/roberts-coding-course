@@ -4,7 +4,11 @@
     Build a fully playable Snake game with Pygame -- movement, apples, growing, collision, score, and game over.
 
 
-![Snake game](/images/snake.png)
+**Here's an approximate demo of the Snake game we'll be building:**
+
+<iframe src="/games/snake.html" width="100%" height="450" style="border: 3px solid #ff00ff; border-radius: 12px; background: #0000ff;"></iframe>
+
+*Use arrow keys to move (or swipe on mobile). Space to restart. Your Python version will look similar to this!*
 
 ## Tuples: Coordinates in a Pair
 
