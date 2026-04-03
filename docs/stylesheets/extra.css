@@ -112,6 +112,21 @@ h3 {
   margin: 4px 0;
   transition: all 0.2s;
 }
+.md-nav__item--section > .md-nav__link {
+  font-size: 1.1rem !important;
+  font-weight: 900 !important;
+  color: #ffcc00 !important;
+  font-family: 'Bangers', cursive !important;
+  letter-spacing: 1px;
+  margin-top: 1.5em;
+  padding-left: 0 !important;
+}
+.md-nav__item--section > .md-nav__link:hover {
+  background: transparent !important;
+  transform: none !important;
+  cursor: default !important;
+  text-shadow: none !important;
+}
 .md-nav__link--active {
   background: #ff00ff !important;
   color: #fff !important;
@@ -119,7 +134,7 @@ h3 {
   transform: scale(1.05);
   margin-left: 10px;
 }
-.md-nav__item:hover > .md-nav__link:not(.md-nav__link--active) {
+.md-nav__item:not(.md-nav__item--section):hover > .md-nav__link:not(.md-nav__link--active) {
   background: rgba(0, 255, 204, 0.2);
   color: #00ffcc !important;
   transform: translateX(8px);
