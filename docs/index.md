@@ -13,12 +13,12 @@ But we're not starting there. We're starting small, building up, and every singl
 
 ### The Journey
 
-| Project | Lessons | What You're Building |
-|---------|---------|----------------------|
-| **Warm-up** | 1-2 | Your first programs -- a guessing game, a quiz game |
-| **Connect 4** | 3-7 | A full Connect 4 game with graphics and animation |
-| **Snake** | 8-9 | The classic Snake game |
-| **Dungeon Crawler** | 10-20 | Enemies, combat, loot, bosses, and even co-op |
+| Project | What You're Building |
+|---------|----------------------|
+| **Getting Started** | Your first programs — printing, variables, loops, lists, and a guessing game |
+| **Connect 4** | A full Connect 4 game — terminal, then graphics, then animation |
+| **Snake** | The classic Snake game, then rebuilt with classes |
+| **Dungeon Crawler** | A Minecraft Dungeons-style game with enemies, combat, loot, bosses, and co-op |
 
 ### How This Course Works
 
@@ -130,4 +130,4 @@ Go at your own speed. Some lessons might take 20 minutes, some might take a coup
 
 Let's go write your first line of code.
 
-[Start Lesson 1 -- The Basics](lessons/01-the-basics/lesson.md)
+[Start Lesson 1 -- Hello World](lessons/01-hello-world/lesson.md)
