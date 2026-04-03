@@ -73,16 +73,16 @@ h3 {
 
 /* Admonitions (Info boxes) turned into Game Alerts */
 .md-typeset .admonition {
-  border-radius: 16px !important;
-  border: 4px solid !important;
-  box-shadow: 6px 6px 0px rgba(255,255,255,0.1) !important;
-  transform: rotate(-1deg);
-  transition: transform 0.2s;
+  border-radius: 12px !important;
+  border: 3px solid !important;
+  box-shadow: 4px 4px 0px rgba(255,255,255,0.1) !important;
   background: #11111a !important;
   margin: 1.5em 0 !important;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 .md-typeset .admonition:hover {
-  transform: rotate(1deg) scale(1.02);
+  transform: translateY(-2px);
+  box-shadow: 4px 6px 0px rgba(255,255,255,0.15) !important;
 }
 .md-typeset .admonition-title {
   font-family: 'Bangers', cursive !important;
