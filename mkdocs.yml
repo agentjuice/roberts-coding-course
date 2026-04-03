@@ -1,6 +1,6 @@
 site_name: "Robert's Coding Course"
 site_description: "Learn Python and build games — from basics to a dungeon crawler"
-site_url: https://agentjuice.github.io/roberts-coding-course/
+site_url: https://robertcoding.com/
 
 theme:
   name: material
