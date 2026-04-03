@@ -65,9 +65,12 @@ const sections = [
   <!-- Fixed Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0b13] border-b-4 border-[#ff00ff]" style="box-shadow: 0 0 20px rgba(255,0,255,0.5);">
     <div class="max-w-[1400px] mx-auto px-4 py-3 flex items-center justify-between">
-      <span class="font-['Bangers'] text-2xl text-[#00ffcc] tracking-wider" style="text-shadow: 2px 2px 0px #ff00ff;">
-        Robert's Coding Course
-      </span>
+      <div class="flex items-center gap-3">
+        <button id="menu-toggle" class="lg:hidden text-[#00ffcc] text-2xl" aria-label="Menu">☰</button>
+        <span class="font-['Bangers'] text-2xl text-[#00ffcc] tracking-wider" style="text-shadow: 2px 2px 0px #ff00ff;">
+          Robert's Coding Course
+        </span>
+      </div>
       <div class="relative" id="search-wrapper">
         <input
           id="search-input"
@@ -80,6 +83,30 @@ const sections = [
       </div>
     </div>
   </header>
+
+  <!-- Mobile TOC drawer -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 hidden lg:hidden">
+    <div id="menu-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <div class="absolute top-0 left-0 bottom-0 w-72 bg-[#0b0b13] border-r border-gray-700 overflow-y-auto pt-16 px-4 pb-8">
+      {sections.map(section => (
+        <div class="mb-5">
+          <h3 class="font-['Bangers'] text-[#ffcc00] text-base tracking-wide mb-1.5">{section.title}</h3>
+          <ul class="space-y-0.5">
+            {section.lessons.map(lesson => (
+              <li>
+                <a
+                  href={`#${lesson.id}`}
+                  class="mobile-toc-link block px-2 py-1.5 rounded text-sm font-bold text-gray-400 hover:text-[#00ffcc] hover:bg-[#00ffcc10] transition-all"
+                >
+                  {lesson.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
 
   <!-- Main layout -->
   <div class="pt-16 flex max-w-[1400px] mx-auto">
@@ -5888,6 +5915,23 @@ for p in projectiles:
       input.value = '';
       input.blur();
     }
+  });
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuBackdrop = document.getElementById('menu-backdrop');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  menuBackdrop.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+  });
+  document.querySelectorAll('.mobile-toc-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
   });
 </script>
 
