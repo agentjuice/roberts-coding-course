@@ -4,7 +4,8 @@
     Make chips fall down the board one row at a time, like a real Connect 4 game.
 
 
-![Connect 4 with falling animation](/images/connect4_anim.png)
+![Chips dropping in Connect 4](/images/connect4_drop.gif)
+*Watch the chips fall into place!*
 
 ## What's Wrong with the Old Version?
 
