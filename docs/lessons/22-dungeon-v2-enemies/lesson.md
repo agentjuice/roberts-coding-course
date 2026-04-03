@@ -188,3 +188,6 @@ Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly g
 ## What's Next
 
 👉 [Next: Combat](../23-dungeon-v3-combat/lesson.md)
+
+!!! tip "🧮 Math Moment: The Pythagorean Theorem"
+    How does the skeleton know how far away you are? **Distance formula**: `dist = sqrt((x2-x1)² + (y2-y1)²)`. That's the Pythagorean theorem — a² + b² = c². The horizontal distance is one side of the triangle, the vertical distance is the other, and the straight-line distance is the hypotenuse. You just used math from ancient Greece to make a video game enemy chase you. Pythagoras would be proud.

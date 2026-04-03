@@ -70,3 +70,6 @@ Add **elevation**. Give some tiles a `height` value of 1 or 2. Draw those tiles 
 ## What's Next
 
 👉 [Next: Isometric Dungeon](../33-isometric-dungeon/lesson.md)
+
+!!! tip "🧮 Math Moment: Coordinate Transformation"
+    The isometric formulas `screen_x = (gx - gy) × (tile_width / 2)` and `screen_y = (gx + gy) × (tile_height / 2)` are a **coordinate transformation** — converting from one system (grid) to another (screen). This is the same math used in 3D graphics, map projections, and even GPS. When you rotate a Minecraft world to see it from an angle, the game is doing exactly this kind of transformation on every single block.

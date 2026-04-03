@@ -242,3 +242,6 @@ Add a **high score** that persists across restarts. Create a `high_score` variab
 ## What's Next
 
 👉 [Next: Classes](../20-snake-v2-classes/lesson.md)
+
+!!! tip "🧮 Math Moment: Collision Detection"
+    How does the game know when the snake hits a wall? It checks: `if x < 0 or x >= width`. That's a **bounding box** check — is this point inside this rectangle? Every game uses this. In Mario, the game checks if Mario's rectangle overlaps with a Goomba's rectangle. In F1 games, it checks if your car's box overlaps with the barrier's box. Simple math, used billions of times per second across every game in the world.

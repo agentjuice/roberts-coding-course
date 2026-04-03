@@ -242,3 +242,6 @@ Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 ## What's Next
 
 👉 [Next: Cleaning Up](../14-connect4-v2-functions/lesson.md)
+
+!!! tip "🧮 Math Moment: 2D Arrays"
+    The Connect 4 board is a **2D array** — a grid of rows and columns. To access a cell, you use two indices: `board[row][col]`. Checking for 4 in a row means checking neighbors: `board[y][x+1]`, `board[y][x+2]`, `board[y][x+3]`. This is the same math that Minecraft uses to check if 4 blocks are connected, or how chess programs check for valid moves.

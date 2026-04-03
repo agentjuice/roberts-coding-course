@@ -140,3 +140,6 @@ You should see a cyan ball bouncing around a black window. Press Escape (or clos
 ## What's Next
 
 👉 [Next: Adding Graphics](../16-connect4-v3-pygame/lesson.md)
+
+!!! tip "🧮 Math Moment: Coordinates"
+    The game window uses a **coordinate system** — every pixel has an (x, y) position. `x` goes left to right, `y` goes top to bottom. Yes, y goes DOWN, not up like in math class. That's because screens draw from the top-left corner. When you write `ball_y += speed`, you're moving the ball downward. It feels backwards at first, but you'll get used to it — every game engine works this way.
