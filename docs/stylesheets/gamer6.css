@@ -15,9 +15,23 @@ body, .md-content {
 }
 
 /* Epic Headings */
-h1, h2, h3, .md-nav__title, .md-header__title {
+h1, h2, h3, .md-header__title {
   font-family: 'Bangers', cursive !important;
   letter-spacing: 2px;
+}
+
+.md-nav__title {
+  font-family: 'Bangers', cursive !important;
+  color: #ff00ff !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  letter-spacing: 2px;
+  padding: 1rem 0 !important;
+  text-shadow: 2px 2px 0px #000;
+  font-size: 1.4rem !important;
+}
+.md-nav__title[for="__drawer"] {
+  background: transparent !important;
 }
 
 h1 {
