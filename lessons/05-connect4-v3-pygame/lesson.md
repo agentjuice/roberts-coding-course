@@ -2,8 +2,7 @@
 
 **Goal:** Rebuild Connect 4 with real graphics using Pygame -- a window, colors, and circles instead of terminal text.
 
-![Here's what your Connect 4 game will look like when you're done with this lesson!](../../images/connect4_pygame.png)
-
+![Here is what your Connect 4 game will look like when we are done with this lesson!](../../docs/images/connect4_pygame.png)
 
 ## Why Pygame?
 

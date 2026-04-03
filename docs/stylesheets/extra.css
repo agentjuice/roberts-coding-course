@@ -134,3 +134,8 @@
 ::selection {
   background: #7C3AED40 !important;
 }
+
+/* Hide the right-side table of contents entirely */
+.md-sidebar--secondary {
+  display: none !important;
+}

@@ -5,6 +5,10 @@
 ![Now with enemies roaming the dungeon!](../../images/dungeon_v2.png)
 
 
+!!! info "🎮 Fun Fact"
+
+    When gamers talk about "enemy AI," it sounds super advanced -- but in most games, the AI is literally just a handful of `if` statements. Even in big-budget titles, a surprising amount of enemy behavior boils down to "if player is close, chase them." Real artificial intelligence is a whole different beast!
+
 ## Two Kinds of Enemy Brains
 
 Enemies need to decide where to move, and that decision-making is called **AI** (artificial intelligence). Don't worry, it's not actually intelligent -- it's just a few `if` statements pretending to be smart.
@@ -27,6 +31,10 @@ if self.move_timer >= self.move_delay:
 ```
 
 This is a pattern you'll use constantly in game dev. Want something to happen every half second at 60 FPS? Set the delay to 30. Want it every two seconds? Set it to 120. Easy.
+
+!!! tip "💡 Pro Tip"
+
+    Frame counters are one of the most useful timing tricks in game dev. The formula is simple: **delay = seconds × FPS**. At 60 FPS, a delay of 30 = every half second, 60 = every second, 120 = every two seconds. You'll use this pattern for enemy movement, attack cooldowns, animations, and more.
 
 ## Damage Cooldown
 
@@ -162,21 +170,21 @@ python3 dungeon.py
 
 Walk around with arrow keys. You'll see green zombies wandering and white skeletons hunting you. Try to avoid them! Watch your health bar -- when it empties, it's game over. Press Space to restart.
 
-## Experiments
+!!! example "🧪 Experiments"
 
-1. **More enemies.** In the `spawn_enemies` method, add more enemies. Try 8 or 10. Does it get harder?
+    1. **More enemies.** In the `spawn_enemies` method, add more enemies. Try 8 or 10. Does it get harder?
 
-2. **Change enemy speed.** Set a zombie's `move_delay` to 10 (super fast zombie!) or a skeleton's to 60 (lazy skeleton).
+    2. **Change enemy speed.** Set a zombie's `move_delay` to 10 (super fast zombie!) or a skeleton's to 60 (lazy skeleton).
 
-3. **Different damage.** Make skeletons do 2 damage instead of 1 when they touch you.
+    3. **Different damage.** Make skeletons do 2 damage instead of 1 when they touch you.
 
-4. **Faster cooldown.** Change the damage cooldown from 60 to 20. Now getting touched is much more dangerous!
+    4. **Faster cooldown.** Change the damage cooldown from 60 to 20. Now getting touched is much more dangerous!
 
-5. **Player color flash.** When the player takes damage, briefly change their color to red, then back to blue.
+    5. **Player color flash.** When the player takes damage, briefly change their color to red, then back to blue.
 
-## Challenge
+!!! abstract "🏆 Challenge"
 
-Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly green). When the player is standing on a safe tile, enemies can't damage them and the player slowly regenerates 1 HP every 2 seconds.
+    Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly green). When the player is standing on a safe tile, enemies can't damage them and the player slowly regenerates 1 HP every 2 seconds.
 
 ## What's Next
 

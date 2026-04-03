@@ -58,11 +58,19 @@ def attack(self, enemies):
 
 The cooldown is important because without it, you could just mash Space and destroy everything instantly. You know how in most games there's a little pause between swings? That's exactly what `attack_timer` does.
 
+!!! warning "⚠️ Watch Out"
+
+    Without an attack cooldown, mashing Space would deal damage every single frame -- that's 60 hits per second! Every enemy would die instantly. Always add a cooldown timer to attacks. It's an easy thing to forget, and when you do, combat feels broken.
+
 ## Enemy Hit Flash and Death
 
 When an enemy gets hit, we want it to *feel* like it got hit. Just subtracting health silently would be boring. So we do two things:
 
 **Hit flash:** The enemy turns white for 5 frames, then goes back to normal. It's a quick "your attack connected!" signal.
+
+!!! info "🎮 Fun Fact"
+
+    The "hit flash" effect has been used in almost every action game since the NES era. Games like *Mega Man*, *The Legend of Zelda*, and *Castlevania* all flash enemies white when they take damage. It's one of the oldest and most effective ways to give the player visual feedback that their attack landed.
 
 **Death animation:** When an enemy's health drops to 0 or below, it doesn't just vanish. Instead it rapidly flashes between white and its normal color for 10 frames, then disappears. This looks way better than just popping out of existence.
 
@@ -198,21 +206,21 @@ python3 dungeon.py
 
 Walk around with arrow keys. Press **Space** to attack in the direction you're facing. You'll see a yellow flash on the tile you hit. Enemies flash white when damaged, then flash rapidly and disappear when they die. Your kill count shows in the HUD.
 
-## Experiments
+!!! example "🧪 Experiments"
 
-1. **Change attack damage.** In the `attack()` method, change the damage from 3 to 1. Now enemies take more hits to kill — more challenging!
+    1. **Change attack damage.** In the `attack()` method, change the damage from 3 to 1. Now enemies take more hits to kill — more challenging!
 
-2. **Bigger attack range.** What if your sword could hit 2 tiles ahead? Change the target calculation to multiply the direction by 2.
+    2. **Bigger attack range.** What if your sword could hit 2 tiles ahead? Change the target calculation to multiply the direction by 2.
 
-3. **Faster attacks.** Set `attack_timer = 10` instead of 30. Now you can swing super fast!
+    3. **Faster attacks.** Set `attack_timer = 10` instead of 30. Now you can swing super fast!
 
-4. **More enemies.** Add 6 more enemies in `spawn_enemies`. With this many, combat gets intense.
+    4. **More enemies.** Add 6 more enemies in `spawn_enemies`. With this many, combat gets intense.
 
-5. **Different attack colors.** Change the attack flash from yellow `(255, 200, 0)` to whatever you want. Try red `(255, 50, 0)` for a fiery look.
+    5. **Different attack colors.** Change the attack flash from yellow `(255, 200, 0)` to whatever you want. Try red `(255, 50, 0)` for a fiery look.
 
-## Challenge
+!!! abstract "🏆 Challenge"
 
-Add an **area attack**. When the player presses X (instead of Space), they do a spin attack that hits all 4 tiles around them (up, down, left, right) at once. But it does less damage (1 instead of 3) and has a longer cooldown (60 frames instead of 30). You'll need a separate cooldown timer for it.
+    Add an **area attack**. When the player presses X (instead of Space), they do a spin attack that hits all 4 tiles around them (up, down, left, right) at once. But it does less damage (1 instead of 3) and has a longer cooldown (60 frames instead of 30). You'll need a separate cooldown timer for it.
 
 ## What's Next
 

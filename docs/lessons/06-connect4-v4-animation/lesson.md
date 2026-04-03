@@ -20,6 +20,9 @@ Frame 3: chip is at row 2
 
 This is how ALL animation works in games -- small movements, many times per second, that look smooth when you watch them.
 
+!!! info "🎮 Fun Fact"
+    Every animated game works frame-by-frame, even massive AAA games like Fortnite. They just run at 60 or 120 frames per second so it looks buttery smooth. Your Connect 4 animation works on the exact same principle -- just at a chill 20 FPS.
+
 ## State Variables
 
 To make the animation work, we need to remember some things between frames:
@@ -45,6 +48,9 @@ The animation code needs to be careful about order. Here's what happens each fra
 5. If not, move it down one row for the next frame
 
 The key insight: we only check for the winner and process player input *after* the chip finishes falling. While it's falling, we ignore new key presses.
+
+!!! tip "💡 Pro Tip"
+    If your animation looks wrong, add `print(chip_y)` inside the animation block to see the chip's row each frame. Watching the numbers count up (0, 1, 2, 3...) in the terminal while the chip falls on screen makes it way easier to understand what's happening -- and to spot bugs.
 
 ## Step-by-Step Build
 
@@ -191,21 +197,19 @@ You can see the complete file in `connect4.py` right next to this lesson.
    ```
 3. Press 1-6 to drop chips and watch them fall!
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Slow-motion mode** -- Change `time.sleep(1 / 20)` to `time.sleep(0.5)`. Now the chip falls in slow motion -- you can see each step clearly.
+    
+    2. **Speed mode** -- Change it to `time.sleep(1 / 60)`. Super fast! This is 60 FPS, which is what most real games run at.
+    
+    3. **Change the window size** -- Make it `(400, 400)` or `(600, 600)`. See how the board looks at different sizes.
+    
+    4. **Add a falling sound** -- This is tricky but fun. Look up `pygame.mixer.Sound` and play a short sound each time `chip_falling` is set to `True`.
+    
+    5. **Trail effect** -- What happens if you comment out the line `world[chip_y - 1][chip_x] = 0`? The chip leaves a trail as it falls!
 
-1. **Slow-motion mode** -- Change `time.sleep(1 / 20)` to `time.sleep(0.5)`. Now the chip falls in slow motion -- you can see each step clearly.
-
-2. **Speed mode** -- Change it to `time.sleep(1 / 60)`. Super fast! This is 60 FPS, which is what most real games run at.
-
-3. **Change the window size** -- Make it `(400, 400)` or `(600, 600)`. See how the board looks at different sizes.
-
-4. **Add a falling sound** -- This is tricky but fun. Look up `pygame.mixer.Sound` and play a short sound each time `chip_falling` is set to `True`.
-
-5. **Trail effect** -- What happens if you comment out the line `world[chip_y - 1][chip_x] = 0`? The chip leaves a trail as it falls!
-
-## Challenge
-
-Right now, you can drop a chip into a full column and it just overwrites what's there. Add a check: if `world[0][chip_x]` is already taken (greater than 0), don't start the chip falling. This prevents stacking chips on a full column.
+!!! abstract "🏆 Challenge"
+    Right now, you can drop a chip into a full column and it just overwrites what's there. Add a check: if `world[0][chip_x]` is already taken (greater than 0), don't start the chip falling. This prevents stacking chips on a full column.
 
 ## What's Next
 

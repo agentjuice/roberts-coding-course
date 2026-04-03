@@ -5,6 +5,9 @@
 ![The Snake game you're about to build!](../../images/snake.png)
 
 
+!!! info "🎮 Fun Fact"
+    The original Snake game came pre-installed on Nokia 6110 phones in 1998. It was one of the first mobile games ever, and people were obsessed with it. You're building the same game that millions of people played on tiny phone screens before smartphones even existed.
+
 ## Tuples: Coordinates in a Pair
 
 You know how a position on a grid always has two numbers -- an x and a y? Python has a special thing called a **tuple** that's perfect for that. It looks like a list, but with parentheses instead of square brackets:
@@ -161,6 +164,9 @@ Then we check self-collision: we loop through every segment in the snake's body.
             snake.pop()
 ```
 
+!!! warning "⚠️ Watch Out"
+    `insert(0, ...)` adds to the FRONT of the list, not the back. That's the opposite of `append()`, which adds to the end. If you mix them up, the snake's head and tail will be swapped and movement will look totally backwards.
+
 If the game isn't over, we insert the new head at position 0 (the front of the list).
 
 Then: if the new head is on the apple, we set `apple_position = None` so a new apple spawns next frame -- and we *don't* pop the tail, so the snake grows by one segment.
@@ -213,21 +219,19 @@ python3 snake.py
 
 Use the **arrow keys** to steer the snake. Eat red apples to grow. Don't hit the walls or yourself! Press **Space** to restart after game over. Press **Escape** to quit.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Change the speed** -- Try `time.sleep(1 / 5)` for a slower game or `time.sleep(1 / 20)` for a faster one. What feels best?
+    
+    2. **Make a bigger grid** -- Change the 20 and 15 to bigger numbers (and update the `randint` ranges and bounds checks to match). Can you fill the whole window?
+    
+    3. **Change the colors** -- Make the snake green, the apple yellow, and the background dark gray. Look up Pygame color names or use `(r, g, b)` tuples like `(255, 128, 0)` for orange.
+    
+    4. **Start the snake longer** -- Change the starting snake to `[(2, 0), (1, 0), (0, 0)]` so it starts with three segments. Does the game feel different?
+    
+    5. **Remove wall death** -- Instead of game over when hitting a wall, make the snake wrap around to the other side. (Hint: use `%` -- the modulo operator -- on the coordinates.)
 
-1. **Change the speed** -- Try `time.sleep(1 / 5)` for a slower game or `time.sleep(1 / 20)` for a faster one. What feels best?
-
-2. **Make a bigger grid** -- Change the 20 and 15 to bigger numbers (and update the `randint` ranges and bounds checks to match). Can you fill the whole window?
-
-3. **Change the colors** -- Make the snake green, the apple yellow, and the background dark gray. Look up Pygame color names or use `(r, g, b)` tuples like `(255, 128, 0)` for orange.
-
-4. **Start the snake longer** -- Change the starting snake to `[(2, 0), (1, 0), (0, 0)]` so it starts with three segments. Does the game feel different?
-
-5. **Remove wall death** -- Instead of game over when hitting a wall, make the snake wrap around to the other side. (Hint: use `%` -- the modulo operator -- on the coordinates.)
-
-## Challenge
-
-Add a **high score** that persists across restarts. Create a `high_score` variable that starts at 0. When the game ends, if `len(snake)` is higher than `high_score`, update it. Display the high score next to the regular score. (It won't save when you close the program -- that's fine for now.)
+!!! abstract "🏆 Challenge"
+    Add a **high score** that persists across restarts. Create a `high_score` variable that starts at 0. When the game ends, if `len(snake)` is higher than `high_score`, update it. Display the high score next to the regular score. (It won't save when you close the program -- that's fine for now.)
 
 ## What's Next
 

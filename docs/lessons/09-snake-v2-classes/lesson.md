@@ -13,6 +13,9 @@ What if we could bundle the snake's data *and* its behavior into one neat packag
 
 Think of it like this: a class is a **blueprint**. If you had a blueprint for "Snake," it would say "a Snake has a body and a direction, and it can move, draw itself, and change direction." Then you can build an actual snake from that blueprint -- that's called an **object**.
 
+!!! tip "💡 Pro Tip"
+    Classes are like blueprints -- you design it once, then build as many as you want. Need two snakes? Just call `Snake()` twice. Each one gets its own body and direction. You wrote the code once but got two independent objects.
+
 ## The `self` Keyword
 
 Here's the part that confuses everyone at first. When you write a method (a function inside a class), the first parameter is always `self`. It means "the object I'm talking about."
@@ -64,6 +67,9 @@ We'll split our game into three classes:
 - **`World`** -- has the screen, font, snake, apple, and game state. Handles input, updates everything, and draws the whole scene.
 
 The `World` is the boss -- it owns a Snake and an Apple and coordinates everything.
+
+!!! info "🎮 Fun Fact"
+    Minecraft is written in Java, which uses classes for absolutely everything -- every block, every mob, every item is a class. When you place a dirt block, Java creates a Dirt object from the Dirt class. You're learning the same technique that built one of the biggest games in history.
 
 ## Step-by-Step Build
 
@@ -283,21 +289,19 @@ Same controls as before -- arrow keys to move, Space to restart, Escape to quit.
 
 You'll notice this version runs a bit slower (`time.sleep(1 / 4)` instead of `1 / 10`). You can change that speed in the last line.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Speed it up** -- Change `time.sleep(1 / 4)` to `time.sleep(1 / 10)` to match the old version's speed. Try `1 / 15` for a real challenge.
+    
+    2. **Add a method** -- Add a `length()` method to the Snake class that returns `len(self.body)`. Use it somewhere in the World.
+    
+    3. **Color the head differently** -- In `Snake.draw()`, draw the first segment (index 0) in a different color from the rest. Maybe a green head with a yellow body?
+    
+    4. **Make the apple blink** -- In `Apple.draw()`, use `time.time()` to check the time and only draw the apple every other half-second. (Hint: `int(time.time() * 2) % 2 == 0`)
+    
+    5. **Add a speed boost** -- Make the game get faster as the score goes up. Instead of a fixed `time.sleep(1 / 4)`, calculate the delay based on `world.snake.score()`.
 
-1. **Speed it up** -- Change `time.sleep(1 / 4)` to `time.sleep(1 / 10)` to match the old version's speed. Try `1 / 15` for a real challenge.
-
-2. **Add a method** -- Add a `length()` method to the Snake class that returns `len(self.body)`. Use it somewhere in the World.
-
-3. **Color the head differently** -- In `Snake.draw()`, draw the first segment (index 0) in a different color from the rest. Maybe a green head with a yellow body?
-
-4. **Make the apple blink** -- In `Apple.draw()`, use `time.time()` to check the time and only draw the apple every other half-second. (Hint: `int(time.time() * 2) % 2 == 0`)
-
-5. **Add a speed boost** -- Make the game get faster as the score goes up. Instead of a fixed `time.sleep(1 / 4)`, calculate the delay based on `world.snake.score()`.
-
-## Challenge
-
-Add a **Poison Apple** class. It works like a regular Apple but it's colored purple and makes the snake *shorter* by one segment when eaten (use `self.body.pop()` an extra time). The World should have both a regular Apple and a Poison Apple on screen at the same time.
+!!! abstract "🏆 Challenge"
+    Add a **Poison Apple** class. It works like a regular Apple but it's colored purple and makes the snake *shorter* by one segment when eaten (use `self.body.pop()` an extra time). The World should have both a regular Apple and a Poison Apple on screen at the same time.
 
 ## What's Next
 

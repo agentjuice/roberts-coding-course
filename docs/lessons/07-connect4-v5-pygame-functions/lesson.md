@@ -113,6 +113,9 @@ def draw_world():
 
 This is *exactly* the same drawing code as before -- we just wrapped it in a function. Now instead of 15 lines in the main loop, we just call `draw_world()`. Notice we don't need `global` here because we're only *reading* `world`, `winner`, `screen`, and `font` -- not changing them.
 
+!!! warning "⚠️ Watch Out"
+    Make sure `pygame.display.update()` is inside `draw_world()`, not in the main loop. If you forget it, the screen will stay black and you'll think your drawing code is broken -- but really nothing is wrong, the screen just never gets told to actually show the new pixels.
+
 ### Step 3: The `get_input()` Function
 
 ```python
@@ -211,6 +214,9 @@ That's the ENTIRE main loop. Compare this to the 50+ lines we had before. You ca
 5. Draw the board
 6. Wait a bit
 
+!!! tip "💡 Pro Tip"
+    The pattern of "get input, update state, draw" is the core of every game ever made. From Pong to Minecraft to Fortnite -- they all follow this same loop. Once you see it, you'll recognize it everywhere.
+
 ## The Full Code
 
 You can see the complete file in `connect4.py` right next to this lesson.
@@ -227,21 +233,19 @@ You can see the complete file in `connect4.py` right next to this lesson.
    ```
 3. It looks and plays the same as the last version -- but the code is SO much cleaner.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Add a `reset_game()` function** -- Write a function that sets `world` back to zeros, `winner` to 0, and `player` to 1. Call it when someone presses R after the game ends.
+    
+    2. **Change `draw_world()` to use rectangles** -- Replace `pygame.draw.circle()` with `pygame.draw.rect()`. A rect takes a position AND a size: `pygame.draw.rect(screen, 'Red', (x, y, width, height))`.
+    
+    3. **Add a `draw_status()` function** -- Pull the winner/draw text into its own function. Now `draw_world()` only draws the board, and `draw_status()` handles the text.
+    
+    4. **Make `check_winner()` return True/False** -- Instead of using `global`, have it return `True` if someone won. The main loop checks the return value.
+    
+    5. **Add a move counter** -- Create a `moves` variable, increment it in `switch()`, and display it in `draw_world()`.
 
-1. **Add a `reset_game()` function** -- Write a function that sets `world` back to zeros, `winner` to 0, and `player` to 1. Call it when someone presses R after the game ends.
-
-2. **Change `draw_world()` to use rectangles** -- Replace `pygame.draw.circle()` with `pygame.draw.rect()`. A rect takes a position AND a size: `pygame.draw.rect(screen, 'Red', (x, y, width, height))`.
-
-3. **Add a `draw_status()` function** -- Pull the winner/draw text into its own function. Now `draw_world()` only draws the board, and `draw_status()` handles the text.
-
-4. **Make `check_winner()` return True/False** -- Instead of using `global`, have it return `True` if someone won. The main loop checks the return value.
-
-5. **Add a move counter** -- Create a `moves` variable, increment it in `switch()`, and display it in `draw_world()`.
-
-## Challenge
-
-Add a **column highlight**. Track which column the mouse is hovering over (look up `pygame.mouse.get_pos()`) and draw that column's circles slightly brighter or with a different border. You'll want to do this inside `draw_world()`.
+!!! abstract "🏆 Challenge"
+    Add a **column highlight**. Track which column the mouse is hovering over (look up `pygame.mouse.get_pos()`) and draw that column's circles slightly brighter or with a different border. You'll want to do this inside `draw_world()`.
 
 ## What's Next
 
