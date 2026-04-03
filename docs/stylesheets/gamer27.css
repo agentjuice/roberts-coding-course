@@ -164,6 +164,11 @@ body, .md-content, .md-typeset {
   padding-left: 0 !important;
   width: 100% !important;
 }
+@media screen and (max-width: 76.24em) {
+  .md-nav__item--section > .md-nav__link {
+    padding-left: 0.8rem !important;
+  }
+}
 .md-nav__item--section > .md-nav__link:hover {
   background: transparent !important;
   transform: none !important;
