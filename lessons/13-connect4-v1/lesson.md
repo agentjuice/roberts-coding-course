@@ -6,7 +6,7 @@
 
 ![Connect 4 terminal game in action](/images/connect4_terminal.gif)
 
-*This is what your terminal game will look like — chips dropping, players taking turns, and a winner!*
+*This is what your terminal game will look like — players taking turns and a winner!*
 
 Alright, this is a big one -- we're building an actual game! Connect 4 is the one where you drop colored chips into a grid and try to get four in a row. By the end of this lesson, you'll have a playable version running in your terminal. Let's break down how it works.
 
@@ -37,17 +37,13 @@ Our whole game lives inside a `while True:` loop. You know how games keep runnin
 
 1. **Draw** the board
 2. **Get input** from the current player
-3. **Animate** the chip falling down
+3. **Place** the chip in the lowest empty row
 4. **Check** if someone won (or if it's a draw)
 5. **Switch** to the other player
 
 ### Clearing the Screen
 
 Every time we redraw the board, we want a clean screen. `os.system('clear')` tells your Mac to clear the terminal. It's like erasing a whiteboard before drawing the board again.
-
-### Chip Falling Animation
-
-Instead of just placing a chip instantly, we make it "fall" from the top. We move it down one row at a time, pausing briefly with `time.sleep(0.05)` so you can see it drop. It looks cool!
 
 ### Win Detection
 
@@ -76,7 +72,6 @@ We need three libraries:
 ```python
 import os       # for clearing the screen
 import numpy    # for our 2D grid
-import time     # for the falling animation
 ```
 
 And our game variables:
@@ -85,8 +80,6 @@ And our game variables:
 world = numpy.zeros((6, 6))  # the board -- all zeros means all empty
 player = 1                    # player 1 goes first
 winner = 0                    # no winner yet (0 = nobody)
-chip_falling = False          # is a chip currently falling?
-chip_falling_ypos = 0         # which row is the chip on right now?
 ```
 
 ### Step 2: Draw the Board
@@ -118,24 +111,27 @@ Right after drawing, we check if the game is already over:
 
 The `%d` is a placeholder that gets replaced with the winner's number. `exit()` stops the whole program.
 
-### Step 4: Get Player Input
+### Step 4: Get Player Input and Place the Chip
 
-If no chip is currently falling, we ask the player for a column:
+We ask the player for a column, then find the lowest empty row and place the chip there:
 
 ```python
-    if not chip_falling:
-        input_text = input("Enter your move player %d: " % player)
-        if not str.isnumeric(input_text):
-            continue
-        i = int(input_text)
-        if i == 0:
-            exit()
-        if i > 6:
-            continue
-        if world[0][i - 1] > 0:
-            continue
-        chip_falling = True
-        chip_falling_ypos = 0
+    input_text = input("Enter your move player %d: " % player)
+    if not str.isnumeric(input_text):
+        continue
+    i = int(input_text)
+    if i == 0:
+        exit()
+    if i > 6:
+        continue
+    if world[0][i - 1] > 0:
+        continue
+
+    # Find the lowest empty row in this column
+    for y in range(5, -1, -1):
+        if world[y][i - 1] == 0:
+            world[y][i - 1] = player
+            break
 ```
 
 There's a lot of checking here! We make sure:
@@ -144,37 +140,14 @@ There's a lot of checking here! We make sure:
 - The column isn't bigger than 6
 - The column isn't already full (`world[0][i - 1] > 0` checks the top cell)
 
-If everything's okay, we start the chip falling from row 0 (the top).
+Then we scan from the bottom row up (`range(5, -1, -1)`) to find the first empty spot and place the chip there.
 
-### Step 5: Animate the Chip
-
-If a chip is falling, we move it down one row:
-
-```python
-    else:
-        if chip_falling_ypos > 0:
-            world[chip_falling_ypos - 1][i - 1] = 0
-        world[chip_falling_ypos][i - 1] = player
-        if chip_falling_ypos == 5 or world[chip_falling_ypos + 1][i - 1] > 0:
-            chip_falling = False
-        else:
-            chip_falling_ypos = chip_falling_ypos + 1
-            time.sleep(0.05)
-```
-
-Here's what's happening:
-- Erase the chip from its old position (set it back to 0)
-- Place it in the new position
-- If it's at the bottom (row 5) or there's a chip below it, stop falling
-- Otherwise, move it down one more row and wait 0.05 seconds
-
-### Step 6: Check for a Winner
+### Step 5: Check for a Winner
 
 After a chip lands, we scan the whole board:
 
 ```python
-    if not chip_falling:
-        for y in range(6):
+    for y in range(6):
             for x in range(6):
                 if world[y][x] != player:
                     continue
@@ -194,16 +167,16 @@ After a chip lands, we scan the whole board:
 
 The `x <= 2` and `y <= 2` checks stop us from looking off the edge of the board. For example, if `x` is 4, there aren't three more cells to the right, so we don't check horizontal.
 
-### Step 7: Check for Draw and Switch Players
+### Step 6: Check for Draw and Switch Players
 
 ```python
-        if world[0][0] > 0 and world[0][1] > 0 and world[0][2] > 0 and world[0][3] > 0 and world[0][4] > 0 and world[0][5] > 0:
-            winner = -1
+    if world[0][0] > 0 and world[0][1] > 0 and world[0][2] > 0 and world[0][3] > 0 and world[0][4] > 0 and world[0][5] > 0:
+        winner = -1
 
-        if player == 1:
-            player = 2
-        else:
-            player = 1
+    if player == 1:
+        player = 2
+    else:
+        player = 1
 ```
 
 If every cell in the top row is taken, the board is full -- it's a draw (we set `winner` to -1). Then we swap who's playing next.
@@ -231,13 +204,9 @@ Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 !!! example "🧪 Experiments"
     1. **Change the board size** -- Try making it `numpy.zeros((8, 8))` and update the column numbers and range checks. Can you make a bigger board work?
 
-    2. **Slow down the animation** -- Change `time.sleep(0.05)` to `time.sleep(0.3)`. Watch the chip fall in slow motion!
+    2. **Change the win condition** -- What if you only needed 3 in a row instead of 4? (Hint: remove one of the checks in each direction.)
 
-    3. **Change the win condition** -- What if you only needed 3 in a row instead of 4? (Hint: remove one of the checks in each direction.)
-
-    4. **Change the player symbols** -- Right now players are `1.0` and `2.0`. Can you think of a way to show something different?
-
-    5. **Remove the animation** -- What if you just placed the chip instantly at the bottom? Try setting `chip_falling = False` right away.
+    3. **Change the player symbols** -- Right now players are `1.0` and `2.0`. Can you think of a way to show something different?
 
 !!! abstract "🏆 Challenge"
     Add a **move counter** that shows how many total moves have been made. Print it next to the board each turn. (Hint: create a variable, add 1 to it each time a chip lands.)
