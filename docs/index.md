@@ -7,7 +7,7 @@
 
 ## Hey Robert!
 
-Welcome to your coding course. By the end of this, you're going to build a dungeon crawler game -- like Minecraft Dungeons, but one you made yourself. Pretty cool, right?
+Welcome to your coding course. By the end of this, you're going to build your own dungeon crawler game -- a simplified version of something like Minecraft Dungeons, built entirely by you, from scratch. It won't look as polished as a real game studio's work, but it'll be *yours*, and you'll understand every single line of code in it. Pretty cool, right?
 
 But we're not starting there. We're starting small, building up, and every single lesson ends with something you can actually play. Here's the plan:
 
