@@ -10,7 +10,11 @@ We're going to fix that by learning about **functions**.
 
 ### What Are Functions?
 
-A function is a named block of code that does one specific job. Think of it like a recipe card. Instead of memorizing every step every time, you just say "follow the pancake recipe" and all the steps happen.
+You've actually been using functions this whole time! Every time you wrote `print("hello")` or `input("Enter your name: ")`, you were **calling a function**. Someone else wrote the code for `print` and `input` — you just use them by name.
+
+But here's the cool part: **you can write your own functions too.** A function is a named block of code that groups a series of statements together, so you can run them whenever you want just by calling the name. Think of it like a recipe card — instead of repeating every step every time, you just say "follow the pancake recipe" and all the steps happen.
+
+Functions can also take **parameters** — values you pass in between the parentheses. When you write `print("hello")`, the text `"hello"` is a parameter. Your own functions work the same way.
 
 In Python, you create a function with the **`def`** keyword:
 
@@ -19,7 +23,16 @@ def say_hello():
     print("Hello!")
 ```
 
-Now whenever you write `say_hello()`, Python runs that code. The parentheses `()` are important -- they tell Python "run this function."
+Now whenever you write `say_hello()`, Python runs that code. The parentheses `()` are important — they tell Python "run this function."
+
+You can add parameters too:
+
+```python
+def say_hello(name):
+    print(f"Hello, {name}!")
+
+say_hello("Robert")  # prints: Hello, Robert!
+```
 
 ### Functions Can Return Things
 
