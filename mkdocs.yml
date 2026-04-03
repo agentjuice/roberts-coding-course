@@ -50,17 +50,17 @@ nav:
     - "Lists: Basics": lessons/10-lists-basics/lesson.md
     - "Lists: Operations": lessons/11-lists-operations/lesson.md
     - "Build: Guessing Game": lessons/12-build-guessing-game/lesson.md
-  - "Project 1: Connect 4":
+  - "Connect 4":
     - "Terminal Version": lessons/13-connect4-v1/lesson.md
     - "Functions": lessons/14-connect4-v2-functions/lesson.md
     - "The Game Loop": lessons/15-the-game-loop/lesson.md
     - "Pygame": lessons/16-connect4-v3-pygame/lesson.md
     - "Animation": lessons/17-connect4-v4-animation/lesson.md
     - "Pygame + Functions": lessons/18-connect4-v5-pygame-functions/lesson.md
-  - "Project 2: Snake":
+  - "Snake":
     - "Snake Game": lessons/19-snake-v1/lesson.md
     - "Classes & OOP": lessons/20-snake-v2-classes/lesson.md
-  - "Project 3: Dungeon Crawler":
+  - "Dungeon Crawler":
     - "The Hero": lessons/21-dungeon-v1-hero/lesson.md
     - "Enemies": lessons/22-dungeon-v2-enemies/lesson.md
     - "Combat": lessons/23-dungeon-v3-combat/lesson.md
