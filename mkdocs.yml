@@ -41,7 +41,7 @@ nav:
   - "Getting Started":
     - "Hello World": lessons/01-hello-world/lesson.md
     - "Variables": lessons/02-variables/lesson.md
-    - "Math & Numbers": lessons/03-math/lesson.md
+    - "Math": lessons/03-math/lesson.md
     - "Types": lessons/04-types/lesson.md
     - "f-strings": lessons/05-fstrings/lesson.md
     - "Input": lessons/06-input/lesson.md

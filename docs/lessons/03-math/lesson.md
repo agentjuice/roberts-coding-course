@@ -1,4 +1,4 @@
-# Math & Numbers
+# Math
 
 !!! success "🎯 Mission"
     Learn how to do math in Python, combine it with variables, and use randomness — a key ingredient in every game.

@@ -87,4 +87,4 @@ Try changing the values to make your own character!
 
 ## What's Next?
 
-👉 [Next: Math & Numbers](../03-math/lesson.md)
+👉 [Next: Math](../03-math/lesson.md)
