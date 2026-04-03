@@ -159,8 +159,9 @@ body, .md-content, .md-typeset {
   color: #ffcc00 !important;
   font-family: 'Bangers', cursive !important;
   letter-spacing: 1px;
-  margin-top: 1.2em;
-  padding-left: 0 !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 0 !important;
+  padding-left: 0.8rem !important;
   width: 100% !important;
 }
 .md-nav__item--section > .md-nav__link:hover {
