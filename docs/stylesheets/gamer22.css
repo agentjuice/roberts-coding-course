@@ -28,7 +28,11 @@ body, .md-content, .md-typeset {
 }
 
 .md-nav__title {
-  display: none !important;
+  font-family: 'Bangers', cursive !important;
+  color: #ff00ff !important;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px #000;
+  font-size: 1.2rem !important;
 }
 
 .md-content h1 {
