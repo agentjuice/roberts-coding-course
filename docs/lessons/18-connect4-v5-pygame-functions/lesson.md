@@ -4,11 +4,10 @@
     Clean up our Pygame Connect 4 by organizing the code into functions -- the same trick we used in Lesson 14, but now with graphics.
 
 
-**Here's an approximate demo of the game we'll be building by the end of this section:**
+!!! example "🎮 Play It! — Connect 4 Demo"
+    This is an approximate demo of the game we'll be building. **Click a column or press 1-6** to drop a chip!
 
 <iframe src="/games/connect4.html" width="100%" height="480" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe>
-
-*Click a column to drop a chip. Your Python version will look similar to this!*
 
 ## Here We Go Again
 
