@@ -60,11 +60,11 @@ import random
 
 # Random integer between 1 and 6 (like rolling a dice)
 dice = random.randint(1, 6)
-print(f"You rolled a {dice}!")
+print("You rolled a", dice)
 
 # Random integer between 1 and 100
 number = random.randint(1, 100)
-print(f"Secret number: {number}")
+print("Secret number:", number)
 ```
 
 `import random` loads Python's random number toolkit. You only need to write it once at the top of your file.
@@ -72,19 +72,7 @@ print(f"Secret number: {number}")
 !!! info "🎮 Fun Fact"
     Computers can't actually be truly random — they use complex math formulas that *look* random but are completely predictable if you know the starting number (called a "seed"). That's why Minecraft lets you enter a world seed — the same seed always generates the same world!
 
-## Random Choices
-
-You can also pick a random item from a list:
-
-```python
-import random
-
-weapons = ["sword", "axe", "bow", "staff"]
-drop = random.choice(weapons)
-print(f"The enemy dropped a {drop}!")
-```
-
-We'll learn how to use random numbers for things like loot drop chances ("30% chance to drop a health potion") once we learn about conditions in a couple of lessons. For now, just know that `random` is one of the most important tools in game development.
+We'll learn more ways to use random numbers — like picking from a list of items, or creating loot drop chances — once we learn about lists and conditions in later lessons. For now, just know that `random` is one of the most important tools in game development.
 
 ## Build: Battle Stats
 
@@ -102,11 +90,11 @@ damage = player_attack - enemy_armor + bonus
 enemy_health = 50
 enemy_health = enemy_health - damage
 
-print(f"Attack power: {player_attack}")
-print(f"Enemy armor: {enemy_armor}")
-print(f"Random bonus: +{bonus}")
-print(f"Damage dealt: {damage}")
-print(f"Enemy health remaining: {enemy_health}/50")
+print("Attack power:", player_attack)
+print("Enemy armor:", enemy_armor)
+print("Random bonus: +" + str(bonus))
+print("Damage dealt:", damage)
+print("Enemy health remaining:", enemy_health)
 ```
 
 Run it a few times — you'll get different damage each time because of the random bonus. This is exactly how damage formulas work in games like Zelda and Minecraft Dungeons.

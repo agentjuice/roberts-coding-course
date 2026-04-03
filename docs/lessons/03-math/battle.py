@@ -9,8 +9,8 @@ damage = player_attack - enemy_armor + bonus
 enemy_health = 50
 enemy_health = enemy_health - damage
 
-print(f"Attack power: {player_attack}")
-print(f"Enemy armor: {enemy_armor}")
-print(f"Random bonus: +{bonus}")
-print(f"Damage dealt: {damage}")
-print(f"Enemy health remaining: {enemy_health}/50")
+print("Attack power:", player_attack)
+print("Enemy armor:", enemy_armor)
+print("Random bonus: +" + str(bonus))
+print("Damage dealt:", damage)
+print("Enemy health remaining:", enemy_health)
