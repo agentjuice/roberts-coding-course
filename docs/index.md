@@ -88,6 +88,8 @@ You could write Python code in any text editor — even Notepad. But **VS Code**
 - **Built-in Terminal** — you can write code AND run it in the same window, side by side.
 - **Extensions** — you can add extra features, like Python support.
 
+Here's how to install it:
+
 1. Go to [code.visualstudio.com](https://code.visualstudio.com)
 2. Click the big blue **"Download for Mac"** button
 3. A `.zip` file will download. Find it in your Downloads folder and double-click it to unzip
