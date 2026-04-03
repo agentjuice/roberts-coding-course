@@ -167,7 +167,7 @@ body, .md-content, .md-typeset {
 .md-nav__item--section > .md-nav__link:hover {
   background: transparent !important;
   transform: none !important;
-  cursor: default !important;
+  cursor: pointer !important;
   text-shadow: none !important;
 }
 .md-nav__link--active {
