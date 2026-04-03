@@ -115,4 +115,4 @@ Run it and see if your predictions were right!
 
 ## What's Next?
 
-👉 [Go to #4 — f-strings](../04-fstrings/lesson.md)
+👉 [Next: f-strings](../04-fstrings/lesson.md)

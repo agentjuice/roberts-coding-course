@@ -68,4 +68,4 @@ Try it with the silliest words you can think of!
 
 ## What's Next?
 
-👉 [Go to #6 — If / Else](../06-if-else/lesson.md)
+👉 [Next: If / Else](../06-if-else/lesson.md)

@@ -164,4 +164,4 @@ Add a **gold coin** item type (yellow color). Instead of going to inventory, coi
 
 ## What's Next
 
-👉 [Go to #25 — Dungeon: Multiple Rooms](../25-dungeon-v5-rooms/lesson.md)
+👉 [Next: Multiple Rooms](../25-dungeon-v5-rooms/lesson.md)

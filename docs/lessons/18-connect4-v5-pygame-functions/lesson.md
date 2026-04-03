@@ -253,4 +253,4 @@ You can see the complete file in [`connect4.py`](connect4.py).
 
 ## What's Next
 
-👉 [Go to #19 — Snake Game](../19-snake-v1/lesson.md)
+👉 [Next: Snake Game](../19-snake-v1/lesson.md)

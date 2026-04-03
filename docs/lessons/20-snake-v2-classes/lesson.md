@@ -304,4 +304,4 @@ Add a **Poison Apple** class. It works like a regular Apple but it's colored pur
 
 ## What's Next
 
-👉 [Go to #21 — Dungeon: The Hero](../21-dungeon-v1-hero/lesson.md)
+👉 [Next: The Hero](../21-dungeon-v1-hero/lesson.md)

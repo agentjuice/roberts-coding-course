@@ -76,4 +76,4 @@ Add **floor patterns**. Instead of plain gray floors, alternate between two shad
 
 ## What's Next
 
-👉 [Depth Sorting](../34-depth-sorting/lesson.md) -- fixing the draw order so walls and characters overlap correctly!
+👉 [Next: Depth Sorting](../34-depth-sorting/lesson.md)

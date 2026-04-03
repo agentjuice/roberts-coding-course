@@ -225,4 +225,4 @@ Add an **area attack**. When the player presses X (instead of Space), they do a 
 
 ## What's Next
 
-👉 [Go to #24 — Dungeon: Loot & Items](../24-dungeon-v4-loot/lesson.md)
+👉 [Next: Loot & Items](../24-dungeon-v4-loot/lesson.md)

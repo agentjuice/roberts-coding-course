@@ -103,4 +103,4 @@ print(f"Last item: {inventory[-1]}")
 
 ## What's Next?
 
-👉 [Go to #11 — Lists: Operations](../11-lists-operations/lesson.md)
+👉 [Next: Lists: Operations](../11-lists-operations/lesson.md)

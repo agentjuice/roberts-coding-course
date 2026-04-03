@@ -241,4 +241,4 @@ Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 
 ## What's Next
 
-👉 [Go to #14 — Connect 4: Functions](../14-connect4-v2-functions/lesson.md)
+👉 [Next: Cleaning Up](../14-connect4-v2-functions/lesson.md)

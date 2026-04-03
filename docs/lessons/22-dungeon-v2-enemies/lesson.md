@@ -187,4 +187,4 @@ Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly g
 
 ## What's Next
 
-👉 [Go to #23 — Dungeon: Combat](../23-dungeon-v3-combat/lesson.md)
+👉 [Next: Combat](../23-dungeon-v3-combat/lesson.md)

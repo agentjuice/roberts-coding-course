@@ -208,4 +208,4 @@ Add a **second phase** to the boss fight. When the boss drops below half health,
 
 ## What's Next
 
-👉 [Go to #27 — Dungeon: Sprites & Art](../27-dungeon-v7-sprites/lesson.md)
+👉 [Next: Sprites & Art](../27-dungeon-v7-sprites/lesson.md)

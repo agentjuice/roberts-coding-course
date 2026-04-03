@@ -104,4 +104,4 @@ print(f"Your guesses so far: {all_guesses}")
 
 ## What's Next?
 
-👉 [Go to #13 — Connect 4: Terminal Version](../13-connect4-v1/lesson.md)
+👉 [Next: Your First Game](../13-connect4-v1/lesson.md)

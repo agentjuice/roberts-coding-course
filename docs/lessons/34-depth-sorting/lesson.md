@@ -77,4 +77,4 @@ Add **pillars** -- single-tile walls in the middle of rooms. They should be thin
 
 ## What's Next
 
-👉 [The Full Game](../35-isometric-game/lesson.md) -- the grand finale! Enemies, combat, loot, and a full HUD, all in beautiful isometric view.
+👉 [Next: The Full Game](../35-isometric-game/lesson.md)

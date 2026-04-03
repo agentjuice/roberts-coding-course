@@ -139,4 +139,4 @@ You should see a cyan ball bouncing around a black window. Press Escape (or clos
 
 ## What's Next
 
-👉 [Go to #16 — Connect 4: Pygame](../16-connect4-v3-pygame/lesson.md)
+👉 [Next: Adding Graphics](../16-connect4-v3-pygame/lesson.md)

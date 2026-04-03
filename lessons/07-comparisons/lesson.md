@@ -111,4 +111,4 @@ else:
 
 ## What's Next?
 
-👉 [Go to #8 — While Loops](../08-while-loops/lesson.md)
+👉 [Next: While Loops](../08-while-loops/lesson.md)

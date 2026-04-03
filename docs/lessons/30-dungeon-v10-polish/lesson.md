@@ -181,4 +181,4 @@ Add a **score multiplier** that increases by 0.1x for each kill without taking d
 
 ## What's Next
 
-👉 [Go to #31 — Dungeon: Co-op Mode](../31-dungeon-v11-coop/lesson.md)
+👉 [Next: Co-op Mode](../31-dungeon-v11-coop/lesson.md)

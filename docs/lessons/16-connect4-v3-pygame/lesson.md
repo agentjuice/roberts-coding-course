@@ -241,4 +241,4 @@ You can see the complete file in [`connect4.py`](connect4.py). It puts all the s
 
 ## What's Next
 
-👉 [Go to #17 — Connect 4: Animation](../17-connect4-v4-animation/lesson.md)
+👉 [Next: Dropping Chips](../17-connect4-v4-animation/lesson.md)

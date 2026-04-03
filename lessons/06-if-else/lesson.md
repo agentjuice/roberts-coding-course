@@ -95,4 +95,4 @@ Try running it with different ages to see all the paths!
 
 ## What's Next?
 
-👉 [Go to #7 — Comparisons](../07-comparisons/lesson.md)
+👉 [Next: Comparisons](../07-comparisons/lesson.md)

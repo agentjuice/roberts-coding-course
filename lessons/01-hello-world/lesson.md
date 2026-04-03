@@ -83,4 +83,4 @@ Run it with `python3 ascii_art.py`. Try making your own design — a rocket, a h
 
 ## What's Next?
 
-👉 [Go to #2 — Variables](../02-variables/lesson.md)
+👉 [Next: Variables](../02-variables/lesson.md)

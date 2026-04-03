@@ -87,4 +87,4 @@ Try changing the values to make your own character!
 
 ## What's Next?
 
-👉 [Go to #3 — Types](../03-types/lesson.md)
+👉 [Next: Types](../03-types/lesson.md)

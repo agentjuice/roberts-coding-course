@@ -252,4 +252,4 @@ Add a **mute toggle**. When the player presses **M**, all sound is muted. Press 
 
 ## What's Next
 
-👉 [Go to #29 — Dungeon: Procedural Generation](../29-dungeon-v9-procgen/lesson.md)
+👉 [Next: Procedural Generation](../29-dungeon-v9-procgen/lesson.md)

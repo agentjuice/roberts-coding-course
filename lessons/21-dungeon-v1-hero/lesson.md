@@ -238,4 +238,4 @@ Add a **treasure tile**. Use the number `2` in the tile map for treasure spots. 
 
 ## What's Next
 
-👉 [Go to #22 — Dungeon: Enemies](../22-dungeon-v2-enemies/lesson.md)
+👉 [Next: Enemies](../22-dungeon-v2-enemies/lesson.md)

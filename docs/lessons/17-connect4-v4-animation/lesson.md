@@ -216,4 +216,4 @@ You can see the complete file in [`connect4.py`](connect4.py).
 
 ## What's Next
 
-👉 [Go to #18 — Connect 4: Pygame + Functions](../18-connect4-v5-pygame-functions/lesson.md)
+👉 [Next: The Final Version](../18-connect4-v5-pygame-functions/lesson.md)

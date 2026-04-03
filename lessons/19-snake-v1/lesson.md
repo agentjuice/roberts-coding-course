@@ -241,4 +241,4 @@ Add a **high score** that persists across restarts. Create a `high_score` variab
 
 ## What's Next
 
-👉 [Go to #20 — Classes & OOP](../20-snake-v2-classes/lesson.md)
+👉 [Next: Classes](../20-snake-v2-classes/lesson.md)

@@ -163,4 +163,4 @@ Add a **room clear bonus**: when all enemies in a room are defeated, spawn a spe
 
 ## What's Next
 
-👉 [Go to #26 — Dungeon: The Boss](../26-dungeon-v6-boss/lesson.md)
+👉 [Next: The Boss](../26-dungeon-v6-boss/lesson.md)

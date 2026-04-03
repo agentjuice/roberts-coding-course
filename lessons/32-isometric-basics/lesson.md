@@ -69,4 +69,4 @@ Add **elevation**. Give some tiles a `height` value of 1 or 2. Draw those tiles 
 
 ## What's Next
 
-👉 [Isometric Dungeon](../33-isometric-dungeon/lesson.md) -- time to render your actual dungeon map in isometric view!
+👉 [Next: Isometric Dungeon](../33-isometric-dungeon/lesson.md)

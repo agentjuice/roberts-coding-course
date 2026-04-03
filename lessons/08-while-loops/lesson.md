@@ -82,4 +82,4 @@ The `time.sleep(1)` pauses for 1 second between each number. Run it and watch it
 
 ## What's Next?
 
-👉 [Go to #9 — For Loops](../09-for-loops/lesson.md)
+👉 [Next: For Loops](../09-for-loops/lesson.md)

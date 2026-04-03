@@ -221,4 +221,4 @@ Create a `create_player_sprite_up()` and `create_player_sprite_down()` function 
 
 ## What's Next
 
-👉 [Go to #28 — Dungeon: Sound & Music](../28-dungeon-v8-sound/lesson.md)
+👉 [Next: Sound & Music](../28-dungeon-v8-sound/lesson.md)

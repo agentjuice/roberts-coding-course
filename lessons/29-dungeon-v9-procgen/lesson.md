@@ -237,4 +237,4 @@ Add a **difficulty selector** on the title screen. Before entering a seed, let t
 
 ## What's Next
 
-👉 [Go to #30 — Dungeon: Polish & Second Level](../30-dungeon-v10-polish/lesson.md)
+👉 [Next: Polish & Second Level](../30-dungeon-v10-polish/lesson.md)

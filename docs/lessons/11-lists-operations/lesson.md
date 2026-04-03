@@ -108,4 +108,4 @@ while True:
 
 ## What's Next?
 
-👉 [Go to #12 — Build: Guessing Game](../12-build-guessing-game/lesson.md)
+👉 [Next: Build: Guessing Game](../12-build-guessing-game/lesson.md)

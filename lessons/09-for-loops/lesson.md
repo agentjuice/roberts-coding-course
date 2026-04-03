@@ -95,4 +95,4 @@ If you enter `5`, you get:
 
 ## What's Next?
 
-👉 [Go to #10 — Lists: Basics](../10-lists-basics/lesson.md)
+👉 [Next: Lists: Basics](../10-lists-basics/lesson.md)
