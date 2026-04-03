@@ -1,0 +1,109 @@
+---
+layout: ../../layouts/CourseLayout.astro
+title: Hello World
+section: Getting Started
+prev: /
+prevLabel: Home
+next: /lessons/02-variables
+nextLabel: Variables
+---
+import Callout from '../../components/Callout.astro';
+
+# Hello World
+
+<Callout type="mission" title="🎯 Mission">
+  Write your very first Python program and make your computer say something.
+</Callout>
+
+Every game, app, and website you've ever used started with someone writing their first line
+of code — just like you're about to. Minecraft? Started as a simple Java program. Fortnite?
+Somebody had to write the very first line. This is where it all begins.
+
+## Setting Up
+
+If you followed the setup steps on the home page, you should already have VS Code and Python
+installed, and a `coding-course` folder on your Desktop. Let's use it!
+
+1. Open **VS Code** (Cmd + Space, type "Visual Studio Code", hit Enter)
+2. Click **File → Open Folder** and select the `coding-course` folder on your Desktop
+3. In the left sidebar, click the **New File** icon and name it `hello.py` — the `.py` ending tells your computer it's a Python file
+4. Now open the **Terminal** inside VS Code by clicking **Terminal → New Terminal** at the top menu (or press **Ctrl + `**)
+
+You should see a dark panel at the bottom of VS Code. That's your terminal — it's where you'll run your code.
+
+## Your First Program
+
+Type this in `hello.py`:
+
+```python
+print("Hello, world!")
+```
+
+Now run it! In your terminal, type:
+
+```bash
+python3 hello.py
+```
+
+You should see:
+
+```
+Hello, world!
+```
+
+That's it. You just wrote a program. `print()` tells Python to display whatever you put
+inside the parentheses.
+
+<Callout type="info" title="🎮 Fun Fact">
+  Every video game uses `print()` (or something like it) behind the scenes. When Minecraft
+  shows "Respawn?" on screen, or when Fortnite shows your elimination count — that's the game
+  printing text to the display.
+</Callout>
+
+## Print More Stuff
+
+You can use `print()` as many times as you want:
+
+```python
+print("Hello, world!")
+print("My name is Robert.")
+print("I am learning Python!")
+```
+
+Each `print()` shows up on its own line.
+
+## Comments
+
+Sometimes you want to write a note **just for yourself** that Python completely ignores. Use a `#`:
+
+```python
+# This is a note to myself — Python skips this completely
+print("But this line runs!")
+
+print("Hi")  # You can put notes at the end of a line too
+```
+
+Comments are **only for you**. They're like sticky notes on your code. Python doesn't read
+them, doesn't care about them — they're just there so you can remind yourself what your code
+does when you come back to it later.
+
+## Build: ASCII Art
+
+Make a new file called `ascii_art.py`. Use `print()` to draw something cool:
+
+```python
+# My awesome ASCII art
+print("  /\\_/\\  ")
+print(" ( o.o ) ")
+print("  > ^ <  ")
+print(" /|   |\\")
+print("(_|   |_)")
+```
+
+Run it with `python3 ascii_art.py`. Try making your own design — a rocket, a house,
+your name in big letters, whatever you want!
+
+<Callout type="challenge" title="🏆 Challenge">
+  Can you draw a Creeper face using only `print()` statements? Use `#` for the dark pixels
+  and spaces for the light ones. It's basically pixel art made of text!
+</Callout>

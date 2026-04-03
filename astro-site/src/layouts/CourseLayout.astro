@@ -1,0 +1,206 @@
+---
+import '@fontsource/bangers';
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/700.css';
+import '@fontsource/nunito/900.css';
+
+const { title, section, prev, next, prevLabel, nextLabel } = Astro.props;
+
+// Course navigation structure
+const nav = [
+  { section: 'Getting Started', lessons: [
+    { slug: '01-hello-world', title: 'Hello World' },
+    { slug: '02-variables', title: 'Variables' },
+    { slug: '03-math', title: 'Math' },
+    { slug: '04-types', title: 'Types' },
+    { slug: '05-fstrings', title: 'f-strings' },
+    { slug: '06-input', title: 'Input' },
+    { slug: '07-if-else', title: 'If / Else' },
+    { slug: '08-comparisons', title: 'Comparisons' },
+    { slug: '09-while-loops', title: 'While Loops' },
+    { slug: '10-for-loops', title: 'For Loops' },
+    { slug: '11-lists', title: 'Lists' },
+    { slug: '12-guessing-game', title: 'Guessing Game' },
+  ]},
+  { section: 'Connect 4', lessons: [
+    { slug: '13-game-loop', title: 'The Game Loop' },
+    { slug: '14-first-game', title: 'Your First Game' },
+    { slug: '15-cleaning-up', title: 'Cleaning Up' },
+    { slug: '16-adding-graphics', title: 'Adding Graphics' },
+    { slug: '17-dropping-chips', title: 'Dropping Chips' },
+    { slug: '18-final-version', title: 'The Final Version' },
+  ]},
+  { section: 'Snake', lessons: [
+    { slug: '19-snake-game', title: 'Snake Game' },
+    { slug: '20-classes', title: 'Classes' },
+  ]},
+  { section: 'Dungeon Crawler', lessons: [
+    { slug: '21-the-hero', title: 'The Hero' },
+  ]},
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<html lang="en" class="bg-dark-900">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} — Robert's Coding Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body class="font-body text-gray-100 bg-dark-900 min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-dark-900 border-b-4 border-neon-pink shadow-[0_0_20px_rgba(255,0,255,0.5)]">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl text-neon-cyan tracking-wider" style="text-shadow: 2px 2px 0px #ff00ff;">
+        Robert's Coding Course
+      </a>
+      <div class="text-sm text-gray-400">
+        {section && <span class="text-neon-yellow font-bold">{section}</span>}
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto flex">
+    <!-- Sidebar -->
+    <nav class="hidden lg:block w-72 shrink-0 py-8 px-4 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
+      {nav.map(group => (
+        <div class="mb-6">
+          <h3 class="font-display text-neon-yellow text-lg tracking-wide mb-2">{group.section}</h3>
+          <ul class="space-y-1">
+            {group.lessons.map(lesson => {
+              const href = `/lessons/${lesson.slug}`;
+              const isActive = currentPath.includes(lesson.slug);
+              return (
+                <li>
+                  <a
+                    href={href}
+                    class:list={[
+                      'block px-3 py-1.5 rounded-lg text-sm font-bold transition-all duration-200',
+                      isActive
+                        ? 'bg-neon-pink text-white shadow-[0_0_12px_rgba(255,0,255,0.6)]'
+                        : 'text-gray-300 hover:bg-neon-cyan/10 hover:text-neon-cyan hover:translate-x-1'
+                    ]}
+                  >
+                    {lesson.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex-1 min-w-0 py-8 px-6 lg:px-12">
+      <article class="max-w-3xl mx-auto prose-custom">
+        <slot />
+      </article>
+
+      <!-- Prev/Next navigation -->
+      {(prev || next) && (
+        <div class="max-w-3xl mx-auto mt-16 flex justify-between items-center border-t border-gray-700 pt-8">
+          {prev ? (
+            <a href={prev} class="group flex items-center gap-2 text-neon-cyan font-bold hover:text-neon-yellow transition-colors">
+              <span class="text-xl group-hover:-translate-x-1 transition-transform">←</span>
+              <span>{prevLabel || 'Previous'}</span>
+            </a>
+          ) : <div />}
+          {next ? (
+            <a href={next} class="group flex items-center gap-2 text-neon-cyan font-bold hover:text-neon-yellow transition-colors">
+              <span>{nextLabel || 'Next'}</span>
+              <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          ) : <div />}
+        </div>
+      )}
+    </main>
+  </div>
+
+</body>
+</html>
+
+<style is:global>
+  /* Prose styles for lesson content */
+  .prose-custom h1 {
+    @apply font-display text-5xl text-neon-cyan tracking-wider mb-6;
+    text-shadow: 4px 4px 0px #ff00ff, -1px -1px 0px #000;
+    text-transform: uppercase;
+  }
+  .prose-custom h2 {
+    @apply font-display text-3xl text-neon-yellow border-b-4 border-dashed border-neon-pink/30 pb-2 mt-12 mb-4 tracking-wide;
+  }
+  .prose-custom h3 {
+    @apply font-display text-2xl text-neon-pink mt-8 mb-3;
+    text-shadow: 2px 2px 0px #000;
+  }
+  .prose-custom p {
+    @apply text-gray-200 leading-relaxed mb-4;
+  }
+  .prose-custom ul, .prose-custom ol {
+    @apply text-gray-200 mb-4 pl-6;
+  }
+  .prose-custom li {
+    @apply mb-1;
+  }
+  .prose-custom a {
+    @apply text-neon-cyan font-bold no-underline hover:text-neon-yellow transition-colors;
+  }
+  .prose-custom code:not(pre code) {
+    @apply text-neon-yellow bg-neon-yellow/10 rounded px-1.5 py-0.5 font-mono text-sm font-bold;
+  }
+  .prose-custom pre {
+    @apply bg-dark-700 border-2 border-neon-cyan rounded-xl p-4 mb-6 overflow-x-auto;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+  }
+  .prose-custom pre code {
+    @apply text-gray-200 bg-transparent text-sm font-mono font-normal;
+  }
+  .prose-custom img {
+    @apply rounded-2xl border-4 border-neon-yellow my-6;
+    box-shadow: 6px 6px 0px #ff00ff;
+  }
+  .prose-custom strong {
+    @apply text-white font-bold;
+  }
+  .prose-custom blockquote {
+    @apply border-l-4 border-neon-pink pl-4 italic text-gray-300 my-4;
+  }
+
+  /* Admonition-like callout boxes */
+  .callout {
+    @apply rounded-xl border-[3px] p-5 my-6;
+  }
+  .callout-title {
+    @apply font-display text-xl tracking-wide mb-2;
+  }
+  .callout-mission {
+    @apply border-[#39ff14] bg-[#39ff1410];
+  }
+  .callout-mission .callout-title { @apply text-[#39ff14]; }
+  .callout-tip {
+    @apply border-neon-cyan bg-neon-cyan/5;
+  }
+  .callout-tip .callout-title { @apply text-neon-cyan; }
+  .callout-warning {
+    @apply border-neon-yellow bg-neon-yellow/5;
+  }
+  .callout-warning .callout-title { @apply text-neon-yellow; }
+  .callout-info {
+    @apply border-blue-500 bg-blue-500/5;
+  }
+  .callout-info .callout-title { @apply text-blue-400; }
+  .callout-challenge {
+    @apply border-neon-pink bg-neon-pink/5;
+  }
+  .callout-challenge .callout-title { @apply text-neon-pink; }
+
+  /* Game embed */
+  .game-embed iframe {
+    @apply rounded-2xl border-4 border-neon-yellow my-6;
+    box-shadow: 6px 6px 0px #ff00ff;
+  }
+</style>

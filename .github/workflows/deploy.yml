@@ -19,15 +19,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.12'
-      - run: pip install mkdocs-material
-      - run: cp -r lessons docs/lessons
-      - run: mkdocs build
+          node-version: 22
+      - name: Install and build
+        working-directory: astro-site
+        run: |
+          npm install
+          npx astro build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: astro-site/dist
 
   deploy:
     environment:

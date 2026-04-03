@@ -1,0 +1,94 @@
+---
+layout: ../../layouts/CourseLayout.astro
+title: Variables
+section: Getting Started
+prev: /lessons/01-hello-world
+prevLabel: Hello World
+next: /lessons/03-math
+nextLabel: Math
+---
+import Callout from '../../components/Callout.astro';
+
+# Variables
+
+<Callout type="mission" title="🎯 Mission">
+  Learn how to store and update values using variables — the building blocks of every program.
+</Callout>
+
+Every game you've ever played uses variables. In Minecraft, your health is a variable. Your hunger bar is a variable. The number of diamonds in your inventory? Variable. When a Creeper explodes near you and your health drops from 20 to 8 — that's a variable being updated.
+
+## What's a Variable?
+
+A variable is a **name** that stores a **value**. Create a new file called `variables.py`:
+
+```python
+name = "Robert"
+age = 11
+print(name)
+print(age)
+```
+
+Run it with `python3 variables.py`. You should see:
+
+```
+Robert
+11
+```
+
+The `=` sign means "store this value." It does NOT mean "equals" like in math. Think of it as an arrow pointing left: `name ← "Robert"`.
+
+<Callout type="warning" title="⚠️ Watch Out">
+  `=` is the #1 thing that confuses beginners. In Python, `=` means **store**, not **equals**. We'll learn the actual equals check (`==`) later.
+</Callout>
+
+## Updating Variables
+
+Variables can change — that's why they're called *variables*:
+
+```python
+health = 100
+print(health)
+
+health = 75
+print(health)
+```
+
+The old value (100) is gone. Python only remembers the latest value.
+
+## Variable Names
+
+You can name variables almost anything, but there are rules:
+- Must start with a letter or underscore
+- Can contain letters, numbers, and underscores
+- No spaces — use underscores instead: `player_health`
+- Case matters: `Score` and `score` are different variables
+
+```python
+player_name = "Robert"
+player_health = 100
+max_speed = 15.5
+is_alive = True
+```
+
+Good variable names describe what they hold. `x` is bad. `player_health` is good.
+
+## Build: Character Card
+
+Create `character.py`:
+
+```python
+name = "Robert"
+level = 5
+health = 100
+weapon = "Diamond Sword"
+
+print("=== CHARACTER CARD ===")
+print(name)
+print("Level:", level)
+print("Health:", health)
+print("Weapon:", weapon)
+```
+
+<Callout type="challenge" title="🏆 Challenge">
+  Add more stats to your character card — armor, speed, gold, whatever you want. Try changing the values and running it again!
+</Callout>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0b0b13; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: monospace; overflow: hidden; }
+  canvas { }
+  #info { color: #00ff00; font-size: 12px; margin-top: 6px; font-weight: 700; }
+</style>
+</head>
+<body>
+<canvas id="game" tabindex="0"></canvas>
+<div id="info">Arrow keys to move. Space to attack.</div>
+<script>
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+canvas.width = 500;
+canvas.height = 400;
+
+const TW = 32, TH = 16; // tile width/height for isometric
+const ROWS = 15, COLS = 15;
+
+// Simple dungeon map
+const MAP = [
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,1,1,1,0,1,1,1,1,1],
+  [1,1,1,0,1,1,1,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,1,0,0,1,1,0,1,1,1],
+  [1,0,0,0,0,0,1,0,0,1,0,0,0,0,1],
+  [1,1,1,1,0,1,1,0,0,1,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+];
+
+let player = { x: 2, y: 2, facing: 'down', hp: 10, maxHp: 10, attackCool: 0, kills: 0 };
+let enemies = [
+  { x: 5, y: 8, hp: 3, maxHp: 3, type: 'zombie', flash: 0, moveTimer: 0 },
+  { x: 10, y: 3, hp: 3, maxHp: 3, type: 'skeleton', flash: 0, moveTimer: 0 },
+  { x: 8, y: 12, hp: 3, maxHp: 3, type: 'zombie', flash: 0, moveTimer: 0 },
+  { x: 12, y: 10, hp: 3, maxHp: 3, type: 'skeleton', flash: 0, moveTimer: 0 },
+];
+let items = [];
+let particles = [];
+let keys = {};
+let moveTimer = 0;
+let camX = 0, camY = 0;
+
+function toIso(gx, gy) {
+  return {
+    x: (gx - gy) * (TW / 2) + canvas.width / 2,
+    y: (gx + gy) * (TH / 2) + 40
+  };
+}
+
+document.addEventListener('keydown', e => { keys[e.key] = true; e.preventDefault(); });
+document.addEventListener('keyup', e => { keys[e.key] = false; });
+
+// Touch
+let touchX = 0, touchY = 0;
+canvas.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; touchY = e.touches[0].clientY; e.preventDefault(); });
+canvas.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchX;
+  const dy = e.changedTouches[0].clientY - touchY;
+  if (Math.abs(dx) < 10 && Math.abs(dy) < 10) { attack(); return; }
+  if (Math.abs(dx) > Math.abs(dy)) {
+    tryMove(dx > 0 ? 1 : -1, 0);
+  } else {
+    tryMove(0, dy > 0 ? 1 : -1);
+  }
+  e.preventDefault();
+});
+
+function tryMove(dx, dy) {
+  const nx = player.x + dx, ny = player.y + dy;
+  if (dx > 0) player.facing = 'right';
+  if (dx < 0) player.facing = 'left';
+  if (dy > 0) player.facing = 'down';
+  if (dy < 0) player.facing = 'up';
+  if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS && MAP[ny][nx] === 0) {
+    // Check enemy collision
+    for (const e of enemies) {
+      if (e.x === nx && e.y === ny && e.hp > 0) return;
+    }
+    player.x = nx;
+    player.y = ny;
+    // Pick up items
+    items = items.filter(i => {
+      if (i.x === player.x && i.y === player.y) {
+        if (i.type === 'health') player.hp = Math.min(player.maxHp, player.hp + 3);
+        addParticles(i.x, i.y, '#00ff00', 5);
+        return false;
+      }
+      return true;
+    });
+  }
+}
+
+function attack() {
+  if (player.attackCool > 0) return;
+  player.attackCool = 15;
+  let ax = player.x, ay = player.y;
+  if (player.facing === 'up') ay--;
+  if (player.facing === 'down') ay++;
+  if (player.facing === 'left') ax--;
+  if (player.facing === 'right') ax++;
+  addParticles(ax, ay, '#ff00ff', 8);
+  for (const e of enemies) {
+    if (e.x === ax && e.y === ay && e.hp > 0) {
+      e.hp -= 2;
+      e.flash = 8;
+      addParticles(e.x, e.y, '#ff4444', 6);
+      if (e.hp <= 0) {
+        player.kills++;
+        if (Math.random() < 0.5) items.push({ x: e.x, y: e.y, type: 'health' });
+      }
+    }
+  }
+}
+
+function addParticles(gx, gy, color, count) {
+  for (let i = 0; i < count; i++) {
+    const p = toIso(gx, gy);
+    particles.push({
+      x: p.x, y: p.y - 8,
+      vx: (Math.random() - 0.5) * 3,
+      vy: (Math.random() - 0.5) * 3 - 1,
+      life: 20 + Math.random() * 10,
+      color
+    });
+  }
+}
+
+function update() {
+  moveTimer++;
+  if (player.attackCool > 0) player.attackCool--;
+
+  if (moveTimer % 8 === 0) {
+    if (keys['ArrowUp']) tryMove(0, -1);
+    else if (keys['ArrowDown']) tryMove(0, 1);
+    else if (keys['ArrowLeft']) tryMove(-1, 0);
+    else if (keys['ArrowRight']) tryMove(1, 0);
+    if (keys[' ']) attack();
+  }
+
+  // Enemy AI
+  for (const e of enemies) {
+    if (e.hp <= 0) continue;
+    if (e.flash > 0) e.flash--;
+    e.moveTimer++;
+    if (e.moveTimer < 20) continue;
+    e.moveTimer = 0;
+
+    let dx = 0, dy = 0;
+    if (e.type === 'skeleton') {
+      if (e.x < player.x) dx = 1;
+      else if (e.x > player.x) dx = -1;
+      if (e.y < player.y) dy = 1;
+      else if (e.y > player.y) dy = -1;
+      if (Math.random() < 0.5) dx = 0; else dy = 0;
+    } else {
+      const dirs = [[0,-1],[0,1],[-1,0],[1,0]];
+      const d = dirs[Math.floor(Math.random() * 4)];
+      dx = d[0]; dy = d[1];
+    }
+    const nx = e.x + dx, ny = e.y + dy;
+    if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS && MAP[ny][nx] === 0) {
+      if (nx === player.x && ny === player.y) {
+        player.hp--;
+        addParticles(player.x, player.y, '#ff0000', 4);
+      } else {
+        e.x = nx; e.y = ny;
+      }
+    }
+  }
+
+  // Particles
+  particles = particles.filter(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life--;
+    return p.life > 0;
+  });
+
+  // Camera
+  const target = toIso(player.x, player.y);
+  camX += (target.x - canvas.width / 2 - camX) * 0.1;
+  camY += (target.y - canvas.height / 2 + 40 - camY) * 0.1;
+}
+
+function drawDiamond(x, y, w, h, color) {
+  ctx.beginPath();
+  ctx.moveTo(x, y - h/2);
+  ctx.lineTo(x + w/2, y);
+  ctx.lineTo(x, y + h/2);
+  ctx.lineTo(x - w/2, y);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function drawWall(x, y, color) {
+  const wallH = 14;
+  // Top face
+  drawDiamond(x, y - wallH, TW, TH, color);
+  // Left face
+  ctx.beginPath();
+  ctx.moveTo(x - TW/2, y - wallH);
+  ctx.lineTo(x, y - wallH + TH/2);
+  ctx.lineTo(x, y + TH/2);
+  ctx.lineTo(x - TW/2, y);
+  ctx.closePath();
+  ctx.fillStyle = '#3a2010';
+  ctx.fill();
+  // Right face
+  ctx.beginPath();
+  ctx.moveTo(x + TW/2, y - wallH);
+  ctx.lineTo(x, y - wallH + TH/2);
+  ctx.lineTo(x, y + TH/2);
+  ctx.lineTo(x + TW/2, y);
+  ctx.closePath();
+  ctx.fillStyle = '#4a3020';
+  ctx.fill();
+}
+
+function drawCharacter(x, y, color, size) {
+  // Shadow
+  drawDiamond(x, y, TW * 0.6, TH * 0.6, 'rgba(0,0,0,0.3)');
+  // Body
+  ctx.fillStyle = color;
+  ctx.fillRect(x - size/2, y - size - 4, size, size);
+  // Eyes
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(x - size/4, y - size, 2, 2);
+  ctx.fillRect(x + size/4 - 2, y - size, 2, 2);
+}
+
+function draw() {
+  ctx.fillStyle = '#0b0b13';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.save();
+  ctx.translate(-camX, -camY);
+
+  // Sort everything by depth (y + x for isometric)
+  const renderList = [];
+
+  for (let gy = 0; gy < ROWS; gy++) {
+    for (let gx = 0; gx < COLS; gx++) {
+      const p = toIso(gx, gy);
+      if (MAP[gy][gx] === 1) {
+        renderList.push({ depth: gx + gy, type: 'wall', x: p.x, y: p.y });
+      } else {
+        renderList.push({ depth: gx + gy - 0.5, type: 'floor', x: p.x, y: p.y });
+      }
+    }
+  }
+
+  // Items
+  for (const i of items) {
+    const p = toIso(i.x, i.y);
+    renderList.push({ depth: i.x + i.y, type: 'item', x: p.x, y: p.y, item: i });
+  }
+
+  // Enemies
+  for (const e of enemies) {
+    if (e.hp <= 0) continue;
+    const p = toIso(e.x, e.y);
+    renderList.push({ depth: e.x + e.y + 0.1, type: 'enemy', x: p.x, y: p.y, enemy: e });
+  }
+
+  // Player
+  const pp = toIso(player.x, player.y);
+  renderList.push({ depth: player.x + player.y + 0.1, type: 'player', x: pp.x, y: pp.y });
+
+  // Sort and draw
+  renderList.sort((a, b) => a.depth - b.depth);
+
+  for (const r of renderList) {
+    if (r.type === 'floor') {
+      drawDiamond(r.x, r.y, TW - 1, TH - 1, '#2a2a2a');
+    } else if (r.type === 'wall') {
+      drawWall(r.x, r.y, '#64 3C14');
+    } else if (r.type === 'item') {
+      drawDiamond(r.x, r.y - 2, 8, 4, '#ff4444');
+      drawDiamond(r.x, r.y - 5, 6, 3, '#ff6666');
+    } else if (r.type === 'enemy') {
+      const col = r.enemy.flash > 0 ? '#ffffff' : (r.enemy.type === 'zombie' ? '#00cc00' : '#cc0000');
+      drawCharacter(r.x, r.y, col, 10);
+      // HP bar
+      const hpW = 14;
+      const hpPct = r.enemy.hp / r.enemy.maxHp;
+      ctx.fillStyle = '#333';
+      ctx.fillRect(r.x - hpW/2, r.y - 22, hpW, 3);
+      ctx.fillStyle = '#ff0000';
+      ctx.fillRect(r.x - hpW/2, r.y - 22, hpW * hpPct, 3);
+    } else if (r.type === 'player') {
+      drawCharacter(r.x, r.y, '#0096ff', 12);
+    }
+  }
+
+  // Particles
+  for (const p of particles) {
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.life / 30;
+    ctx.fillRect(p.x - 1, p.y - 1, 3, 3);
+  }
+  ctx.globalAlpha = 1;
+
+  ctx.restore();
+
+  // HUD
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 14px monospace';
+  ctx.fillText('HP: ' + player.hp + '/' + player.maxHp, 10, 20);
+  ctx.fillText('Kills: ' + player.kills, 10, 38);
+
+  // HP bar
+  ctx.fillStyle = '#333';
+  ctx.fillRect(60, 10, 80, 10);
+  ctx.fillStyle = '#ff0000';
+  ctx.fillRect(60, 10, 80 * (player.hp / player.maxHp), 10);
+
+  // Game over
+  if (player.hp <= 0) {
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ff00ff';
+    ctx.font = 'bold 32px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('GAME OVER', canvas.width/2, canvas.height/2 - 10);
+    ctx.fillStyle = '#00ffcc';
+    ctx.font = 'bold 16px monospace';
+    ctx.fillText('Kills: ' + player.kills, canvas.width/2, canvas.height/2 + 20);
+    ctx.fillText('Press Space to restart', canvas.width/2, canvas.height/2 + 45);
+    ctx.textAlign = 'left';
+    if (keys[' ']) {
+      player = { x: 2, y: 2, facing: 'down', hp: 10, maxHp: 10, attackCool: 0, kills: 0 };
+      enemies = [
+        { x: 5, y: 8, hp: 3, maxHp: 3, type: 'zombie', flash: 0, moveTimer: 0 },
+        { x: 10, y: 3, hp: 3, maxHp: 3, type: 'skeleton', flash: 0, moveTimer: 0 },
+        { x: 8, y: 12, hp: 3, maxHp: 3, type: 'zombie', flash: 0, moveTimer: 0 },
+        { x: 12, y: 10, hp: 3, maxHp: 3, type: 'skeleton', flash: 0, moveTimer: 0 },
+      ];
+      items = [];
+      particles = [];
+    }
+  }
+}
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+canvas.focus();
+loop();
+</script>
+</body>
+</html>

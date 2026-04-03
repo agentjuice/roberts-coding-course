@@ -1,0 +1,18 @@
+---
+const { src, title, height = '450px' } = Astro.props;
+---
+
+<div class="callout callout-challenge my-8">
+  <div class="callout-title">🎮 Play It! — {title}</div>
+  <p class="text-gray-300 text-sm mb-3">
+    <slot />
+  </p>
+  <div class="game-embed">
+    <iframe
+      src={src}
+      width="100%"
+      height={height}
+      style="background: #0b0b13;"
+    ></iframe>
+  </div>
+</div>

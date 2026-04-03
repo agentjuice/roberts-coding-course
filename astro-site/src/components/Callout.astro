@@ -1,0 +1,11 @@
+---
+const { type = 'tip', title } = Astro.props;
+const typeClass = `callout-${type}`;
+---
+
+<div class={`callout ${typeClass}`}>
+  <div class="callout-title">{title}</div>
+  <div class="text-gray-200">
+    <slot />
+  </div>
+</div>
