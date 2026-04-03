@@ -4,6 +4,10 @@
     Build a working two-player Connect 4 game that runs right in your terminal.
 
 
+![Connect 4 terminal game in action](/images/connect4_terminal.gif)
+
+*This is what your terminal game will look like — chips dropping, players taking turns, and a winner!*
+
 Alright, this is a big one -- we're building an actual game! Connect 4 is the one where you drop colored chips into a grid and try to get four in a row. By the end of this lesson, you'll have a playable version running in your terminal. Let's break down how it works.
 
 ### The Board Is a Grid
