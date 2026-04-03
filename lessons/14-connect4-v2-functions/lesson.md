@@ -253,4 +253,4 @@ It plays exactly the same as v1 -- but the code is way more organized. Same game
 
 ## What's Next
 
-👉 [Go to #15 — Connect 4: Pygame](../15-connect4-v3-pygame/lesson.md)
+👉 [Go to #15 — The Game Loop](../15-the-game-loop/lesson.md)
