@@ -72,6 +72,23 @@ Take a moment. Seriously. You started this course printing "Hello World" to a bl
 
 That's not a tutorial project. That's a real game. The same concepts you used here are the same ones used in Minecraft Dungeons, Hades, and Diablo.
 
+## Taking It Further
+
+Want to see how far you can push this? Check out the advanced version in [`isometric_showcase.py`](../36-the-showcase/isometric_showcase.py) — it adds:
+
+- **Custom pixel art sprites** for the hero, enemies, and dungeon props
+- **Smooth walking and attack animations**
+- **New enemy types** — goblins that throw projectiles, bats that fly diagonally
+- **Particle effects** — bursts of color on attacks and deaths
+- **Screen shake** — the world rumbles when you take damage
+- **Sound effects** — sword swings, enemy deaths, item pickups
+- **A massive 45×35 tile map** with multiple themed rooms
+
+Every single concept in that file — you learned it in this course. There's nothing in there you haven't seen. It's just all of it working together.
+
+!!! info "🎮 Fun Fact"
+    Minecraft Dungeons was built by a team of ~60 professional developers over several years. You built a version of it by yourself. That's incredible.
+
 ## Experiments
 
 1. **Boss room** -- add a boss that spawns in the largest room. Give it 3x health and a unique color. It drops a special item when defeated.
@@ -86,4 +103,5 @@ Add a **shop room**. One room in the dungeon has a merchant (purple diamond) who
 
 ## What's Next
 
-🎓 **You graduated!** You finished the entire course -- from "Hello World" to a full isometric dungeon crawler. That's not just learning to code, that's learning to *build things*. Every game you play from now on, you'll notice the systems underneath: the tile maps, the depth sorting, the state machines. You see the Matrix now. Go build something amazing.
+!!! abstract "🏆 Congratulations, Robert!"
+    You finished the entire course. Every lesson. Every project. Every challenge. From `print("hello world")` to a full isometric dungeon crawler with sprites, animations, and particle effects. You're a programmer now. Go make something amazing.

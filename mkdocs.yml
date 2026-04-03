@@ -78,7 +78,6 @@ nav:
     - "Isometric Dungeon": lessons/33-isometric-dungeon/lesson.md
     - "Depth Sorting": lessons/34-depth-sorting/lesson.md
     - "The Full Game": lessons/35-isometric-game/lesson.md
-    - "What's Possible": lessons/36-the-showcase/lesson.md
 
 extra:
   social: []
