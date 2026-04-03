@@ -2,6 +2,9 @@
 
 **Goal:** Give the hero a sword attack so they can fight back against enemies.
 
+![Combat system in action!](../../images/dungeon_v3.png)
+
+
 ## Facing Direction
 
 So up until now, the player was just a square scooting around. But if we want to swing a sword, we need to know which way the player is actually *looking*. Think of it like this: if you press the right arrow, you're now facing right. If you attack, the sword swings to the right and hits whatever is on the tile next to you.

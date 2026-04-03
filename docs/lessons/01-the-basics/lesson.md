@@ -192,6 +192,9 @@ Here's how it works:
 
 Try changing `name` to your friend's name and `age` to their age. Save and run it again. See how the output changes?
 
+!!! warning "⚠️ Watch Out"
+    Don't forget the `f` before the opening quote! Writing `print("{name}")` without the `f` will literally print `{name}` instead of the variable's value. This is one of the most common beginner mistakes.
+
 ---
 
 ## Asking the User a Question with `input()`
@@ -246,6 +249,9 @@ Alright, you've learned enough to build something fun. We're going to make a gam
 4. You keep guessing until you get it
 
 This is going to be the biggest thing you've written so far, so we'll build it step by step. Create a new file called **guessing_game.py**.
+
+!!! info "💡 Did You Know?"
+    The number guessing game is one of the oldest computer games ever made! Versions of it were written for mainframe computers in the 1960s, before most people even knew what a computer was.
 
 ### Step 1: Pick a Random Number
 
@@ -348,38 +354,39 @@ Save the file (Cmd + S) and run it in the terminal:
 python3 guessing_game.py
 ```
 
-Play a few rounds! Here's a tip: always guess the middle of the range. If the number is between 1 and 100, guess 50. If it says "too high," guess 25 (the middle of 1-50). If it says "too low," guess 75 (the middle of 50-100). Keep cutting the range in half. This trick is actually called **binary search** and it's a real strategy programmers use.
+Play a few rounds!
+
+!!! tip "Pro Tip"
+    Always guess the middle of the range. If the number is between 1 and 100, guess 50. If it says "too high," guess 25 (the middle of 1-50). If it says "too low," guess 75 (the middle of 50-100). Keep cutting the range in half. This trick is actually called **binary search** and it's a real strategy programmers use.
 
 ---
 
-## Experiments
+!!! example "🧪 Experiments"
+    Now it's time to play around. Try these changes to your guessing game (make a change, save, run it, and see what happens):
 
-Now it's time to play around. Try these changes to your guessing game (make a change, save, run it, and see what happens):
+    1. **Make it easier.** Change `random.randint(1, 100)` to `random.randint(1, 10)`. Way easier to guess, right?
 
-1. **Make it easier.** Change `random.randint(1, 100)` to `random.randint(1, 10)`. Way easier to guess, right?
+    2. **Show how far off you are.** After the "Too low!" or "Too high!" message, add this line: `print(f"You were off by {abs(secret - answer)}")`. The `abs()` part makes sure the number is never negative.
 
-2. **Show how far off you are.** After the "Too low!" or "Too high!" message, add this line: `print(f"You were off by {abs(secret - answer)}")`. The `abs()` part makes sure the number is never negative.
+    3. **Limit the guesses.** What if you only get 7 tries? After the line `guesses = guesses + 1`, add these two lines (with the right indentation):
+        ```python
+            if guesses >= 7:
+                print(f"Game over! The number was {secret}.")
+                break
+        ```
 
-3. **Limit the guesses.** What if you only get 7 tries? After the line `guesses = guesses + 1`, add these two lines (with the right indentation):
-    ```python
-        if guesses >= 7:
-            print(f"Game over! The number was {secret}.")
-            break
-    ```
+    4. **Make the hints sillier.** Instead of just "Too low!" try making it say "WAAAY too low!!!" if you're off by more than 30, and "Ooh, so close!" if you're within 5.
 
-4. **Make the hints sillier.** Instead of just "Too low!" try making it say "WAAAY too low!!!" if you're off by more than 30, and "Ooh, so close!" if you're within 5.
-
-5. **Ask for their name.** Before the `while` loop, add `player = input("What's your name? ")` and use it in the win message.
+    5. **Ask for their name.** Before the `while` loop, add `player = input("What's your name? ")` and use it in the win message.
 
 ---
 
-## Challenge
+!!! abstract "🏆 Challenge"
+    Here's a harder one: add a **play again** feature. After the player wins (or loses), ask them "Play again? (y/n)". If they type "y", pick a new secret number and start over. If they type "n", print "Thanks for playing!" and end.
 
-Here's a harder one: add a **play again** feature. After the player wins (or loses), ask them "Play again? (y/n)". If they type "y", pick a new secret number and start over. If they type "n", print "Thanks for playing!" and end.
+    Hint: you'll need another `while True:` loop that wraps around the whole game. The outer loop handles "play again," and the inner loop handles guessing.
 
-Hint: you'll need another `while True:` loop that wraps around the whole game. The outer loop handles "play again," and the inner loop handles guessing.
-
-Don't worry if this one takes a while. It's supposed to be hard. Give it a real try before you ask for help.
+    Don't worry if this one takes a while. It's supposed to be hard. Give it a real try before you ask for help.
 
 ---
 

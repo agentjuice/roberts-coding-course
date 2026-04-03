@@ -2,6 +2,9 @@
 
 **Goal:** Add an item and inventory system so defeated enemies drop loot, and you can collect and use items.
 
+![Loot drops and an inventory bar!](../../images/dungeon_v4.png)
+
+
 ## How Loot Works in Games
 
 You know how in Minecraft Dungeons, when you beat a mob it might drop an item? Maybe a sword, maybe a potion, maybe nothing at all. You pick it up, it goes in your inventory, and you use it when you need it.

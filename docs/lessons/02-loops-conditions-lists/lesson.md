@@ -49,7 +49,8 @@ Here are all the ways to compare things:
 | `<=` | less than or equal | `5 <= 5` is `True` |
 | `>=` | greater than or equal | `7 >= 3` is `True` |
 
-**Watch out:** `=` is for putting something in a variable. `==` is for checking if two things are equal. Mixing them up is a super common mistake -- you'll probably do it at least once, and that's totally normal.
+!!! warning "⚠️ Watch Out"
+    `=` is for putting something in a variable. `==` is for checking if two things are equal. Mixing them up is a super common mistake -- you'll probably do it at least once, and that's totally normal.
 
 ## Loops -- Doing Things More Than Once
 
@@ -111,6 +112,9 @@ for i in range(1, 6):
 
 Notice: `range(1, 6)` goes up to but **doesn't include** 6. Yeah, it's weird. You get used to it.
 
+!!! tip "Pro Tip"
+    If you ever forget how `range()` works, just try it in the terminal: `python3 -c "print(list(range(5)))"`. It's a quick way to see exactly what numbers you get.
+
 ## Lists -- Storing Multiple Things
 
 A **list** is like a row of labeled boxes. Instead of making a separate variable for each item, you put them all in one place.
@@ -130,6 +134,9 @@ print(colors[3])   # "yellow"
 ```
 
 Yes, counting starts at 0, not 1. Every programmer finds this annoying at first.
+
+!!! info "💡 Did You Know?"
+    Counting from 0 is called "zero-based indexing." It started with the C programming language in the 1970s because it matched how computer memory actually works. Almost every programming language since then has copied this convention.
 
 ### Useful list operations
 
@@ -309,21 +316,19 @@ Save the file (Cmd+S), then head to your terminal and run:
 python3 quiz_game.py
 ```
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Add a question.** Copy one of the existing question dictionaries and change it to your own question. Does it show up in the game?
 
-1. **Add a question.** Copy one of the existing question dictionaries and change it to your own question. Does it show up in the game?
+    2. **Shuffle the questions.** Add `import random` at the top and `random.shuffle(questions)` before the loop. Now the order is different every time.
 
-2. **Shuffle the questions.** Add `import random` at the top and `random.shuffle(questions)` before the loop. Now the order is different every time.
+    3. **Show the question number differently.** Instead of "Question 1", try "Question 1 of 5". Hint: use `len(questions)` in the f-string.
 
-3. **Show the question number differently.** Instead of "Question 1", try "Question 1 of 5". Hint: use `len(questions)` in the f-string.
+    4. **Add a timer.** Can you figure out how to show how long the whole quiz took? Look up `import time` and `time.time()`.
 
-4. **Add a timer.** Can you figure out how to show how long the whole quiz took? Look up `import time` and `time.time()`.
+    5. **Wrong answer feedback.** When the player gets one wrong, show what the correct answer actually said (not just the letter). You'll need to find the right choice from the list.
 
-5. **Wrong answer feedback.** When the player gets one wrong, show what the correct answer actually said (not just the letter). You'll need to find the right choice from the list.
-
-## Challenge
-
-Add a **category** field to each question (like "Science", "Python", "Math"). After the quiz, show a breakdown: "Science: 1/2 correct, Python: 2/3 correct." You'll need to track scores per category -- try using a dictionary.
+!!! abstract "🏆 Challenge"
+    Add a **category** field to each question (like "Science", "Python", "Math"). After the quiz, show a breakdown: "Science: 1/2 correct, Python: 2/3 correct." You'll need to track scores per category -- try using a dictionary.
 
 ## What's Next
 

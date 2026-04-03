@@ -2,6 +2,9 @@
 
 **Goal:** Make chips fall down the board one row at a time, like a real Connect 4 game.
 
+![Connect 4 with chip-dropping animation](../../images/connect4_anim.png)
+
+
 ## What's Wrong with the Old Version?
 
 In the last lesson, chips just appeared in place -- poof! That works, but it doesn't look like a real Connect 4 game. In the real game, you drop a chip in the top and it *falls* down to the bottom. Let's make that happen.

@@ -2,6 +2,9 @@
 
 **Goal:** Rebuild Snake using **classes** to organize the code like a real game developer would.
 
+![Same Snake game, rebuilt with classes](../../images/snake_classes.png)
+
+
 ## Why Classes?
 
 Look at the Snake code from last lesson. The snake's data (`snake`, `snake_direction`) and the snake's behavior (movement, collision checking, drawing) are scattered all over the place. The apple's stuff is mixed in too. It works, but it's messy.

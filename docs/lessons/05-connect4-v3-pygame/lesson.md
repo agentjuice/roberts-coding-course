@@ -2,6 +2,9 @@
 
 **Goal:** Rebuild Connect 4 with real graphics using Pygame -- a window, colors, and circles instead of terminal text.
 
+![Here's what your Connect 4 game will look like when you're done with this lesson!](../../images/connect4_pygame.png)
+
+
 ## Why Pygame?
 
 Up to now, our Connect 4 game runs in the terminal. It works, but it looks pretty plain -- just numbers in a grid. Wouldn't it be cooler to have an actual window with colored circles?

@@ -2,6 +2,9 @@
 
 **Goal:** Add a boss fight to the final room with attack phases, a big health bar, and a victory screen.
 
+![The boss fight — can you beat it?](../../images/dungeon_v6.png)
+
+
 ## What Is a State Machine?
 
 Okay, so a **state machine** is just a fancy name for when something has different "modes" and switches between them based on rules. You already know state machines from real life — you just didn't know they had a name:

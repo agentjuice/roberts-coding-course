@@ -17,6 +17,9 @@ world = numpy.zeros((6, 6))
 
 This creates a 6-by-6 grid filled with zeros. Each `0` means "empty." When player 1 drops a chip, we put a `1` there. Player 2 gets a `2`.
 
+!!! info "💡 Did You Know?"
+    Connect 4 was first sold in 1974 by Milton Bradley. Mathematicians later proved that if both players play perfectly, the first player can always win! It took until 1988 for a computer to figure that out.
+
 ### The Game Loop
 
 Our whole game lives inside a `while True:` loop. You know how games keep running frame after frame until you quit? That's exactly what this does. Every time through the loop, we:
@@ -45,6 +48,9 @@ This is the trickiest part. After a chip lands, we need to check if there are fo
 - **Diagonal up-right** /
 
 We loop through every cell on the board. For each cell that belongs to the current player, we check if the next three cells in each direction also belong to that player. If they do -- winner!
+
+!!! warning "⚠️ Watch Out"
+    When checking for wins near the edges of the board, you need to make sure you don't look "off the edge." That's what the `x <= 2` and `y <= 2` checks are for -- they make sure there are enough cells in that direction to check.
 
 ### Draw Detection
 
@@ -211,21 +217,19 @@ python3 connect4.py
 
 Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Change the board size** -- Try making it `numpy.zeros((8, 8))` and update the column numbers and range checks. Can you make a bigger board work?
 
-1. **Change the board size** -- Try making it `numpy.zeros((8, 8))` and update the column numbers and range checks. Can you make a bigger board work?
+    2. **Slow down the animation** -- Change `time.sleep(0.05)` to `time.sleep(0.3)`. Watch the chip fall in slow motion!
 
-2. **Slow down the animation** -- Change `time.sleep(0.05)` to `time.sleep(0.3)`. Watch the chip fall in slow motion!
+    3. **Change the win condition** -- What if you only needed 3 in a row instead of 4? (Hint: remove one of the checks in each direction.)
 
-3. **Change the win condition** -- What if you only needed 3 in a row instead of 4? (Hint: remove one of the checks in each direction.)
+    4. **Change the player symbols** -- Right now players are `1.0` and `2.0`. Can you think of a way to show something different?
 
-4. **Change the player symbols** -- Right now players are `1.0` and `2.0`. Can you think of a way to show something different?
+    5. **Remove the animation** -- What if you just placed the chip instantly at the bottom? Try setting `chip_falling = False` right away.
 
-5. **Remove the animation** -- What if you just placed the chip instantly at the bottom? Try setting `chip_falling = False` right away.
-
-## Challenge
-
-Add a **move counter** that shows how many total moves have been made. Print it next to the board each turn. (Hint: create a variable, add 1 to it each time a chip lands.)
+!!! abstract "🏆 Challenge"
+    Add a **move counter** that shows how many total moves have been made. Print it next to the board each turn. (Hint: create a variable, add 1 to it each time a chip lands.)
 
 ## What's Next
 

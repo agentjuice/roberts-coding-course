@@ -48,6 +48,9 @@ Without `global score`, Python would think you're trying to create a brand new v
 
 Fair warning: using `global` a lot isn't great practice. In a later lesson, we'll learn about **classes**, which are a much cleaner way to share data. But for now, `global` gets the job done.
 
+!!! info "💡 Did You Know?"
+    Professional programmers almost never use `global` variables. Instead, they use techniques like classes (which you'll learn soon!) or pass data through function parameters. But `global` is a great starting point for understanding how data flows between functions.
+
 ### The Plan
 
 We're going to take the big messy loop from lesson 3 and break it into five functions:
@@ -59,6 +62,9 @@ We're going to take the big messy loop from lesson 3 and break it into five func
 | `check_winner()` | Scan the board for four in a row |
 | `switch()` | Swap from player 1 to player 2 (or back) |
 | `animate_chip()` | Move the chip down one row |
+
+!!! tip "Pro Tip"
+    A good function does **one thing** and has a name that describes what it does. If you can't describe what a function does in one sentence, it's probably doing too much and should be split up.
 
 After this, our main loop will read almost like English:
 
@@ -229,21 +235,19 @@ python3 connect4.py
 
 It plays exactly the same as v1 -- but the code is way more organized. Same game, cleaner code.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Add a print inside a function** -- Put `print("Drawing the world!")` at the top of `draw_world()`. See how it runs every time the function is called?
 
-1. **Add a print inside a function** -- Put `print("Drawing the world!")` at the top of `draw_world()`. See how it runs every time the function is called?
+    2. **Make `get_input()` print the prompt** -- Change it so `get_input()` also prints "Enter your move player X:" before calling `input()`. (Hint: you'll need to read the `player` variable.)
 
-2. **Make `get_input()` print the prompt** -- Change it so `get_input()` also prints "Enter your move player X:" before calling `input()`. (Hint: you'll need to read the `player` variable.)
+    3. **Create a new function** -- Write a function called `is_board_full()` that returns `True` if the top row is full and `False` otherwise. Use it inside `check_winner()`.
 
-3. **Create a new function** -- Write a function called `is_board_full()` that returns `True` if the top row is full and `False` otherwise. Use it inside `check_winner()`.
+    4. **Rename functions** -- Try renaming `switch()` to `next_player()`. Make sure you change it everywhere it's called!
 
-4. **Rename functions** -- Try renaming `switch()` to `next_player()`. Make sure you change it everywhere it's called!
+    5. **Comment the functions** -- Add a comment at the top of each function explaining what it does. This is called **documentation** and it's a great habit.
 
-5. **Comment the functions** -- Add a comment at the top of each function explaining what it does. This is called **documentation** and it's a great habit.
-
-## Challenge
-
-Create a function called `print_prompt()` that prints "Enter your move player X:" (with the right player number) and call it from the main loop before `get_input()`. This separates the prompt from the input logic -- each function does one job.
+!!! abstract "🏆 Challenge"
+    Create a function called `print_prompt()` that prints "Enter your move player X:" (with the right player number) and call it from the main loop before `get_input()`. This separates the prompt from the input logic -- each function does one job.
 
 ## What's Next
 

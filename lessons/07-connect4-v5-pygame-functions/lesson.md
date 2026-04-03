@@ -2,6 +2,9 @@
 
 **Goal:** Clean up our Pygame Connect 4 by organizing the code into functions -- the same trick we used in Lesson 4, but now with graphics.
 
+![Same game, but with clean organized code](../../images/connect4_functions.png)
+
+
 ## Here We Go Again
 
 Remember Lesson 4? We took the messy terminal Connect 4 and broke it into functions like `draw_world()`, `get_input()`, and `check_winner()`. The code got way easier to read.

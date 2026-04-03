@@ -2,6 +2,9 @@
 
 **Goal:** Build a fully playable Snake game with Pygame -- movement, apples, growing, collision, score, and game over.
 
+![The Snake game you're about to build!](../../images/snake.png)
+
+
 ## Tuples: Coordinates in a Pair
 
 You know how a position on a grid always has two numbers -- an x and a y? Python has a special thing called a **tuple** that's perfect for that. It looks like a list, but with parentheses instead of square brackets:

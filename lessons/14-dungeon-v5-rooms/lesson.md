@@ -2,6 +2,9 @@
 
 **Goal:** Create a dungeon with 5 connected rooms, door transitions, and a minimap to track where you've been.
 
+![Multiple rooms connected with a minimap!](../../images/dungeon_v5.png)
+
+
 ## Why Multiple Rooms?
 
 Right now our dungeon is one big open area. But real dungeon crawlers have rooms you move between — each room is its own mini-challenge. Think of it like floors in Minecraft Dungeons, except we're using doors instead of staircases.

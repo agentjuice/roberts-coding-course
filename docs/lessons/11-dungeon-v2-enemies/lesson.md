@@ -2,6 +2,9 @@
 
 **Goal:** Add wandering zombies and chasing skeletons to the dungeon, plus a health system.
 
+![Now with enemies roaming the dungeon!](../../images/dungeon_v2.png)
+
+
 ## Two Kinds of Enemy Brains
 
 Enemies need to decide where to move, and that decision-making is called **AI** (artificial intelligence). Don't worry, it's not actually intelligent -- it's just a few `if` statements pretending to be smart.

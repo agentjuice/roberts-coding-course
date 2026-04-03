@@ -2,6 +2,9 @@
 
 **Goal:** Build a tile-based dungeon world with a player that moves around and a camera that follows them.
 
+![Your first dungeon — you're the blue square!](../../images/dungeon_v1.png)
+
+
 ## How Tile Maps Work
 
 In the Snake game, everything lived on one screen. But real dungeon crawlers have big worlds you explore. So how do they pull that off?
