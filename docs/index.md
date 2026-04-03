@@ -1,6 +1,7 @@
 # Robert's Coding Course
 
-**Learn Python. Build Games. From zero to dungeon crawler.**
+!!! success "🎯 Mission"
+    Learn Python. Build games. Go from zero to building your own dungeon crawler.
 
 ---
 

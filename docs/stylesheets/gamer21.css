@@ -9,48 +9,36 @@
 body, .md-content, .md-typeset {
   font-family: 'Nunito', sans-serif !important;
   background-color: #0b0b13 !important;
-  font-size: 1.3rem !important;
-  line-height: 1.8 !important;
+  font-size: 0.80rem !important;
+  line-height: 1.7 !important;
   color: #f8f8f2 !important;
 }
 
 /* Make admonition body text match main text size */
 .md-typeset .admonition p,
 .md-typeset .admonition li {
-  font-size: 1.3rem !important;
-  line-height: 1.8 !important;
+  font-size: 0.80rem !important;
+  line-height: 1.7 !important;
 }
 
-/* Epic Headings */
-h1, h2, h3, .md-header__title {
+/* Epic Headings — scoped to content only */
+.md-content h1, .md-content h2, .md-content h3, .md-header__title {
   font-family: 'Bangers', cursive !important;
   letter-spacing: 2px;
 }
 
 .md-nav__title {
-  font-family: 'Bangers', cursive !important;
-  color: #ff00ff !important;
-  background: #0b0b13 !important;
-  box-shadow: none !important;
-  letter-spacing: 2px;
-  padding: 1rem 0 2rem 0 !important;
-  text-shadow: 2px 2px 0px #000;
-  font-size: 1.4rem !important;
-  position: relative !important;
-  z-index: 2;
-}
-.md-nav__title[for="__drawer"] {
-  background: transparent !important;
+  display: none !important;
 }
 
-h1 {
+.md-content h1 {
   font-size: 3.5rem !important;
   color: #00ffcc !important;
   text-shadow: 4px 4px 0px #ff00ff, -1px -1px 0px #000;
   text-transform: uppercase;
 }
 
-h2 {
+.md-content h2 {
   font-size: 2.5rem !important;
   color: #ffcc00 !important;
   border-bottom: 4px dashed #ff00ff !important;
@@ -58,7 +46,7 @@ h2 {
   margin-top: 1.5em !important;
 }
 
-h3 {
+.md-content h3 {
   font-size: 2rem !important;
   color: #ff00ff !important;
   text-shadow: 2px 2px 0px #000;
@@ -106,11 +94,64 @@ h3 {
 .md-typeset .admonition:hover {
   box-shadow: 6px 6px 15px rgba(255,255,255,0.15) !important;
 }
-.md-typeset .admonition-title {
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
   font-family: 'Bangers', cursive !important;
   font-size: 1.6rem !important;
   letter-spacing: 1px;
   border-bottom: none !important;
+  line-height: 1.4 !important;
+}
+.md-typeset .admonition-title::before {
+  display: none !important;
+}
+
+/* Add emoji fallback for admonitions without emoji in title */
+.md-typeset .admonition.tip > .admonition-title::before {
+  display: inline !important;
+  content: '💡 ' !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 1.3rem !important;
+}
+.md-typeset .admonition.warning > .admonition-title::before {
+  display: inline !important;
+  content: '⚠️ ' !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 1.3rem !important;
+}
+.md-typeset .admonition.info > .admonition-title::before {
+  display: inline !important;
+  content: '🎮 ' !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 1.3rem !important;
+}
+.md-typeset .admonition.example > .admonition-title::before {
+  display: inline !important;
+  content: '🧪 ' !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: 1.3rem !important;
+}
+
+/* Table text */
+.md-typeset table td,
+.md-typeset table th {
+  font-size: 0.80rem !important;
 }
 
 /* Specific Admonition Colors */
@@ -169,12 +210,23 @@ h3 {
   transform: translateX(8px);
 }
 
-/* Search alignment fix for large fonts */
+/* Search result headings */
+.md-search-result__title {
+  font-size: 1rem !important;
+  font-family: 'Nunito', sans-serif !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+/* Search alignment fix */
 .md-search__input {
-  padding-top: 0.5rem !important;
+  font-size: 0.9rem !important;
+  line-height: normal !important;
 }
 .md-search__icon {
-  margin-top: 0.1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 .md-header {
   background: #0b0b13 !important;
