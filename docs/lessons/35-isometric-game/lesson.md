@@ -74,19 +74,146 @@ That's not a tutorial project. That's a real game. The same concepts you used he
 
 ## Taking It Further
 
-Scroll back up and play that demo again. Notice all the features packed in there:
+Scroll back up and play that demo again. Let's break down the advanced features and how they work.
 
-- **Smooth movement** — characters glide between tiles instead of snapping
-- **4 enemy types** — zombies wander, skeletons chase, goblins throw projectiles from a distance, bats fly diagonally
-- **Particle effects** — bursts of color on every attack, hit, and death
-- **Screen shake** — the whole world rumbles when you take damage
-- **Sound effects** — sword swings, hits, enemy deaths, and item pickups (generated with Web Audio)
-- **Attack animation** — a sword swing arc in the direction you're facing
-- **Props** — barrels, torches, and crates decorating the rooms
-- **Minimap** — see the whole dungeon and enemy positions
-- **A massive 30×25 map** with 8 connected rooms and corridors
+### Smooth Movement
 
-Every one of these features uses concepts you learned in this course. Particles are just lists of objects with positions and velocities. Screen shake is a random camera offset for a few frames. Enemy AI is if/else logic. You built all of this.
+Instead of snapping from tile to tile, characters **glide** between positions. The trick: keep track of where you ARE and where you're GOING, then interpolate between them each frame.
+
+```python
+# moveT counts down from 6 to 0 over 6 frames
+progress = 1 - (move_timer / 6)
+draw_x = old_x + (new_x - old_x) * progress
+draw_y = old_y + (new_y - old_y) * progress
+```
+
+The game logic still works on a grid. Only the drawing smooths it out. This is the same technique Minecraft uses — entities are on a grid internally but rendered smoothly.
+
+### 4 Enemy Types with Different AI
+
+Each enemy type has its own behavior, defined by a simple `ai` field:
+
+```python
+if ai == 'wander':     # Zombie: pick a random direction
+    dx, dy = random.choice([(0,-1),(0,1),(-1,0),(1,0)])
+
+elif ai == 'chase':    # Skeleton: move toward the player
+    if enemy.x < player.x: dx = 1
+    elif enemy.x > player.x: dx = -1
+
+elif ai == 'diagonal': # Bat: move diagonally, erratic
+    dx = random.choice([-1, 1])
+    dy = random.choice([-1, 1])
+
+elif ai == 'ranged':   # Goblin: keep distance, throw projectiles
+    if distance < 3:   # Too close! Run away
+        dx = -direction_to_player
+    elif distance < 6:  # In range! Throw a projectile
+        projectiles.append(Projectile(enemy.x, enemy.y, toward_player))
+```
+
+Same `if/elif` you learned in lesson 6. Each enemy just makes a different decision.
+
+### Particle Effects
+
+Particles are tiny colored dots that spray out and fade away. Each one is just an object with a position, velocity, and lifetime:
+
+```python
+def add_particles(x, y, color, count):
+    for i in range(count):
+        particles.append({
+            'x': x, 'y': y,
+            'vx': random.uniform(-2, 2),  # Random horizontal speed
+            'vy': random.uniform(-3, 0),  # Shoot upward
+            'life': 20,                   # Frames until it disappears
+            'color': color
+        })
+
+# Each frame, update every particle
+for p in particles:
+    p['x'] += p['vx']
+    p['y'] += p['vy']
+    p['vy'] += 0.1  # Gravity pulls them down
+    p['life'] -= 1
+
+# Remove dead particles
+particles = [p for p in particles if p['life'] > 0]
+```
+
+That's it. A list of tiny objects with physics. When you attack, spawn 10 pink particles. When an enemy dies, spawn 20 in their color. Instant game juice.
+
+### Screen Shake
+
+This one is embarrassingly simple and embarrassingly effective:
+
+```python
+if player_got_hit:
+    shake_duration = 8  # Shake for 8 frames
+
+if shake_duration > 0:
+    camera_x += random.uniform(-3, 3)  # Jiggle the camera
+    camera_y += random.uniform(-3, 3)
+    shake_duration -= 1
+```
+
+Three lines of code. Makes the game feel 10x more impactful. Every action game uses this — Zelda, Mario, F1 games when you crash.
+
+### Sound Effects (No Files Needed)
+
+The demo generates sounds mathematically using Web Audio. In Python with Pygame, you'd load `.wav` files:
+
+```python
+pygame.mixer.init()
+swing_sound = pygame.mixer.Sound('swing.wav')
+hit_sound = pygame.mixer.Sound('hit.wav')
+
+# Play when something happens
+def attack():
+    swing_sound.play()
+    if enemy_hit:
+        hit_sound.play()
+```
+
+But the demo shows you can also generate sounds from code — using oscillators and frequency sweeps. A sword swing is a quick sawtooth wave dropping from 200Hz. An enemy death is a descending tone from 300Hz to 50Hz. Math becomes music.
+
+### Goblin Projectiles
+
+The goblin throws projectiles — objects that travel across the grid and hurt the player on contact:
+
+```python
+if goblin.distance_to_player < 6 and cooldown <= 0:
+    direction = toward_player()
+    projectiles.append({
+        'x': goblin.x, 'y': goblin.y,
+        'dx': direction.x, 'dy': direction.y,
+        'life': 10
+    })
+    cooldown = 40  # Can't shoot again for 40 frames
+
+# Each frame, move projectiles
+for p in projectiles:
+    p['x'] += p['dx']
+    p['y'] += p['dy']
+    if p['x'] == player.x and p['y'] == player.y:
+        player.hp -= 1  # Ouch!
+```
+
+Projectiles are just items that move. Same concept as the snake's body or a falling Connect 4 chip — objects in a list, updated each frame.
+
+### Props & Decoration
+
+Barrels, torches, and crates are placed randomly in rooms during map generation:
+
+```python
+for room in rooms:
+    for i in range(2):  # 2 props per room
+        x = random.randint(room.x + 1, room.x + room.width - 2)
+        y = random.randint(room.y + 1, room.y + room.height - 2)
+        prop_type = random.choice(['barrel', 'torch', 'crate'])
+        props.append({'x': x, 'y': y, 'type': prop_type})
+```
+
+They're drawn in the depth-sorted render list just like enemies and the player. Torches even have a tiny flickering particle effect.
 
 !!! info "🎮 Fun Fact"
     Minecraft Dungeons was built by a team of ~60 professional developers over several years. You built your own version from scratch. That's incredible.
