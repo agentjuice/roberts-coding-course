@@ -41,42 +41,43 @@ nav:
   - "Getting Started":
     - "Hello World": lessons/01-hello-world/lesson.md
     - "Variables": lessons/02-variables/lesson.md
-    - "Types": lessons/03-types/lesson.md
-    - "f-strings": lessons/04-fstrings/lesson.md
-    - "Input": lessons/05-input/lesson.md
-    - "If / Else": lessons/06-if-else/lesson.md
-    - "Comparisons": lessons/07-comparisons/lesson.md
-    - "While Loops": lessons/08-while-loops/lesson.md
-    - "For Loops": lessons/09-for-loops/lesson.md
-    - "Lists": lessons/10-lists/lesson.md
-    - "Build: Guessing Game": lessons/11-build-guessing-game/lesson.md
+    - "Math & Numbers": lessons/03-math/lesson.md
+    - "Types": lessons/04-types/lesson.md
+    - "f-strings": lessons/05-fstrings/lesson.md
+    - "Input": lessons/06-input/lesson.md
+    - "If / Else": lessons/07-if-else/lesson.md
+    - "Comparisons": lessons/08-comparisons/lesson.md
+    - "While Loops": lessons/09-while-loops/lesson.md
+    - "For Loops": lessons/10-for-loops/lesson.md
+    - "Lists": lessons/11-lists/lesson.md
+    - "Guessing Game": lessons/12-build-guessing-game/lesson.md
   - "Connect 4":
-    - "The Game Loop": lessons/14-the-game-loop/lesson.md
-    - "Your First Game": lessons/12-connect4-v1/lesson.md
-    - "Cleaning Up": lessons/13-connect4-v2-functions/lesson.md
-    - "Adding Graphics": lessons/15-connect4-v3-pygame/lesson.md
-    - "Dropping Chips": lessons/16-connect4-v4-animation/lesson.md
-    - "The Final Version": lessons/17-connect4-v5-pygame-functions/lesson.md
+    - "The Game Loop": lessons/15-the-game-loop/lesson.md
+    - "Your First Game": lessons/13-connect4-v1/lesson.md
+    - "Cleaning Up": lessons/14-connect4-v2-functions/lesson.md
+    - "Adding Graphics": lessons/16-connect4-v3-pygame/lesson.md
+    - "Dropping Chips": lessons/17-connect4-v4-animation/lesson.md
+    - "The Final Version": lessons/18-connect4-v5-pygame-functions/lesson.md
   - "Snake":
-    - "Snake Game": lessons/18-snake-v1/lesson.md
-    - "Classes": lessons/19-snake-v2-classes/lesson.md
+    - "Snake Game": lessons/19-snake-v1/lesson.md
+    - "Classes": lessons/20-snake-v2-classes/lesson.md
   - "Dungeon Crawler":
-    - "The Hero": lessons/20-dungeon-v1-hero/lesson.md
-    - "Enemies": lessons/21-dungeon-v2-enemies/lesson.md
-    - "Combat": lessons/22-dungeon-v3-combat/lesson.md
-    - "Loot & Items": lessons/23-dungeon-v4-loot/lesson.md
-    - "Multiple Rooms": lessons/24-dungeon-v5-rooms/lesson.md
-    - "The Boss": lessons/25-dungeon-v6-boss/lesson.md
-    - "Sprites & Art": lessons/26-dungeon-v7-sprites/lesson.md
-    - "Sound & Music": lessons/27-dungeon-v8-sound/lesson.md
-    - "Procedural Generation": lessons/28-dungeon-v9-procgen/lesson.md
-    - "Polish & Second Level": lessons/29-dungeon-v10-polish/lesson.md
-    - "Co-op Mode": lessons/30-dungeon-v11-coop/lesson.md
+    - "The Hero": lessons/21-dungeon-v1-hero/lesson.md
+    - "Enemies": lessons/22-dungeon-v2-enemies/lesson.md
+    - "Combat": lessons/23-dungeon-v3-combat/lesson.md
+    - "Loot & Items": lessons/24-dungeon-v4-loot/lesson.md
+    - "Multiple Rooms": lessons/25-dungeon-v5-rooms/lesson.md
+    - "The Boss": lessons/26-dungeon-v6-boss/lesson.md
+    - "Sprites & Art": lessons/27-dungeon-v7-sprites/lesson.md
+    - "Sound & Music": lessons/28-dungeon-v8-sound/lesson.md
+    - "Procedural Generation": lessons/29-dungeon-v9-procgen/lesson.md
+    - "Polish & Second Level": lessons/30-dungeon-v10-polish/lesson.md
+    - "Co-op Mode": lessons/31-dungeon-v11-coop/lesson.md
   - "Bonus: Isometric":
-    - "Isometric Basics": lessons/31-isometric-basics/lesson.md
-    - "Isometric Dungeon": lessons/32-isometric-dungeon/lesson.md
-    - "Depth Sorting": lessons/33-depth-sorting/lesson.md
-    - "The Full Game": lessons/34-isometric-game/lesson.md
+    - "Isometric Basics": lessons/32-isometric-basics/lesson.md
+    - "Isometric Dungeon": lessons/33-isometric-dungeon/lesson.md
+    - "Depth Sorting": lessons/34-depth-sorting/lesson.md
+    - "The Full Game": lessons/35-isometric-game/lesson.md
 
 extra:
   social: []

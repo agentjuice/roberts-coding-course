@@ -18,10 +18,6 @@ You should see a dark panel at the bottom of VS Code. That's your terminal — i
 
 ## Your First Program
 
-![VS Code with hello.py and terminal output](/images/vscode_hello_world.png)
-
-*This is what it looks like: your code on top, the terminal output on the bottom.*
-
 Type this in `hello.py`:
 
 ```python
@@ -41,6 +37,10 @@ Hello, world!
 ```
 
 That's it. You just wrote a program. `print()` tells Python to display whatever you put inside the parentheses.
+
+![VS Code with hello.py and terminal output](/images/vscode_hello_world.png)
+
+*This is what it should look like: your code on top, the terminal output on the bottom.*
 
 !!! info "🎮 Fun Fact"
     Every video game uses `print()` (or something like it) behind the scenes. When Minecraft shows "Respawn?" on screen, or when Fortnite shows your elimination count — that's the game printing text to the display.
