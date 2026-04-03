@@ -182,4 +182,4 @@ Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly g
 
 ## What's Next
 
-In Lesson 22, we'll give the hero a sword so they can fight back -- complete with attack animations and a kill counter.
+👉 [Go to #22 — Dungeon: Combat](../22-dungeon-v3-combat/lesson.md)

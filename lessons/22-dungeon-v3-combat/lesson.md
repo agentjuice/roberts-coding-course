@@ -218,4 +218,4 @@ Add an **area attack**. When the player presses X (instead of Space), they do a 
 
 ## What's Next
 
-In Lesson 23, we'll add loot drops — enemies will drop health potions and coins when they die, and we'll build an inventory to hold them.
+👉 [Go to #23 — Dungeon: Loot & Items](../23-dungeon-v4-loot/lesson.md)

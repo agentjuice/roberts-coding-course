@@ -179,4 +179,4 @@ Add a **score multiplier** that increases by 0.1x for each kill without taking d
 
 ## What's Next
 
-In our FINAL lesson, we'll add a second player for **co-op mode** -- two heroes fighting through the dungeon together on the same keyboard!
+👉 [Go to #30 — Dungeon: Co-op Mode](../30-dungeon-v11-coop/lesson.md)

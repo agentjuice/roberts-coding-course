@@ -69,4 +69,4 @@ Run it with `python3 character_card.py` and admire your fancy output!
 
 ## What's Next?
 
-In Lesson 5, you'll learn about `input()` — how to ask the *user* to type something, so your programs become interactive.
+👉 [Go to #5 — Input](../05-input/lesson.md)

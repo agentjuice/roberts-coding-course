@@ -252,4 +252,4 @@ Add a **mute toggle**. When the player presses **M**, all sound is muted. Press 
 
 ## What's Next
 
-In Lesson 28, we'll make every playthrough different with procedural generation -- the dungeon builds itself randomly each time you play!
+👉 [Go to #28 — Dungeon: Procedural Generation](../28-dungeon-v9-procgen/lesson.md)

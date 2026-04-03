@@ -250,4 +250,4 @@ You can see the complete file in `connect4.py` right next to this lesson.
 
 ## What's Next
 
-Connect 4 is done! Next up: we're building **Snake** -- the classic game where you eat food and grow longer. Get ready to learn about lists in a whole new way.
+👉 [Go to #18 — Snake Game](../18-snake-v1/lesson.md)

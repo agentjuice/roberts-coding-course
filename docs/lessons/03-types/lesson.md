@@ -112,4 +112,4 @@ Run it and see if your predictions were right!
 
 ## What's Next?
 
-In Lesson 4, you'll learn **f-strings** — a clean way to mix variables into text so your output actually looks good.
+👉 [Go to #4 — f-strings](../04-fstrings/lesson.md)

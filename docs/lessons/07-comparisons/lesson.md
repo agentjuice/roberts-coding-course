@@ -108,4 +108,4 @@ else:
 
 ## What's Next?
 
-In Lesson 8, you'll learn about **while loops** — how to make code repeat over and over.
+👉 [Go to #8 — While Loops](../08-while-loops/lesson.md)

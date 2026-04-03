@@ -84,4 +84,4 @@ Try changing the values to make your own character!
 
 ## What's Next?
 
-The stats card works, but it doesn't label anything — you just see a bunch of numbers. In Lesson 3, you'll learn about **types** and in Lesson 4 you'll learn **f-strings** to mix text and variables together.
+👉 [Go to #3 — Types](../03-types/lesson.md)

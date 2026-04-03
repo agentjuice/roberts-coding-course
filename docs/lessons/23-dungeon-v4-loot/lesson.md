@@ -161,4 +161,4 @@ Add a **gold coin** item type (yellow color). Instead of going to inventory, coi
 
 ## What's Next
 
-Our dungeon is just one room. In Lesson 24, we'll create **multiple rooms** connected by doors, with a minimap to track where you've been!
+👉 [Go to #24 — Dungeon: Multiple Rooms](../24-dungeon-v5-rooms/lesson.md)

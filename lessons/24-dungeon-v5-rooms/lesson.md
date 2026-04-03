@@ -160,4 +160,4 @@ Add a **room clear bonus**: when all enemies in a room are defeated, spawn a spe
 
 ## What's Next
 
-Room 4 is suspiciously empty... In Lesson 25, we'll fill it with a **boss fight** complete with attack phases and a victory screen!
+👉 [Go to #25 — Dungeon: The Boss](../25-dungeon-v6-boss/lesson.md)

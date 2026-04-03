@@ -233,4 +233,4 @@ Add a **treasure tile**. Use the number `2` in the tile map for treasure spots. 
 
 ## What's Next
 
-In Lesson 21, we'll add enemies that roam the dungeon -- zombies that wander randomly and skeletons that chase you down.
+👉 [Go to #21 — Dungeon: Enemies](../21-dungeon-v2-enemies/lesson.md)

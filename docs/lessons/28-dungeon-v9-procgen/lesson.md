@@ -237,4 +237,4 @@ Add a **difficulty selector** on the title screen. Before entering a seed, let t
 
 ## What's Next
 
-In Lesson 29, we'll add a second level, new enemy types, a start screen, pause menu, and polish effects like screen shake and particles.
+👉 [Go to #29 — Dungeon: Polish & Second Level](../29-dungeon-v10-polish/lesson.md)

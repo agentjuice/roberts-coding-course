@@ -79,4 +79,4 @@ The `time.sleep(1)` pauses for 1 second between each number. Run it and watch it
 
 ## What's Next?
 
-In Lesson 9, you'll learn about **for loops** — a different kind of loop that's great when you know exactly how many times to repeat.
+👉 [Go to #9 — For Loops](../09-for-loops/lesson.md)

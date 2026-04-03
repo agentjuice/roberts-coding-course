@@ -253,4 +253,4 @@ It plays exactly the same as v1 -- but the code is way more organized. Same game
 
 ## What's Next
 
-Our Connect 4 game looks good in the terminal, but wouldn't it be cool with actual graphics? In the next lesson, we'll use **Pygame** to draw a real game window with colored circles!
+👉 [Go to #15 — Connect 4: Pygame](../15-connect4-v3-pygame/lesson.md)

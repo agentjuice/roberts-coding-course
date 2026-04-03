@@ -214,4 +214,4 @@ You can see the complete file in `connect4.py` right next to this lesson.
 
 ## What's Next
 
-This code is getting messy again -- the animation logic, win checking, and drawing are all tangled together. Time to bring back **functions** and clean it all up.
+👉 [Go to #17 — Connect 4: Pygame + Functions](../17-connect4-v5-pygame-functions/lesson.md)

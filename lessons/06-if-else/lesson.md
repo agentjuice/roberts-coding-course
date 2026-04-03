@@ -92,4 +92,4 @@ Try running it with different ages to see all the paths!
 
 ## What's Next?
 
-In Lesson 7, you'll learn about all the **comparison operators** — more ways to write conditions.
+👉 [Go to #7 — Comparisons](../07-comparisons/lesson.md)

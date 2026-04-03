@@ -92,4 +92,4 @@ If you enter `5`, you get:
 
 ## What's Next?
 
-In Lesson 10, you'll learn about **lists** — how to store a whole collection of things in one variable.
+👉 [Go to #10 — Lists: Basics](../10-lists-basics/lesson.md)

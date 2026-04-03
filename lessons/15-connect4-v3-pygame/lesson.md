@@ -239,4 +239,4 @@ You can see the complete file in `connect4.py` right next to this lesson. It put
 
 ## What's Next
 
-The chip just appears instantly right now -- boring! In the next lesson, we'll add a **falling animation** so chips drop down the board one row at a time.
+👉 [Go to #16 — Connect 4: Animation](../16-connect4-v4-animation/lesson.md)

@@ -100,4 +100,4 @@ print(f"Your guesses so far: {all_guesses}")
 
 ## What's Next?
 
-You've learned all the Python basics! In Lesson 13, you'll start building **Connect 4** — a real two-player game in the terminal. Let's go!
+👉 [Go to #13 — Connect 4: Terminal Version](../13-connect4-v1/lesson.md)

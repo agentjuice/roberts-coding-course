@@ -67,4 +67,4 @@ Try it with the silliest words you can think of!
 
 ## What's Next?
 
-In Lesson 6, you'll learn about **if-else** — how to make your program do different things based on what the user types.
+👉 [Go to #6 — If / Else](../06-if-else/lesson.md)

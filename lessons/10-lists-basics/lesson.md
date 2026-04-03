@@ -99,4 +99,4 @@ print(f"Last item: {inventory[-1]}")
 
 ## What's Next?
 
-In Lesson 11, you'll learn how to **add and remove** items from lists — making them grow and shrink.
+👉 [Go to #11 — Lists: Operations](../11-lists-operations/lesson.md)

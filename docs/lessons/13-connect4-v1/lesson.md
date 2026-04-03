@@ -235,4 +235,4 @@ Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 
 ## What's Next
 
-This code works, but look how long it is -- and it's all crammed into one big loop. In the next lesson, we'll learn about **functions** and break this code into neat, organized pieces.
+👉 [Go to #14 — Connect 4: Functions](../14-connect4-v2-functions/lesson.md)

@@ -221,4 +221,4 @@ Create a `create_player_sprite_up()` and `create_player_sprite_down()` function 
 
 ## What's Next
 
-In Lesson 27, we'll add sound effects and music to bring the dungeon to life -- sword clangs, enemy grunts, and boss battle music.
+👉 [Go to #27 — Dungeon: Sound & Music](../27-dungeon-v8-sound/lesson.md)

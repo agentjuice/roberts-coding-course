@@ -303,4 +303,4 @@ Add a **Poison Apple** class. It works like a regular Apple but it's colored pur
 
 ## What's Next
 
-We've got Snake down and we know how classes work -- time to start building something bigger. Next up: the **dungeon crawler**, where we'll create a hero that can explore a tile-based world!
+👉 [Go to #20 — Dungeon: The Hero](../20-dungeon-v1-hero/lesson.md)

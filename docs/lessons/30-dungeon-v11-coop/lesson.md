@@ -112,13 +112,4 @@ Add a **trading system**: when both players stand next to each other and one pre
 
 ## What's Next
 
-Congratulations, Robert! You just built a complete dungeon crawler with procedural generation, multiple enemy types, a boss fight, item system, particle effects, multiple levels, and co-op multiplayer. That is a REAL game.
-
-Here are some ideas for where to go from here:
-
-- **Keep building** -- add more enemy types, more items, more levels, a story, or even a map editor
-- **Try Godot** -- a free game engine that uses a Python-like language. You already know the concepts!
-- **Learn JavaScript** -- build games that run in a web browser so anyone can play
-- **Share your game** -- show your friends, put it on GitHub, or make a YouTube video about it
-
-You've learned variables, loops, functions, classes, file I/O, game physics, procedural generation, and so much more. You're a real programmer now. Keep making things!
+🎉 **You finished the entire course!** You built a dungeon crawler from scratch. That's incredible. Now go build something of your own!

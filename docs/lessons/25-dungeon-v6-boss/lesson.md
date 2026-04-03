@@ -203,4 +203,4 @@ Add a **second phase** to the boss fight. When the boss drops below half health,
 
 ## What's Next
 
-Our game works, but everything is colored squares. In Lesson 26, we'll replace them with **actual sprites and pixel art** to make the game look like a real dungeon crawler!
+👉 [Go to #26 — Dungeon: Sprites & Art](../26-dungeon-v7-sprites/lesson.md)

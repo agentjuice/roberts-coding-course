@@ -238,4 +238,4 @@ Add a **high score** that persists across restarts. Create a `high_score` variab
 
 ## What's Next
 
-This code works, but it's getting messy -- the snake's data and behavior are scattered all over the place. In the next lesson, we'll learn about **classes** and reorganize this into clean, professional code.
+👉 [Go to #19 — Classes & OOP](../19-snake-v2-classes/lesson.md)

@@ -107,4 +107,4 @@ while True:
 
 ## What's Next?
 
-In Lesson 12, you'll combine **everything** you've learned into a real project — a number guessing game!
+👉 [Go to #12 — Build: Guessing Game](../12-build-guessing-game/lesson.md)

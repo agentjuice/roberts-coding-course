@@ -51,16 +51,16 @@ Each `print()` shows up on its own line.
 
 ## Comments
 
-Sometimes you want to write a note to yourself that Python ignores. Use a `#`:
+Sometimes you want to write a note **just for yourself** that Python completely ignores. Use a `#`:
 
 ```python
-# This is a comment — Python skips it
+# This is a note to myself — Python skips this completely
 print("But this line runs!")
 
-print("Hi")  # You can also put comments at the end of a line
+print("Hi")  # You can put notes at the end of a line too
 ```
 
-Comments are great for reminding yourself what your code does.
+Comments are **only for you**. They're like sticky notes on your code. Python doesn't read them, doesn't care about them — they're just there so you can remind yourself what your code does when you come back to it later.
 
 ## Build: ASCII Art
 
@@ -79,4 +79,4 @@ Run it with `python3 ascii_art.py`. Try making your own design — a rocket, a h
 
 ## What's Next?
 
-In Lesson 2, you'll learn about **variables** — how to make Python remember things.
+👉 [Go to #2 — Variables](../02-variables/lesson.md)
