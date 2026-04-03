@@ -6,9 +6,6 @@
 
 Right now our Player class is hard-coded to use arrow keys and Space. But what if we could make it use *any* keys? That's the magic of **configuration** -- instead of baking in specific keys, we pass them in as a parameter.
 
-!!! tip "💡 Pro Tip"
-    Dictionaries are one of the most powerful features in Python -- they let you map any key to any value. In real-world code, dictionaries are everywhere: configuration files, API responses, database records. Getting comfortable with dicts will make you a much stronger programmer.
-
 Here's the trick: we use a **dictionary** to map actions to keys:
 
 ```python
