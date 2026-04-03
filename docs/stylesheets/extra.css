@@ -139,3 +139,13 @@
 .md-sidebar--secondary {
   display: none !important;
 }
+
+/* Also hide TOC on all pages */
+.md-nav--secondary {
+  display: none !important;
+}
+
+/* Expand content to full width without TOC */
+.md-content {
+  max-width: 100% !important;
+}

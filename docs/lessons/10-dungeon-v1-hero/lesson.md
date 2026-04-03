@@ -40,6 +40,9 @@ if tile_map[new_y][new_x] == 0:
 
 Now here's something that trips up everyone at first: it's `tile_map[y][x]`, not `tile_map[x][y]`. The first index picks the row (y), the second picks the column (x). Keep an eye on that -- it'll bite you if you mix them up.
 
+!!! warning "⚠️ Watch Out"
+    It's `tile_map[y][x]`, not `tile_map[x][y]` -- rows come first! The first index picks which row (y), the second picks which column (x). If you swap them, your player will walk through walls in one direction and get stuck on floors in the other. This bug is incredibly common and hard to spot.
+
 ## The Camera
 
 You know how in a big game, the world scrolls as your character moves? That's what the camera does. If the player is at tile (15, 10) and each tile is 32 pixels, they're at pixel (480, 320). But our screen is only 800x600. If we just drew everything starting at pixel (0, 0), the player would eventually walk right off the screen.
@@ -59,6 +62,9 @@ screen_y = row * TILE_SIZE - camera_y
 ```
 
 The player stays in the middle, and the world scrolls around them. Pretty neat, right?
+
+!!! info "🎮 Fun Fact"
+    The first dungeon crawler was called "Rogue," released in 1980. It used ASCII characters for graphics -- `@` was your hero, `#` was walls, and `.` was floors. It was so influential that an entire genre is named after it: **roguelikes**. Games like Hades, Spelunky, and The Binding of Isaac are all descendants of Rogue.
 
 ## Step-by-Step Build
 
@@ -213,21 +219,19 @@ python3 dungeon.py
 
 Use the arrow keys to walk around. You should see the dungeon scroll as you move. Walls are brown, floors are dark gray, and you're the blue square.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Make a bigger map.** Add more rows and columns to `TILE_MAP`. Make a maze! Just remember to surround it with walls.
+    
+    2. **Change the player color.** Try `(255, 0, 0)` for red or `(0, 255, 0)` for green. Pick your hero's color.
+    
+    3. **Speed up movement.** What happens if you change `self.speed = 1` to `self.speed = 2` in the Player class? (Hint: you might jump over walls!)
+    
+    4. **Change the tile size.** Try `TILE_SIZE = 64` for a zoomed-in view or `TILE_SIZE = 16` for a zoomed-out view. The whole feel of the game changes.
+    
+    5. **Add a new tile type.** Use `2` for water tiles. Draw them blue and let the player walk on them (but maybe slowly later).
 
-1. **Make a bigger map.** Add more rows and columns to `TILE_MAP`. Make a maze! Just remember to surround it with walls.
-
-2. **Change the player color.** Try `(255, 0, 0)` for red or `(0, 255, 0)` for green. Pick your hero's color.
-
-3. **Speed up movement.** What happens if you change `self.speed = 1` to `self.speed = 2` in the Player class? (Hint: you might jump over walls!)
-
-4. **Change the tile size.** Try `TILE_SIZE = 64` for a zoomed-in view or `TILE_SIZE = 16` for a zoomed-out view. The whole feel of the game changes.
-
-5. **Add a new tile type.** Use `2` for water tiles. Draw them blue and let the player walk on them (but maybe slowly later).
-
-## Challenge
-
-Add a **treasure tile**. Use the number `2` in the tile map for treasure spots. Draw them as yellow squares. When the player walks onto a treasure tile, change it to `0` (regular floor) and add 1 to a score counter. Show the score in the HUD next to the position.
+!!! abstract "🏆 Challenge"
+    Add a **treasure tile**. Use the number `2` in the tile map for treasure spots. Draw them as yellow squares. When the player walks onto a treasure tile, change it to `0` (regular floor) and add 1 to a score counter. Show the score in the HUD next to the position.
 
 ## What's Next
 

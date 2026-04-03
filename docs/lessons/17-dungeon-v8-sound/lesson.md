@@ -27,6 +27,12 @@ If the file exists, great -- we load it. If not, we set `sound` to `None` and mo
 
 This pattern is used ALL the time in real software. Video players try to load subtitles -- if the file's not there, no subtitles. Web browsers try to load images -- if the server's down, show a placeholder. Same idea everywhere.
 
+!!! tip "💡 Pro Tip"
+    `try`/`except` is one of the most important patterns in all of programming. Any time your code does something that *might* fail -- opening a file, connecting to the internet, parsing user input -- wrap it in try/except. Your programs will go from crashing randomly to handling problems gracefully.
+
+!!! info "🎮 Fun Fact"
+    The famous "coin sound" from Super Mario Bros is only about 200 milliseconds long -- that's one-fifth of a second! Great sound design is about making tiny, punchy sounds that your brain instantly recognizes. Less is more.
+
 ## The Sound Manager
 
 Rather than scattering try/except blocks all over the place, we'll build a **SoundManager** class that handles all the sound stuff in one place:
@@ -234,19 +240,17 @@ The game runs perfectly fine without sound files. But if you download some .wav 
 
 Use arrow keys to move, Space to attack, 1-5 for items, +/- for volume.
 
-## Experiments
+!!! example "🧪 Experiments"
+    1. **Try the jfxr sound generator.** Go to https://jfxr.frozenfractal.com in your browser. Generate a "hit" sound, export it as a .wav file, and save it as `assets/sword_swing.wav`. Run the game -- you should hear it!
 
-1. **Try the jfxr sound generator.** Go to https://jfxr.frozenfractal.com in your browser. Generate a "hit" sound, export it as a .wav file, and save it as `assets/sword_swing.wav`. Run the game -- you should hear it!
+    2. **Change the volume step.** Instead of `self.volume + 0.1`, try `0.05` for finer control or `0.25` for bigger jumps.
 
-2. **Change the volume step.** Instead of `self.volume + 0.1`, try `0.05` for finer control or `0.25` for bigger jumps.
+    3. **Add a new sound event.** Add a "level_up" sound that plays when you enter a new room for the first time.
 
-3. **Add a new sound event.** Add a "level_up" sound that plays when you enter a new room for the first time.
+    4. **Make boss music switch back.** Right now, once boss music starts, it stays. Make it switch back to dungeon music if you leave the boss room.
 
-4. **Make boss music switch back.** Right now, once boss music starts, it stays. Make it switch back to dungeon music if you leave the boss room.
-
-## Challenge
-
-Add a **mute toggle**. When the player presses **M**, all sound is muted. Press M again to unmute. Show "MUTED" on the HUD when sound is off. Hint: you'll need a `self.muted` variable in the SoundManager, and check it in the `play()` method.
+!!! abstract "🏆 Challenge"
+    Add a **mute toggle**. When the player presses **M**, all sound is muted. Press M again to unmute. Show "MUTED" on the HUD when sound is off. Hint: you'll need a `self.muted` variable in the SoundManager, and check it in the `play()` method.
 
 ## What's Next
 

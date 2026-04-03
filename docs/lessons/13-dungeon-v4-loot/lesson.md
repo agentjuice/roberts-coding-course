@@ -5,6 +5,10 @@
 ![Loot drops and an inventory bar!](../../images/dungeon_v4.png)
 
 
+!!! info "🎮 Fun Fact"
+
+    *Diablo* (1997) by Blizzard was one of the first games to popularize random loot drops from enemies. Every monster you killed had a chance to drop randomized gear with different stats. It was so addictive that it spawned an entire genre called "loot games" or "ARPGs" -- and games like Minecraft Dungeons, Destiny, and Borderlands all trace their loot systems back to it.
+
 ## How Loot Works in Games
 
 You know how in Minecraft Dungeons, when you beat a mob it might drop an item? Maybe a sword, maybe a potion, maybe nothing at all. You pick it up, it goes in your inventory, and you use it when you need it.
@@ -69,6 +73,10 @@ for item in self.items[:]:
 ```
 
 The `[:]` makes a copy of the list so we can safely remove items while looping. That's a handy Python trick you'll use a lot — if you try to remove things from a list while you're looping over it without making a copy first, weird things happen.
+
+!!! warning "⚠️ Watch Out"
+
+    Never modify a list while you're looping over it directly. If you do `for item in self.items:` and then call `self.items.remove(item)` inside the loop, Python can skip items or crash. That's why we use `self.items[:]` -- the `[:]` creates a shallow copy of the list, so the loop iterates over the copy while we safely remove from the original.
 
 ## Using Items
 
@@ -145,17 +153,17 @@ python3 dungeon.py
 
 Move with arrow keys, attack with Space, and press 1-5 to use items. Walk over items to pick them up, and walk into the brown/yellow chests to open them.
 
-## Experiments
+!!! example "🧪 Experiments"
 
-1. **Change the drop rate** — find `0.4` and change it to `1.0` so every enemy drops something. Or try `0.1` for rare drops.
-2. **Super potions** — change the health potion to restore 20 HP instead of 5. Now they feel powerful.
-3. **Longer boosts** — change `150` frames to `300` for speed and power boosts. Double the fun!
-4. **More inventory slots** — change the max from 5 to 10. Update the drawing too.
-5. **New item type** — try adding a "shield" item that sets a `shield_timer` and reduces damage taken.
+    1. **Change the drop rate** — find `0.4` and change it to `1.0` so every enemy drops something. Or try `0.1` for rare drops.
+    2. **Super potions** — change the health potion to restore 20 HP instead of 5. Now they feel powerful.
+    3. **Longer boosts** — change `150` frames to `300` for speed and power boosts. Double the fun!
+    4. **More inventory slots** — change the max from 5 to 10. Update the drawing too.
+    5. **New item type** — try adding a "shield" item that sets a `shield_timer` and reduces damage taken.
 
-## Challenge
+!!! abstract "🏆 Challenge"
 
-Add a **gold coin** item type (yellow color). Instead of going to inventory, coins add to a score counter displayed on the HUD. Make enemies drop coins 30% of the time (separately from the 40% item drop). Show "Gold: X" on screen.
+    Add a **gold coin** item type (yellow color). Instead of going to inventory, coins add to a score counter displayed on the HUD. Make enemies drop coins 30% of the time (separately from the 40% item drop). Show "Gold: X" on screen.
 
 ## What's Next
 

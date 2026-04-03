@@ -5,6 +5,10 @@
 ![Multiple rooms connected with a minimap!](../../images/dungeon_v5.png)
 
 
+!!! info "🎮 Fun Fact"
+
+    *The Legend of Zelda* (1986) on the NES used a very similar room-by-room dungeon system. Each dungeon was a grid of rooms, and walking through a door would load the next room. Our door connection system works almost exactly the same way -- and that game is over 40 years old! Great game design patterns stick around forever.
+
 ## Why Multiple Rooms?
 
 Right now our dungeon is one big open area. But real dungeon crawlers have rooms you move between — each room is its own mini-challenge. Think of it like floors in Minecraft Dungeons, except we're using doors instead of staircases.
@@ -76,6 +80,10 @@ def transition_to_room(self, room_idx, spawn_x, spawn_y):
 
 That white flash is a classic game trick. Without it, the room switch would feel instant and jarring. With it, your brain goes "oh, I'm transitioning somewhere" and it feels smooth.
 
+!!! tip "💡 Pro Tip"
+
+    The white flash transition trick is used in tons of professional games to hide loading or scene changes. *Pokemon* uses it when entering battles, *Zelda* uses it between rooms, and even modern games use screen flashes and fades to mask transitions. It's simple to implement but makes your game feel way more polished.
+
 ## Spawning Enemies Per Room
 
 Each room only spawns enemies the **first time** you enter. After that, whatever enemies you killed stay dead, and any items stay on the ground. This is tracked by `room.visited`.
@@ -144,17 +152,17 @@ python3 dungeon.py
 
 Move with arrow keys, attack with Space, 1-5 for items. Walk into the dark brown doors to move between rooms. Check the minimap in the top-right to see where you've been.
 
-## Experiments
+!!! example "🧪 Experiments"
 
-1. **Add a 6th room** — copy one of the room maps, add it to the rooms list, and connect it with doors.
-2. **Change room colors** — give each room a different floor color to make them feel distinct.
-3. **More enemies** — double the enemy spawns in Room 2 to make it a real challenge.
-4. **Locked doors** — make a door that only opens if you have a "key" item in your inventory.
-5. **Room names** — display the room name at the top of the screen when you enter (like "The Crypt" or "Skeleton Hall").
+    1. **Add a 6th room** — copy one of the room maps, add it to the rooms list, and connect it with doors.
+    2. **Change room colors** — give each room a different floor color to make them feel distinct.
+    3. **More enemies** — double the enemy spawns in Room 2 to make it a real challenge.
+    4. **Locked doors** — make a door that only opens if you have a "key" item in your inventory.
+    5. **Room names** — display the room name at the top of the screen when you enter (like "The Crypt" or "Skeleton Hall").
 
-## Challenge
+!!! abstract "🏆 Challenge"
 
-Add a **room clear bonus**: when all enemies in a room are defeated, spawn a special chest in the center of the room. This rewards the player for fighting instead of running past enemies.
+    Add a **room clear bonus**: when all enemies in a room are defeated, spawn a special chest in the center of the room. This rewards the player for fighting instead of running past enemies.
 
 ## What's Next
 
