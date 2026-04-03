@@ -2,18 +2,9 @@
 
 **Goal:** Add an item and inventory system so defeated enemies drop loot, and you can collect and use items.
 
-## New Concepts
-
-- **Item** class for pickups on the ground
-- **Inventory** system — a list with a max size
-- Using number keys to activate items
-- **Temporary effects** with timers (speed boost, power-up)
-- **Treasure chests** — a new tile type that spawns loot
-- **Random drops** — using `random.random()` for percentage chances
-
 ## How Loot Works in Games
 
-Think about Minecraft Dungeons. When you beat a mob, it might drop an item — maybe a sword, maybe a potion, maybe nothing. You pick it up, it goes in your inventory, and you use it when you need it.
+You know how in Minecraft Dungeons, when you beat a mob it might drop an item? Maybe a sword, maybe a potion, maybe nothing at all. You pick it up, it goes in your inventory, and you use it when you need it.
 
 We're going to build exactly that system. Here's the plan:
 
@@ -60,6 +51,8 @@ if random.random() < 0.4:
     self.items.append(Item(enemy.x, enemy.y, item_type))
 ```
 
+Think of it like a loot table. Every time an enemy goes down, the game basically flips a coin (well, a weighted coin) to decide if you get anything.
+
 ## Picking Up Items
 
 When the player walks onto a tile that has an item, we add it to the inventory (if there's room):
@@ -72,7 +65,7 @@ for item in self.items[:]:
             self.items.remove(item)
 ```
 
-The `[:]` makes a copy of the list so we can safely remove items while looping. That's a common Python trick.
+The `[:]` makes a copy of the list so we can safely remove items while looping. That's a handy Python trick you'll use a lot — if you try to remove things from a list while you're looping over it without making a copy first, weird things happen.
 
 ## Using Items
 
@@ -91,7 +84,7 @@ if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5]:
             self.player.damage_boost_timer = 150
 ```
 
-The **speed boost** makes the player move every frame instead of having a movement delay. The **power sword** doubles your damage. Both last about 5 seconds.
+The **speed boost** makes the player move every frame instead of having a movement delay. The **power sword** doubles your damage. Both last about 5 seconds. That `event.key - pygame.K_1` line is a neat trick — it converts the key code into a 0-4 index so we know which inventory slot was pressed.
 
 ## Treasure Chests
 
@@ -144,8 +137,7 @@ The complete code is in `dungeon.py` — save it and run it!
 ## Run It!
 
 ```bash
-cd lessons/13-dungeon-v4-loot
-python dungeon.py
+python3 dungeon.py
 ```
 
 Move with arrow keys, attack with Space, and press 1-5 to use items. Walk over items to pick them up, and walk into the brown/yellow chests to open them.

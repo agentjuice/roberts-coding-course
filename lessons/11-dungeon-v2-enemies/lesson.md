@@ -1,28 +1,20 @@
-# Lesson 11: Dungeon v2 — Enemies
+# Lesson 11: Dungeon v2 -- Enemies
 
 **Goal:** Add wandering zombies and chasing skeletons to the dungeon, plus a health system.
 
-## New Concepts
-
-- **Enemy AI** — making characters move on their own
-- **Frame counters** — controlling how often something happens
-- **Damage cooldown** — preventing instant death from overlapping
-- **Game states** — handling "game over" and restarting
-- **Health bars** — showing HP visually
-
 ## Two Kinds of Enemy Brains
 
-Enemies need to decide where to move, and that decision-making is called **AI** (artificial intelligence). Don't worry, it's not actually intelligent — it's just a few `if` statements.
+Enemies need to decide where to move, and that decision-making is called **AI** (artificial intelligence). Don't worry, it's not actually intelligent -- it's just a few `if` statements pretending to be smart.
 
 We'll make two enemy types, each with a different "brain":
 
-**Zombie (green):** Dumb and random. Every 30 frames, it picks a random direction (up, down, left, right) and tries to move there. If there's a wall, it just stays put. Zombies wander around aimlessly.
+**Zombie (green):** Dumb and random. Every 30 frames, it picks a random direction (up, down, left, right) and tries to move there. If there's a wall, it just stays put. Zombies wander around aimlessly -- think of them like bumper cars with no driver.
 
-**Skeleton (white):** Smarter and scarier. Every 20 frames, it looks at where the player is and moves one tile closer. If the player is to the right, the skeleton moves right. If the player is above, it moves up. Skeletons hunt you down.
+**Skeleton (white):** Smarter and scarier. Every 20 frames, it looks at where you are and moves one tile closer. If you're to the right, the skeleton moves right. If you're above, it moves up. Skeletons hunt you down, and they're relentless.
 
 ## Frame Counters
 
-Enemies shouldn't move every single frame — that would be way too fast (60 moves per second!). Instead, each enemy has a **move_timer** that counts up. When it hits a certain number, the enemy moves and the timer resets to 0.
+You know how the game runs at 60 frames per second? If enemies moved every single frame, they'd be zooming around like maniacs. Instead, each enemy has a **move_timer** that counts up. When it hits a certain number, the enemy moves and the timer resets to 0.
 
 ```python
 self.move_timer += 1
@@ -31,17 +23,19 @@ if self.move_timer >= self.move_delay:
     # Actually move now
 ```
 
-This is a pattern you'll use constantly in game dev. Want something to happen every half second at 60 FPS? Set the delay to 30.
+This is a pattern you'll use constantly in game dev. Want something to happen every half second at 60 FPS? Set the delay to 30. Want it every two seconds? Set it to 120. Easy.
 
 ## Damage Cooldown
 
-When the player touches an enemy, they should take damage — but not 60 damage per second! We use a **damage cooldown**: after taking a hit, the player is invincible for 1 second (60 frames). This gives them time to run away.
+When the player touches an enemy, they should take damage -- but not 60 damage per second! That would be instant death. So we use a **damage cooldown**: after taking a hit, the player is invincible for 1 second (60 frames). This gives them time to run away.
 
 ```python
 if self.damage_cooldown <= 0:
     self.health -= 1
     self.damage_cooldown = 60  # 1 second at 60 FPS
 ```
+
+Think of it like those old games where your character blinks after getting hurt -- that blinking means you're temporarily safe.
 
 ## Step-by-Step Build
 
@@ -116,7 +110,7 @@ def update(self, tile_map, player):
         self.y = new_y
 ```
 
-Notice the skeleton only moves in one direction at a time — it picks horizontal first, then vertical. This makes it beeline toward you but not move diagonally.
+Notice the skeleton only moves in one direction at a time -- it picks horizontal first, then vertical. This makes it beeline toward you but not move diagonally.
 
 ### Step 4: Collision with the player
 
@@ -159,13 +153,11 @@ The complete file is saved as `dungeon.py` in this folder. It includes all the e
 
 ## Run It!
 
-Save `dungeon.py` and run:
-
 ```bash
-python dungeon.py
+python3 dungeon.py
 ```
 
-Walk around with arrow keys. You'll see green zombies wandering and white skeletons hunting you. Try to avoid them! Watch your health bar — when it empties, it's game over. Press Space to restart.
+Walk around with arrow keys. You'll see green zombies wandering and white skeletons hunting you. Try to avoid them! Watch your health bar -- when it empties, it's game over. Press Space to restart.
 
 ## Experiments
 
@@ -185,4 +177,4 @@ Add a **safe room**. Use tile type `2` for safe zone tiles (draw them slightly g
 
 ## What's Next
 
-In Lesson 12, we'll give the hero a sword so they can fight back — complete with attack animations and a kill counter.
+In Lesson 12, we'll give the hero a sword so they can fight back -- complete with attack animations and a kill counter.

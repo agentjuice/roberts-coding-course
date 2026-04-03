@@ -2,26 +2,13 @@
 
 **Goal:** Build a working two-player Connect 4 game that runs right in your terminal.
 
----
-
-## New Concepts
-
-- **2D arrays** (grids) with `numpy`
-- Reading player input with `input()`
-- Checking for wins in four directions
-- Detecting a draw
-- Animating a falling chip with `time.sleep()`
-- Clearing the screen with `os.system('clear')`
-
----
-
-## Explanation
+Alright, this is a big one -- we're building an actual game! Connect 4 is the one where you drop colored chips into a grid and try to get four in a row. By the end of this lesson, you'll have a playable version running in your terminal. Let's break down how it works.
 
 ### The Board Is a Grid
 
-Remember lists from lesson 2? A list is like a row of boxes. But a Connect 4 board isn't just one row -- it's a **grid** with rows *and* columns. That's called a **2D array** (two-dimensional array). Think of it like a spreadsheet or a chessboard.
+Remember lists from lesson 2? A list is like a row of boxes. But a Connect 4 board isn't just one row -- it's a **grid** with rows *and* columns. That's called a **2D array** (two-dimensional array). Think of it like a spreadsheet, or better yet, like graph paper where each square can hold a value.
 
-We're going to use a library called **numpy** to create our grid. A library is code that someone else wrote that we can use. numpy is great at working with grids of numbers.
+We're going to use a library called **numpy** to create our grid. A library is code that someone else wrote that we can use -- no need to reinvent the wheel. numpy is great at working with grids of numbers.
 
 ```python
 import numpy
@@ -32,7 +19,7 @@ This creates a 6-by-6 grid filled with zeros. Each `0` means "empty." When playe
 
 ### The Game Loop
 
-Our whole game lives inside a `while True:` loop. Every time through, we:
+Our whole game lives inside a `while True:` loop. You know how games keep running frame after frame until you quit? That's exactly what this does. Every time through the loop, we:
 
 1. **Draw** the board
 2. **Get input** from the current player
@@ -42,7 +29,7 @@ Our whole game lives inside a `while True:` loop. Every time through, we:
 
 ### Clearing the Screen
 
-Every time we redraw the board, we want a clean screen. `os.system('clear')` tells your computer to clear the terminal. It's like erasing a whiteboard before drawing the board again.
+Every time we redraw the board, we want a clean screen. `os.system('clear')` tells your Mac to clear the terminal. It's like erasing a whiteboard before drawing the board again.
 
 ### Chip Falling Animation
 
@@ -62,8 +49,6 @@ We loop through every cell on the board. For each cell that belongs to the curre
 ### Draw Detection
 
 If the entire top row is full and nobody has won, it's a **draw**. No more chips can be dropped.
-
----
 
 ## Step-by-Step Build
 
@@ -206,28 +191,25 @@ The `x <= 2` and `y <= 2` checks stop us from looking off the edge of the board.
 
 If every cell in the top row is taken, the board is full -- it's a draw (we set `winner` to -1). Then we swap who's playing next.
 
----
-
 ## The Full Code
 
 You can see the complete file in `connect4.py` right next to this lesson. It puts all of the steps above together into one file.
 
----
-
 ## Run It!
 
-1. Make sure you have numpy installed:
-   ```
-   pip install numpy
-   ```
-2. Save the file as `connect4.py`
-3. Open your terminal and run:
-   ```
-   python connect4.py
-   ```
-4. Enter column numbers (1-6) to drop chips. Enter 0 to quit.
+First, make sure you have numpy installed. Open your terminal and run:
 
----
+```bash
+pip3 install numpy
+```
+
+Then save your file (Cmd+S) and run it:
+
+```bash
+python3 connect4.py
+```
+
+Enter column numbers (1-6) to drop chips. Enter 0 to quit.
 
 ## Experiments
 
@@ -241,13 +223,9 @@ You can see the complete file in `connect4.py` right next to this lesson. It put
 
 5. **Remove the animation** -- What if you just placed the chip instantly at the bottom? Try setting `chip_falling = False` right away.
 
----
-
 ## Challenge
 
 Add a **move counter** that shows how many total moves have been made. Print it next to the board each turn. (Hint: create a variable, add 1 to it each time a chip lands.)
-
----
 
 ## What's Next
 

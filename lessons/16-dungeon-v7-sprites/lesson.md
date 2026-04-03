@@ -2,21 +2,13 @@
 
 **Goal:** Replace all those colored squares with actual character sprites -- drawn in code so you don't need any image files.
 
-## New Concepts
-
-- **pygame.Surface** -- creating images in code
-- Drawing on a Surface (not just the screen)
-- **pygame.transform.flip** -- mirroring sprites
-- **pygame.image.load()** -- loading real image files (optional)
-- The **sprite** concept: an image + a position
-
 ## What's a Sprite?
 
-Up until now, our player was a blue square, enemies were red and green squares, and the walls were brown rectangles. That works for testing, but it doesn't look like a real game.
+Up until now, our player was a blue square, enemies were red and green squares, and the walls were brown rectangles. That works for testing, but it doesn't exactly look like a real game.
 
-In game development, a **sprite** is an image that represents something in your game -- the player character, an enemy, a floor tile, anything. Usually sprites are loaded from PNG files. But here's the thing: we don't have any PNG files. So we're going to *create* our sprites using code.
+In game development, a **sprite** is an image that represents something in your game -- the player character, an enemy, a floor tile, anything. Usually sprites are loaded from PNG files. But here's the thing: we don't have any PNG files yet. So we're going to *create* our sprites using code, which is actually pretty cool.
 
-The trick is **pygame.Surface**. A Surface is basically a rectangle of pixels you can draw on. The screen itself is a Surface. But you can also create *new* Surfaces, draw on them, and then paste them onto the screen. That's exactly what a sprite is.
+The trick is **pygame.Surface**. Think of a Surface as a little canvas you can draw on. The screen itself is a Surface. But you can also create *new* Surfaces, draw on them, and then paste them onto the screen. That's exactly what a sprite is -- a mini canvas with a picture on it.
 
 ```python
 # Create a 32x32 transparent surface
@@ -29,7 +21,7 @@ pygame.draw.circle(sprite, (255, 0, 0), (16, 16), 12)
 screen.blit(sprite, (100, 200))
 ```
 
-The `pygame.SRCALPHA` flag means the surface supports transparency. Without it, the background of your sprite would be a solid black rectangle, which would look terrible.
+The `pygame.SRCALPHA` flag means the surface supports transparency. Without it, the background of your sprite would be a solid black rectangle, which would look terrible -- imagine every character walking around with a black box behind them.
 
 ## Drawing a Character
 
@@ -71,13 +63,13 @@ def create_player_sprite(facing_right=True):
 
 Notice how we call it twice -- once with `facing_right=True` and once with `facing_right=False`. That gives us two versions of the player sprite. When the player walks left, we show the left-facing one. When they walk right, we show the right-facing one.
 
-You could also use **pygame.transform.flip** to mirror a sprite:
+You could also use **pygame.transform.flip** to mirror a sprite instead of drawing both versions by hand:
 
 ```python
 sprite_left = pygame.transform.flip(sprite_right, True, False)
 ```
 
-The `True, False` means "flip horizontally, but not vertically." We manually drew both versions instead, so the sword is on the correct side.
+The `True, False` means "flip horizontally, but not vertically." We manually drew both versions instead so the sword ends up on the correct side, but flipping is a handy shortcut when you don't need that level of control.
 
 ## Tile Sprites
 
@@ -88,7 +80,7 @@ Tiles get the same treatment. Instead of plain colored rectangles, we draw littl
 - **Door tiles** look like wooden planks with a gold handle
 - **Chest tiles** show a little treasure chest
 
-The wall sprite is a good example of how a few lines make a big difference:
+The wall sprite is a good example of how a few lines make a huge difference:
 
 ```python
 wall = pygame.Surface((TILE_SIZE, TILE_SIZE))
@@ -102,11 +94,11 @@ pygame.draw.line(wall, (80, 50, 20), (16, 0), (16, 8), 1)
 pygame.draw.line(wall, (80, 50, 20), (8, 8), (8, 16), 1)
 ```
 
-Just a few lines of code and suddenly you have bricks instead of a brown blob.
+Just a few lines of code and suddenly you have bricks instead of a brown blob. That's the magic of sprites -- a little detail goes a long way.
 
 ## Loading Real Images (Optional)
 
-If you ever DO have PNG files, loading them is easy:
+If you ever DO have PNG files (maybe you draw some pixel art in Aseprite or Piskel), loading them is easy:
 
 ```python
 player_image = pygame.image.load("assets/player.png").convert_alpha()
@@ -131,7 +123,7 @@ def try_load_sprite(filename, fallback_surface):
         return fallback_surface
 ```
 
-This means if you later draw real pixel art in a tool like Aseprite or Piskel and save it as a PNG, the game will automatically use it. Otherwise, the generated sprites work fine.
+This is really nice because it means you can start with the code-generated sprites, and whenever you make real art, just drop it in the right folder and the game picks it up automatically. No code changes needed.
 
 ## Step-by-Step Build
 
@@ -186,7 +178,7 @@ else:
 
 ### Step 5: Hit flash effect with sprites
 
-When an enemy gets hit, we want a white flash. The trick:
+When an enemy gets hit, we want a white flash. Here's the trick:
 
 ```python
 if self.hit_flash > 0:
@@ -195,7 +187,7 @@ if self.hit_flash > 0:
     screen.blit(flash, (px, py))
 ```
 
-`BLEND_ADD` adds white to every pixel, making the whole sprite look bright. Then next frame it goes back to normal.
+`BLEND_ADD` adds white to every pixel, making the whole sprite look bright. Then next frame it goes back to normal. It's the same "flash white when hit" idea from before, but now it works with sprites instead of just changing a rectangle's color.
 
 ### The Full Game
 
@@ -203,10 +195,8 @@ The complete file is `dungeon.py` in this folder. It has all the sprite creation
 
 ## Run It!
 
-Save `dungeon.py` and run:
-
 ```bash
-python dungeon.py
+python3 dungeon.py
 ```
 
 Use arrow keys to move, Space to attack, 1-5 for items. You should see actual character shapes instead of colored squares. The walls have a brick pattern, the floor has texture, and items have distinct shapes.

@@ -2,37 +2,21 @@
 
 **Goal:** Build a fully playable Snake game with Pygame -- movement, apples, growing, collision, score, and game over.
 
----
+## Tuples: Coordinates in a Pair
 
-## New Concepts
-
-- **Tuples** for coordinates: `(x, y)`
-- Using a **list of tuples** to represent the snake's body
-- Moving a snake by inserting a new head and popping the tail
-- Preventing **180-degree turns**
-- Random apple placement with `random.randint()`
-- **Collision detection** -- walls and self
-- Displaying score text and a game over message
-
----
-
-## Explanation
-
-### Tuples: Coordinates in a Pair
-
-A **tuple** is like a list, but you can't change it after you create it. You write it with parentheses instead of square brackets:
+You know how a position on a grid always has two numbers -- an x and a y? Python has a special thing called a **tuple** that's perfect for that. It looks like a list, but with parentheses instead of square brackets:
 
 ```python
 position = (3, 7)
 ```
 
-That's an `(x, y)` pair -- perfect for storing a position on a grid. You get the pieces out with `position[0]` (the x) and `position[1]` (the y).
+That's an `(x, y)` pair. You get the pieces out with `position[0]` (the x) and `position[1]` (the y).
 
-Why not just use a list? Tuples are meant for things that go together as a unit, like coordinates. A position is always exactly two numbers. You'd never want to `.append()` a third number to a coordinate -- that doesn't make sense. Tuples say "this is a fixed pair" and Python treats them a little more efficiently.
+So why not just use a list? Think of it like this: a coordinate is always exactly two numbers. You'd never want to `.append()` a third number to a coordinate -- that doesn't even make sense. A tuple is Python's way of saying "these things go together as a unit, and that's that." Python also handles tuples a little more efficiently behind the scenes.
 
-### The Snake Is a List of Tuples
+## The Snake Is a List of Tuples
 
-Here's the cool part. The snake's body is a **list of tuples**:
+Here's where it gets cool. The snake's body is a **list of tuples**:
 
 ```python
 snake = [(3, 2), (2, 2), (1, 2), (0, 2)]
@@ -40,13 +24,13 @@ snake = [(3, 2), (2, 2), (1, 2), (0, 2)]
 
 Each tuple is one segment's position. The first one in the list is the head. When the snake moves, we stick a new head at the front and chop off the tail at the back. When it eats an apple, we skip the chop -- so the snake grows by one!
 
-### Movement and Direction
+## Movement and Direction
 
 We keep a `snake_direction` variable that's one of `'up'`, `'down'`, `'left'`, or `'right'`. Each frame, we look at the head's position and figure out the new head position based on the direction.
 
 One important rule: the snake can't do a 180-degree turn. If you're going right, pressing left would make you crash into yourself instantly. So we block opposite-direction changes.
 
-### Collision Detection
+## Collision Detection
 
 Two things end the game:
 
@@ -54,8 +38,6 @@ Two things end the game:
 2. **Self collision** -- the new head lands on a segment that's already part of the snake's body
 
 We check both before actually adding the new head to the snake.
-
----
 
 ## Step-by-Step Build
 
@@ -215,29 +197,18 @@ The score is just the length of the snake list. We render text to an image, then
 
 `time.sleep(1 / 10)` makes the game run at about 10 frames per second -- that's the snake's speed.
 
----
-
 ## The Full Code
 
 You can see the complete file in `snake.py` right next to this lesson. It puts all of the steps above together into one file.
 
----
-
 ## Run It!
 
-1. Make sure you have Pygame installed:
-   ```
-   pip install pygame
-   ```
-2. Save the file as `snake.py`
-3. Open your terminal and run:
-   ```
-   python snake.py
-   ```
-4. Use the **arrow keys** to steer the snake. Eat red apples to grow. Don't hit the walls or yourself!
-5. Press **Space** to restart after game over. Press **Escape** to quit.
+```
+pip3 install pygame
+python3 snake.py
+```
 
----
+Use the **arrow keys** to steer the snake. Eat red apples to grow. Don't hit the walls or yourself! Press **Space** to restart after game over. Press **Escape** to quit.
 
 ## Experiments
 
@@ -251,13 +222,9 @@ You can see the complete file in `snake.py` right next to this lesson. It puts a
 
 5. **Remove wall death** -- Instead of game over when hitting a wall, make the snake wrap around to the other side. (Hint: use `%` -- the modulo operator -- on the coordinates.)
 
----
-
 ## Challenge
 
 Add a **high score** that persists across restarts. Create a `high_score` variable that starts at 0. When the game ends, if `len(snake)` is higher than `high_score`, update it. Display the high score next to the regular score. (It won't save when you close the program -- that's fine for now.)
-
----
 
 ## What's Next
 

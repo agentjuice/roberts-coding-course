@@ -1,19 +1,10 @@
-# Lesson 19: Dungeon v10 — Second Level & Polish
+# Lesson 19: Dungeon v10 -- Second Level & Polish
 
 **Goal:** Add multiple levels, a new exploding enemy, a start screen, pause menu, high scores, and visual polish that makes the game feel professional.
 
-## New Concepts
-
-- **File I/O** — reading and writing files with `open()`, `read()`, and `write()`
-- **Game states** — menu, playing, paused, game_over (using a string variable to control flow)
-- **Particle effects** — simple physics where tiny dots fly outward and fade
-- **Screen shake** — offsetting the whole screen by a few random pixels to feel impactful
-- **Difficulty scaling** — making enemies tougher as levels increase
-- **The Creeper enemy** — a new type that charges up and explodes
-
 ## Game States
 
-Up until now, our game just starts and you play. Real games have menus, pause screens, and game over screens. The trick is a **game state** variable:
+Up until now, our game just starts and you play. But you know how real games have menus, pause screens, and game over screens? The trick is a **game state** variable -- just one string that controls what the game is doing right now:
 
 ```python
 self.state = "menu"  # Can be: "menu", "playing", "paused", "game_over"
@@ -33,11 +24,11 @@ elif self.state == "game_over":
     self.draw_game_over()
 ```
 
-This is way cleaner than having a bunch of boolean flags like `is_paused`, `is_menu`, `is_game_over`. One variable controls everything.
+This is way cleaner than having a bunch of boolean flags like `is_paused`, `is_menu`, `is_game_over`. One variable controls everything. Super elegant.
 
 ## File I/O for High Scores
 
-Python makes reading and writing files surprisingly easy. We'll save the top 5 scores to a text file:
+Python makes reading and writing files surprisingly easy. We'll save the top 5 scores to a text file so they stick around even after you close the game:
 
 ```python
 # Writing scores
@@ -55,11 +46,11 @@ def load_high_scores(self):
         return []
 ```
 
-The `try`/`except` handles the first time you play — there's no file yet, so we just return an empty list. The **`with` statement** automatically closes the file when we're done. Always use `with` for files!
+The `try`/`except` handles the first time you play -- there's no file yet, so we just return an empty list. Remember that pattern from Lesson 17? Same idea. The **`with` statement** automatically closes the file when we're done. Always use `with` for files!
 
 ## Particle Effects
 
-When an enemy dies, we want a burst of colored dots flying outward. Each **particle** has a position, velocity, color, and a life counter that ticks down:
+When an enemy dies, we want a burst of colored dots flying outward. Think of it like a tiny firework. Each **particle** has a position, velocity, color, and a life counter that ticks down:
 
 ```python
 class Particle:
@@ -79,9 +70,9 @@ class Particle:
         self.life -= 1
 ```
 
-The math here uses `cos` and `sin` to shoot particles in random directions. Each frame, the particle moves by its velocity and loses 1 life. When life hits 0, we remove it.
+The math here uses `cos` and `sin` to shoot particles in random directions -- basically picking a random angle around a circle and launching the dot that way. Each frame, the particle moves by its velocity and loses 1 life. When life hits 0, we remove it.
 
-We draw each particle as a small circle that gets more transparent as it fades:
+We draw each particle as a small circle that shrinks as it fades:
 
 ```python
 def draw(self, screen, cam_x, cam_y):
@@ -95,7 +86,7 @@ def draw(self, screen, cam_x, cam_y):
 
 ## Screen Shake
 
-This is one of the simplest tricks that makes a game feel 10x better. When the player takes damage, we offset the entire draw by a random few pixels:
+This is one of the simplest tricks that makes a game feel 10x better. You know how in movies, when something explodes, the camera shakes? Same idea. When the player takes damage, we offset the entire draw by a random few pixels:
 
 ```python
 self.shake_frames = 0
@@ -111,11 +102,11 @@ if self.shake_frames > 0:
     self.shake_frames -= 1
 ```
 
-Then add `shake_x` and `shake_y` to the camera offset. The whole screen jitters for 10 frames, then stops. It's subtle but powerful.
+Then add `shake_x` and `shake_y` to the camera offset. The whole screen jitters for 10 frames, then stops. It's subtle but it makes hits feel so much more impactful.
 
 ## The Creeper Enemy
 
-Creepers are the scariest enemy type. They chase you like skeletons, but slower. When they get within 3 tiles, they start a **countdown** — flashing faster and faster. After 3 seconds, they explode and deal 5 damage to anything nearby.
+Creepers are the scariest enemy type. They chase you like skeletons, but slower. When they get within 3 tiles, they start a **countdown** -- flashing faster and faster. After 3 seconds, they explode and deal 5 damage to anything nearby. Yeah, you want to run.
 
 ```python
 class Creeper(Enemy):
@@ -126,7 +117,7 @@ class Creeper(Enemy):
         self.armed = False
 ```
 
-The flashing effect is cool — we toggle the color every few frames, and the toggle speed increases as the timer counts down:
+The flashing effect is really cool -- we toggle the color every few frames, and the toggle speed increases as the timer counts down:
 
 ```python
 flash_speed = max(2, 10 - (self.fuse_timer // 10))
@@ -134,11 +125,11 @@ if self.fuse_timer % flash_speed < flash_speed // 2:
     color = (255, 255, 255)  # Flash white
 ```
 
-Creepers only appear on Level 2 and beyond, so you get a surprise when you advance.
+Creepers only appear on Level 2 and beyond, so you get a nasty surprise when you advance.
 
 ## Multiple Levels
 
-After beating the boss, a **staircase tile** (type 4) appears. Walk on it and you go to Level 2 — a brand new procedurally generated dungeon. Enemies on Level 2 have 1.5x health and 1.3x speed. Level 3 scales even more.
+After beating the boss, a **staircase tile** (type 4) appears. Walk on it and you go to Level 2 -- a brand new procedurally generated dungeon with a different seed. Enemies on Level 2 have 1.5x health and 1.3x speed. Level 3 scales even more. It keeps getting harder.
 
 ```python
 def next_level(self):
@@ -162,24 +153,23 @@ The full file includes everything from lessons 10-18, plus:
 9. Level transition with staircase tile
 10. WASD movement support (alongside arrow keys)
 
-The complete code is in `dungeon.py` — it's our biggest file yet!
+The complete code is in `dungeon.py` -- it's our biggest file yet!
 
 ## Run It!
 
 ```bash
-cd lessons/19-dungeon-v10-polish
-python dungeon.py
+python3 dungeon.py
 ```
 
 You'll see the start screen first. Press SPACE to begin. Move with arrows or WASD, attack with Space. Press Escape to pause. Beat the boss to find the staircase to Level 2!
 
 ## Experiments
 
-1. **Crank up the particles** — change the particle count from `range(10)` to `range(50)`. It looks like fireworks!
-2. **More screen shake** — change the random range from `(-3, 3)` to `(-10, 10)`. Earthquakes!
-3. **Creeper damage** — change the explosion damage from 5 to 20. Now they're terrifying.
-4. **Speed run scaling** — change the health multiplier from 1.5 to 3.0 per level. Level 3 will be brutal.
-5. **Longer fuse** — change `fuse_max` from 90 to 30 (1 second). Creepers barely give you time to run!
+1. **Crank up the particles** -- change the particle count from `range(10)` to `range(50)`. It looks like fireworks!
+2. **More screen shake** -- change the random range from `(-3, 3)` to `(-10, 10)`. Earthquakes!
+3. **Creeper damage** -- change the explosion damage from 5 to 20. Now they're terrifying.
+4. **Speed run scaling** -- change the health multiplier from 1.5 to 3.0 per level. Level 3 will be brutal.
+5. **Longer fuse** -- change `fuse_max` from 90 to 30 (1 second). Creepers barely give you time to run!
 
 ## Challenge
 
@@ -187,4 +177,4 @@ Add a **score multiplier** that increases by 0.1x for each kill without taking d
 
 ## What's Next
 
-In our FINAL lesson, we'll add a second player for **co-op mode** — two heroes fighting through the dungeon together on the same keyboard!
+In our FINAL lesson, we'll add a second player for **co-op mode** -- two heroes fighting through the dungeon together on the same keyboard!

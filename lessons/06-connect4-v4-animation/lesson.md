@@ -2,26 +2,13 @@
 
 **Goal:** Make chips fall down the board one row at a time, like a real Connect 4 game.
 
----
-
-## New Concepts
-
-- **State variables** for tracking animation (`chip_falling`, `chip_x`, `chip_y`)
-- **Frame-by-frame updates** -- moving something a little bit each loop
-- **Frame rate** -- controlling speed with `time.sleep()`
-- Validating input with `isnumeric()`
-
----
-
-## Explanation
-
-### What's Wrong with the Old Version?
+## What's Wrong with the Old Version?
 
 In the last lesson, chips just appeared in place -- poof! That works, but it doesn't look like a real Connect 4 game. In the real game, you drop a chip in the top and it *falls* down to the bottom. Let's make that happen.
 
-### Thinking in Frames
+## Thinking in Frames
 
-Remember how our game loop runs over and over? Each time through is one **frame**, like one frame in a movie. Right now our loop runs about 10 times per second. If we want a chip to fall, we don't move it all the way down at once. Instead, we move it **one row per frame**.
+You know how our game loop runs over and over? Each time through is one **frame**, like one frame in a movie. Right now our loop runs about 10 times per second. If we want a chip to fall, we don't move it all the way down at once. Instead, we move it **one row per frame**.
 
 Frame 1: chip is at row 0
 Frame 2: chip is at row 1
@@ -30,7 +17,7 @@ Frame 3: chip is at row 2
 
 This is how ALL animation works in games -- small movements, many times per second, that look smooth when you watch them.
 
-### State Variables
+## State Variables
 
 To make the animation work, we need to remember some things between frames:
 
@@ -40,11 +27,11 @@ To make the animation work, we need to remember some things between frames:
 
 These are called **state variables** because they track the *state* of the animation. Think of it like a bookmark -- they remember where we are in the middle of the falling process.
 
-### Frame Rate
+## Frame Rate
 
 We'll change `time.sleep(0.1)` to `time.sleep(1/20)`. That means our game runs at **20 frames per second** (FPS). `1/20` is 0.05 seconds per frame. This makes the animation smoother and the chip falls at a nice speed.
 
-### The Tricky Part
+## The Tricky Part
 
 The animation code needs to be careful about order. Here's what happens each frame when a chip is falling:
 
@@ -55,8 +42,6 @@ The animation code needs to be careful about order. Here's what happens each fra
 5. If not, move it down one row for the next frame
 
 The key insight: we only check for the winner and process player input *after* the chip finishes falling. While it's falling, we ignore new key presses.
-
----
 
 ## Step-by-Step Build
 
@@ -99,7 +84,7 @@ while True:
                     chip_x = i - 1
 ```
 
-Notice something new: `event.unicode.isnumeric()`. This checks if the key pressed is actually a number before we try to convert it. Without this, pressing a letter key would crash the program! We also save `chip_x` (the column, zero-indexed) right away.
+Notice something new here: `event.unicode.isnumeric()`. This checks if the key pressed is actually a number before we try to convert it. Without this, pressing a letter key would crash the program! We also save `chip_x` (the column, zero-indexed) right away.
 
 ### Step 3: The Animation Logic
 
@@ -187,28 +172,21 @@ If the player pressed a number and the game isn't over, start a new chip at the 
 
 The drawing code is exactly the same. The magic is that because `world` gets updated each frame with the chip in a new position, the circle *appears* to fall when we redraw.
 
----
-
 ## The Full Code
 
 You can see the complete file in `connect4.py` right next to this lesson.
-
----
 
 ## Run It!
 
 1. Make sure you have Pygame and numpy installed:
    ```
-   pip install pygame numpy
+   pip3 install pygame numpy
    ```
-2. Save the file as `connect4.py`
-3. Run it:
+2. Run it:
    ```
-   python connect4.py
+   python3 connect4.py
    ```
-4. Press 1-6 to drop chips and watch them fall!
-
----
+3. Press 1-6 to drop chips and watch them fall!
 
 ## Experiments
 
@@ -222,13 +200,9 @@ You can see the complete file in `connect4.py` right next to this lesson.
 
 5. **Trail effect** -- What happens if you comment out the line `world[chip_y - 1][chip_x] = 0`? The chip leaves a trail as it falls!
 
----
-
 ## Challenge
 
 Right now, you can drop a chip into a full column and it just overwrites what's there. Add a check: if `world[0][chip_x]` is already taken (greater than 0), don't start the chip falling. This prevents stacking chips on a full column.
-
----
 
 ## What's Next
 

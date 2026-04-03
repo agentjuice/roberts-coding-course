@@ -1,20 +1,12 @@
-# Lesson 10: Dungeon v1 — The Hero
+# Lesson 10: Dungeon v1 -- The Hero
 
 **Goal:** Build a tile-based dungeon world with a player that moves around and a camera that follows them.
 
-## New Concepts
-
-- **Tile maps** — building a world from a grid of numbers
-- **Grid-based movement** — moving one tile at a time
-- **Wall collision** — checking the map before moving
-- **Camera scrolling** — making the world bigger than the screen
-- Using classes to organize a whole game
-
 ## How Tile Maps Work
 
-In the Snake game, everything lived on one screen. But real dungeon crawlers have big worlds you explore. How do they work?
+In the Snake game, everything lived on one screen. But real dungeon crawlers have big worlds you explore. So how do they pull that off?
 
-The trick is a **tile map** — a 2D list where each number means a different kind of tile. Think of it like graph paper where you've colored in certain squares:
+The trick is a **tile map** -- a 2D list where each number means a different kind of tile. Think of it like graph paper where you've colored in certain squares:
 
 ```python
 tile_map = [
@@ -28,13 +20,13 @@ tile_map = [
 
 Here, `0` means floor (you can walk on it) and `1` means wall (you can't). That little map is a room with walls around it.
 
-Each tile is `TILE_SIZE` pixels wide and tall. We'll use `TILE_SIZE = 32`, so a 25x20 map is 800x640 pixels — bigger than our 800x600 screen. That's the whole point: the map is bigger than the screen, so we need a **camera** to show just part of it.
+Each tile is `TILE_SIZE` pixels wide and tall. We'll use `TILE_SIZE = 32`, so a 25x20 map is 800x640 pixels -- bigger than our 800x600 screen. That's the whole point: the map is bigger than the screen, so we need a **camera** to show just part of it.
 
 ## Grid-Based Movement
 
 Instead of moving pixel by pixel, our hero moves one whole tile at a time. Press Right, and the player jumps from tile (3, 5) to tile (4, 5). This keeps everything neat and lined up.
 
-Before moving, we check: is the tile we want to move to a wall? If it is, we just don't move. That's **wall collision** — and it's surprisingly simple.
+Before moving, we check: is the tile we want to move to a wall? If it is, we just don't move. That's **wall collision** -- and it's surprisingly simple.
 
 ```python
 # Check if the tile at (new_x, new_y) is walkable
@@ -43,11 +35,11 @@ if tile_map[new_y][new_x] == 0:
     self.y = new_y
 ```
 
-Notice: it's `tile_map[y][x]`, not `tile_map[x][y]`. The first index picks the row (y), the second picks the column (x). This trips up everyone at first, so watch out.
+Now here's something that trips up everyone at first: it's `tile_map[y][x]`, not `tile_map[x][y]`. The first index picks the row (y), the second picks the column (x). Keep an eye on that -- it'll bite you if you mix them up.
 
 ## The Camera
 
-If the player is at tile (15, 10) and each tile is 32 pixels, they're at pixel (480, 320). But our screen is only 800x600. If we just drew everything starting at pixel (0, 0), once the player walks far enough right, they'd walk off the screen.
+You know how in a big game, the world scrolls as your character moves? That's what the camera does. If the player is at tile (15, 10) and each tile is 32 pixels, they're at pixel (480, 320). But our screen is only 800x600. If we just drew everything starting at pixel (0, 0), the player would eventually walk right off the screen.
 
 The fix: calculate a **camera offset**. We figure out where the player is in pixels, then subtract half the screen size so the player stays in the center:
 
@@ -63,7 +55,7 @@ screen_x = col * TILE_SIZE - camera_x
 screen_y = row * TILE_SIZE - camera_y
 ```
 
-The player stays in the middle, and the world scrolls around them.
+The player stays in the middle, and the world scrolls around them. Pretty neat, right?
 
 ## Step-by-Step Build
 
@@ -138,9 +130,7 @@ class Game:
 
 ### Step 5: Input handling
 
-We use `pygame.key.get_pressed()` but only move when a key is first pressed (not held). We track this with `key_cooldown` so the player moves one tile per press.
-
-Actually, an even simpler approach: handle movement in `KEYDOWN` events, which fire once per press.
+We handle movement in `KEYDOWN` events, which fire once per press. That way the player moves one tile each time you tap a key -- no weirdness from holding it down.
 
 ```python
 def handle_input(self):
@@ -193,7 +183,7 @@ def draw(self):
     pygame.display.flip()
 ```
 
-Notice the `if -TILE_SIZE < sx < SCREEN_WIDTH` check — we skip tiles that are off-screen. No point drawing what you can't see.
+Notice the `if -TILE_SIZE < sx < SCREEN_WIDTH` check -- we skip tiles that are off-screen. No point drawing what you can't see.
 
 ### Step 8: Main loop
 
@@ -214,10 +204,8 @@ The complete file is saved as `dungeon.py` in this folder. It has a full 25x20 m
 
 ## Run It!
 
-Save `dungeon.py` and run:
-
 ```bash
-python dungeon.py
+python3 dungeon.py
 ```
 
 Use the arrow keys to walk around. You should see the dungeon scroll as you move. Walls are brown, floors are dark gray, and you're the blue square.
@@ -240,4 +228,4 @@ Add a **treasure tile**. Use the number `2` in the tile map for treasure spots. 
 
 ## What's Next
 
-In Lesson 11, we'll add enemies that roam the dungeon — zombies that wander randomly and skeletons that chase you down.
+In Lesson 11, we'll add enemies that roam the dungeon -- zombies that wander randomly and skeletons that chase you down.

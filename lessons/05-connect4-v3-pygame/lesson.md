@@ -2,48 +2,31 @@
 
 **Goal:** Rebuild Connect 4 with real graphics using Pygame -- a window, colors, and circles instead of terminal text.
 
----
-
-## New Concepts
-
-- Installing and importing **Pygame**
-- Opening a **game window** with `pygame.display.set_mode()`
-- The **Pygame game loop**: events, update, draw, display, sleep
-- **RGB colors** and `screen.fill()`
-- Drawing shapes with `pygame.draw.circle()`
-- Rendering text with `pygame.font`
-- **Keyboard events** (`pygame.KEYDOWN`) instead of `input()`
-- The coordinate system: **(0, 0) is the top-left corner**
-
----
-
-## Explanation
-
-### Why Pygame?
+## Why Pygame?
 
 Up to now, our Connect 4 game runs in the terminal. It works, but it looks pretty plain -- just numbers in a grid. Wouldn't it be cooler to have an actual window with colored circles?
 
 That's what **Pygame** does. It's a Python library that lets you create windows, draw shapes, play sounds, and handle keyboard/mouse input. Basically, it turns Python into a game engine.
 
-### Installing Pygame
+## Installing Pygame
 
 Before we can use it, we need to install it. Open your terminal and run:
 
 ```bash
-pip install pygame
+pip3 install pygame
 ```
 
 That's it. Now you can `import pygame` in any Python file.
 
-### The Coordinate System
+## The Coordinate System
 
 Here's something important that trips people up. In Pygame, the **top-left corner** of the window is position `(0, 0)`. The x-axis goes right (like normal), but the **y-axis goes DOWN**, not up. So `(100, 200)` means 100 pixels to the right and 200 pixels *down* from the top-left.
 
 Think of it like reading a book -- you start at the top-left and go right and down.
 
-### The Game Loop
+## The Game Loop
 
-In the terminal version, we used `input()` to pause and wait for the player. Pygame doesn't work that way. Instead, we have a **game loop** that runs over and over, super fast:
+You know how in the terminal version, we used `input()` to pause and wait for the player? Pygame doesn't work that way. Instead, we have a **game loop** that runs over and over, super fast:
 
 1. **Check for events** (did someone press a key? click the X button?)
 2. **Update** the game state (place a chip, check for winner)
@@ -51,21 +34,19 @@ In the terminal version, we used `input()` to pause and wait for the player. Pyg
 4. **Flip the display** (`pygame.display.update()`)
 5. **Sleep** a tiny bit (`time.sleep(0.1)`) so we don't burn your CPU
 
-This loop runs maybe 10 times per second. Every time through, it redraws the entire screen from scratch. It's like a flipbook -- each "page" is a complete picture, and flipping through them fast makes it look smooth.
+This loop runs maybe 10 times per second. Every time through, it redraws the entire screen from scratch. Think of it like a flipbook -- each "page" is a complete picture, and flipping through them fast makes it look smooth.
 
-### Colors
+## Colors
 
 Pygame understands color names like `'Red'`, `'Blue'`, `'Black'`, `'Yellow'`, and `'Green'`. You can also use RGB tuples like `(255, 0, 0)` for red, but the names are easier to read.
 
-### Events Instead of input()
+## Events Instead of input()
 
 In the terminal, `input()` stopped everything and waited for you to type. In Pygame, the game loop keeps running and we check for **events** each time through. A keyboard press creates a `pygame.KEYDOWN` event, and we can read which key was pressed from `event.unicode`.
 
-### Back to Messy (On Purpose!)
+## Back to Messy (On Purpose!)
 
 You might notice this code is all jammed into one big loop again -- no functions. That's on purpose! We cleaned things up with functions in Lesson 4, but now we're learning a completely new library (Pygame), so we're keeping it simple. We'll add functions back later.
-
----
 
 ## Step-by-Step Build
 
@@ -214,28 +195,21 @@ The `(x * 30 + 50, y * 30 + 50)` figures out where each circle goes. The `10` at
 - `pygame.display.update()` actually pushes everything to the screen (nothing shows until you call this!)
 - `time.sleep(0.1)` waits a tenth of a second before the next loop
 
----
-
 ## The Full Code
 
 You can see the complete file in `connect4.py` right next to this lesson. It puts all the steps above together into one runnable file.
-
----
 
 ## Run It!
 
 1. Make sure you have Pygame and numpy installed:
    ```
-   pip install pygame numpy
+   pip3 install pygame numpy
    ```
-2. Save the file as `connect4.py`
-3. Run it:
+2. Run it:
    ```
-   python connect4.py
+   python3 connect4.py
    ```
-4. Press number keys 1-6 to drop chips. Press Escape or click the X to quit.
-
----
+3. Press number keys 1-6 to drop chips. Press Escape or click the X to quit.
 
 ## Experiments
 
@@ -249,15 +223,11 @@ You can see the complete file in `connect4.py` right next to this lesson. It put
 
 5. **Add a player indicator** -- Before `pygame.display.update()`, render some text that says whose turn it is, like `"Player 1's turn"`.
 
----
-
 ## Challenge
 
 Add a **restart** feature. When someone wins (or it's a draw), if the player presses the R key, reset `world` to all zeros, set `winner = 0`, and set `player = 1`. Now you can play again without restarting the program!
 
 Hint: check for `event.key == pygame.K_r` in your event loop.
-
----
 
 ## What's Next
 

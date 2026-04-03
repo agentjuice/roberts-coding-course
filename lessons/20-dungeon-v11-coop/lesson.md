@@ -1,18 +1,10 @@
-# Lesson 20: Dungeon v11 — Co-op Mode
+# Lesson 20: Dungeon v11 -- Co-op Mode
 
 **Goal:** Add a second player to the dungeon so two people can fight through it together on the same keyboard.
 
-## New Concepts
-
-- **Code reuse** — one Player class, two instances with different controls
-- **Dictionary for configuration** — passing a dict of key bindings to a class
-- **Midpoint camera** — camera follows the average position of both players
-- **Cooperative game design** — shared world, separate inventories
-- **Ghost mechanic** — dead players can respawn once per room
-
 ## The Power of Code Reuse
 
-Right now our Player class is hard-coded to use arrow keys and Space. What if we could make it use *any* keys? That's the magic of **configuration** — instead of baking in specific keys, we pass them in as a parameter.
+Right now our Player class is hard-coded to use arrow keys and Space. But what if we could make it use *any* keys? That's the magic of **configuration** -- instead of baking in specific keys, we pass them in as a parameter.
 
 Here's the trick: we use a **dictionary** to map actions to keys:
 
@@ -44,24 +36,24 @@ class Player:
         # ... everything else
 ```
 
-And in the input handling, we check `self.controls["up"]` instead of `pygame.K_UP`. One class, two totally different control schemes. This is one of the most important ideas in programming: **write code once, use it many ways**.
+And in the input handling, we check `self.controls["up"]` instead of `pygame.K_UP`. One class, two totally different control schemes. This is one of the most important ideas in programming: **write code once, use it many ways**. You wrote the Player class once, and now it works for any number of players just by passing in different controls.
 
 ## Midpoint Camera
 
-With two players, where should the camera look? The answer: right between them. We calculate the **midpoint** — the average of both positions:
+With two players, where should the camera look? Think about it -- you can't just follow Player 1 because then Player 2 might be off-screen. The answer: aim right between them. We calculate the **midpoint**, which is just the average of both positions:
 
 ```python
 camera_x = (p1.x + p2.x) / 2 * TILE_SIZE - SCREEN_WIDTH // 2
 camera_y = (p1.y + p2.y) / 2 * TILE_SIZE - SCREEN_HEIGHT // 2
 ```
 
-This keeps both players visible as long as they stay reasonably close. If they wander too far apart, one might go off-screen — that's part of the co-op challenge! Stick together!
+This keeps both players visible as long as they stay reasonably close. If they wander too far apart, one might go off-screen -- that's part of the co-op challenge! Stick together!
 
 ## The Ghost Mechanic
 
-When a player dies, the game doesn't end immediately. Instead, they become a **ghost** — their sprite turns semi-transparent. They can't move or fight, but they're still on screen.
+When a player dies, the game doesn't end immediately. Instead, they become a **ghost** -- their sprite turns semi-transparent. They can't move or fight, but they're still on screen.
 
-The cool part: pressing their attack key **respawns** them with 5 HP, once per room. So if your partner goes down, you need to survive long enough for them to come back.
+Here's the cool part: pressing their attack key **respawns** them with 5 HP, but only once per room. So if your partner goes down, you need to survive long enough for them to come back. It creates these super tense moments -- exactly what co-op games are all about.
 
 ```python
 if player.dead and not player.used_respawn:
@@ -70,11 +62,9 @@ if player.dead and not player.used_respawn:
     player.used_respawn = True
 ```
 
-This creates tense moments — exactly what co-op games are about.
-
 ## Separate Inventories
 
-Each player has their own inventory. Player 1 uses keys 1-5, Player 2 uses keys 6-0. This means you have to decide who gets the health potions and who gets the power swords. Communication is key!
+Each player has their own inventory. Player 1 uses keys 1-5, Player 2 uses keys 6-0. This means you have to decide who gets the health potions and who gets the power swords. Communication is key! Talk to each other!
 
 ```python
 # Player 1 items: keys 1-5
@@ -101,19 +91,18 @@ This is the final, complete version of the dungeon crawler! It includes everythi
 ## Run It!
 
 ```bash
-cd lessons/20-dungeon-v11-coop
-python dungeon.py
+python3 dungeon.py
 ```
 
 On the start screen, press 1 for solo or 2 for co-op. Player 1 uses arrow keys + Space. Player 2 uses WASD + F. Survive together!
 
 ## Experiments
 
-1. **Three players** — try adding a third Player with IJK + L controls. You'll need to update the camera midpoint calculation to average three positions.
-2. **PvP mode** — make players' attacks damage each other. Friendly fire!
-3. **Shared health pool** — instead of separate health bars, both players share one big health bar. When either gets hit, it drains.
-4. **Revive hug** — instead of pressing a key to respawn, make the alive player stand next to the ghost for 3 seconds to revive them.
-5. **Different classes** — give Player 1 more health but less damage, and Player 2 more damage but less health. A tank and a glass cannon!
+1. **Three players** -- try adding a third Player with IJK + L controls. You'll need to update the camera midpoint calculation to average three positions.
+2. **PvP mode** -- make players' attacks damage each other. Friendly fire!
+3. **Shared health pool** -- instead of separate health bars, both players share one big health bar. When either gets hit, it drains.
+4. **Revive hug** -- instead of pressing a key to respawn, make the alive player stand next to the ghost for 3 seconds to revive them.
+5. **Different classes** -- give Player 1 more health but less damage, and Player 2 more damage but less health. A tank and a glass cannon!
 
 ## Challenge
 
@@ -125,9 +114,9 @@ Congratulations, Robert! You just built a complete dungeon crawler with procedur
 
 Here are some ideas for where to go from here:
 
-- **Keep building** — add more enemy types, more items, more levels, a story, or even a map editor
-- **Try Godot** — a free game engine that uses a Python-like language. You already know the concepts!
-- **Learn JavaScript** — build games that run in a web browser so anyone can play
-- **Share your game** — show your friends, put it on GitHub, or make a YouTube video about it
+- **Keep building** -- add more enemy types, more items, more levels, a story, or even a map editor
+- **Try Godot** -- a free game engine that uses a Python-like language. You already know the concepts!
+- **Learn JavaScript** -- build games that run in a web browser so anyone can play
+- **Share your game** -- show your friends, put it on GitHub, or make a YouTube video about it
 
 You've learned variables, loops, functions, classes, file I/O, game physics, procedural generation, and so much more. You're a real programmer now. Keep making things!

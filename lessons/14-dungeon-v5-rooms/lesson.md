@@ -2,17 +2,9 @@
 
 **Goal:** Create a dungeon with 5 connected rooms, door transitions, and a minimap to track where you've been.
 
-## New Concepts
-
-- **Room** class to hold each room's map, enemies, and items
-- **Door connections** linking rooms together
-- **Room transitions** with a flash effect
-- **State that persists** across rooms (HP, inventory)
-- **Minimap** drawing — tiny rectangles representing rooms
-
 ## Why Multiple Rooms?
 
-Right now our dungeon is one big open area. Real dungeon crawlers have rooms you move between — each room is its own mini-challenge. Think of it like floors in Minecraft Dungeons, except we're using doors instead of staircases.
+Right now our dungeon is one big open area. But real dungeon crawlers have rooms you move between — each room is its own mini-challenge. Think of it like floors in Minecraft Dungeons, except we're using doors instead of staircases.
 
 Here's the plan:
 - 5 rooms, each with its own tile map and enemies
@@ -22,7 +14,7 @@ Here's the plan:
 
 ## The Room Class
 
-Each room is a self-contained world:
+Each room is basically a self-contained little world:
 
 ```python
 class Room:
@@ -38,7 +30,7 @@ class Room:
         self.chests_opened = set()
 ```
 
-The key new thing here is **door_connections** — it's a dictionary that maps a door's position to where it leads:
+The big new thing here is **door_connections**. It's a dictionary that maps a door's position to where it leads:
 
 ```python
 door_connections = {
@@ -46,15 +38,15 @@ door_connections = {
 }
 ```
 
-So when the player walks into the door at column 9, row 7, we switch to room index 1 and place the player at (1, 7) in that room.
+So when the player walks into the door at column 9, row 7, we switch to room index 1 and place the player at (1, 7) in that room. It's kind of like a teleporter — you step on this spot, and boom, you're somewhere else.
 
 ## Room Transitions
 
 When you step on a door tile, the game does three things:
 
-1. **Look up** where this door leads in the `door_connections` dict
-2. **Flash** the screen white for a few frames (transition effect)
-3. **Load** the new room and place the player at the spawn point
+1. **Looks up** where this door leads in the `door_connections` dict
+2. **Flashes** the screen white for a few frames (transition effect)
+3. **Loads** the new room and places the player at the spawn point
 
 ```python
 if tile == 2:
@@ -65,7 +57,7 @@ if tile == 2:
         self.transition_to_room(room_idx, spawn_x, spawn_y)
 ```
 
-The transition effect is simple — we fill the screen white for a few frames:
+The transition effect is simple — we just fill the screen white for a few frames:
 
 ```python
 def transition_to_room(self, room_idx, spawn_x, spawn_y):
@@ -79,6 +71,8 @@ def transition_to_room(self, room_idx, spawn_x, spawn_y):
     self.player.y = spawn_y
 ```
 
+That white flash is a classic game trick. Without it, the room switch would feel instant and jarring. With it, your brain goes "oh, I'm transitioning somewhere" and it feels smooth.
+
 ## Spawning Enemies Per Room
 
 Each room only spawns enemies the **first time** you enter. After that, whatever enemies you killed stay dead, and any items stay on the ground. This is tracked by `room.visited`.
@@ -88,6 +82,8 @@ def spawn_enemies(self):
     for x, y, enemy_type in self.enemy_spawns:
         self.enemies.append(Enemy(x, y, enemy_type))
 ```
+
+This is nice because it means you can clear a room, leave, and come back to grab items you left behind without getting ambushed again.
 
 ## The Room Layouts
 
@@ -101,7 +97,7 @@ We create 5 rooms. Each one is about 20 columns by 15 rows:
 
 ## The Minimap
 
-The minimap sits in the top-right corner. It's just small rectangles:
+The minimap sits in the top-right corner. It's just small rectangles showing which rooms you've found:
 
 ```python
 def draw_minimap(self):
@@ -121,7 +117,7 @@ def draw_minimap(self):
         pygame.draw.rect(self.screen, color, (rx, ry, 20, 15))
 ```
 
-Visited rooms are gray, the current room is white, and rooms you haven't found yet are invisible.
+Visited rooms are gray, the current room is white, and rooms you haven't found yet are invisible. It's a small detail but it makes exploring feel way more satisfying — you can see your progress!
 
 ## Step-by-Step Build
 
@@ -140,8 +136,7 @@ The full code is in `dungeon.py`.
 ## Run It!
 
 ```bash
-cd lessons/14-dungeon-v5-rooms
-python dungeon.py
+python3 dungeon.py
 ```
 
 Move with arrow keys, attack with Space, 1-5 for items. Walk into the dark brown doors to move between rooms. Check the minimap in the top-right to see where you've been.

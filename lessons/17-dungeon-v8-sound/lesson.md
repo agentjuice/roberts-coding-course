@@ -2,25 +2,17 @@
 
 **Goal:** Add sound effects and background music to the dungeon, and learn how to handle errors gracefully when files are missing.
 
-## New Concepts
-
-- **pygame.mixer** -- the sound system
-- Loading and playing **sound effects**
-- **Background music** that loops
-- **try/except** -- handling errors without crashing
-- **Volume control** at runtime
-
 ## Why Sound Matters
 
-Play any game with the sound off, then turn it on. Night and day. Sound effects give your brain feedback -- you *feel* the sword hit, you *hear* the enemy die, you *know* you picked up an item. Music sets the mood. A dungeon should feel tense; a boss fight should feel intense.
+Play any game with the sound off, then turn it on. Night and day, right? Sound effects give your brain feedback -- you *feel* the sword hit, you *hear* the enemy die, you *know* you picked up an item. Music sets the mood. A dungeon should feel tense; a boss fight should feel intense.
 
 Pygame has a built-in sound system called **pygame.mixer**. It can play short sound effects (like a sword swing) and longer background music (like a dungeon theme) at the same time.
 
 ## The Problem: We Don't Have Sound Files
 
-Here's a real-world problem. We want to play sounds, but we don't have any .wav files on disk. If we just wrote `pygame.mixer.Sound("sword.wav")` and the file doesn't exist, the program would crash.
+Here's a real-world problem you'll run into all the time. We want to play sounds, but we don't have any .wav files on disk yet. If we just wrote `pygame.mixer.Sound("sword.wav")` and the file doesn't exist, the program would crash.
 
-This is where **try/except** comes in -- one of the most important concepts in programming. It lets you TRY something that might fail, and if it does, do something else instead of crashing.
+This is where **try/except** comes in -- honestly one of the most important things in all of programming. Think of it like this: you're telling Python "hey, try this thing, and if it blows up, do this other thing instead of crashing."
 
 ```python
 try:
@@ -33,11 +25,11 @@ except (pygame.error, FileNotFoundError):
 
 If the file exists, great -- we load it. If not, we set `sound` to `None` and move on. The game works either way.
 
-This pattern is used ALL the time in real software. Video players try to load subtitles -- if the file's not there, no subtitles. Web browsers try to load images -- if the server's down, show a placeholder. It's the same idea.
+This pattern is used ALL the time in real software. Video players try to load subtitles -- if the file's not there, no subtitles. Web browsers try to load images -- if the server's down, show a placeholder. Same idea everywhere.
 
 ## The Sound Manager
 
-Rather than scattering try/except blocks everywhere, we'll build a **SoundManager** class that handles all the sound stuff in one place:
+Rather than scattering try/except blocks all over the place, we'll build a **SoundManager** class that handles all the sound stuff in one place:
 
 ```python
 class SoundManager:
@@ -87,15 +79,15 @@ def play(self, sound_name):
         sound.play()
 ```
 
-If the sound is `None` (because the file wasn't found), nothing happens. No crash.
+If the sound is `None` (because the file wasn't found), nothing happens. No crash. That's the beauty of it.
 
 ## Sound Effects vs Music
 
-There are two kinds of audio in games:
+You know how in games there are two kinds of audio? Short clips that play when stuff happens (sword swing, enemy grunt, item pickup) and then a longer track that loops in the background? Pygame treats these differently.
 
-**Sound effects** are short clips that play once when something happens. Sword swing, enemy grunt, item pickup. Pygame can play multiple sound effects at the same time (they're played on "channels").
+**Sound effects** are those short clips. Pygame can play a bunch of them at the same time on separate "channels."
 
-**Background music** is a longer track that loops continuously. Pygame has a special system for music that's separate from sound effects: `pygame.mixer.music`. Only one music track can play at a time.
+**Background music** is the longer track that loops continuously. Pygame has a special system for it: `pygame.mixer.music`. Only one music track can play at a time.
 
 ```python
 def play_music(self, track_name):
@@ -132,7 +124,7 @@ def set_volume(self, vol):
     pygame.mixer.music.set_volume(self.volume * 0.5)
 ```
 
-The `max(0.0, min(1.0, vol))` trick **clamps** the value between 0 and 1. Volume can't go below 0 or above 1. We set music a bit quieter (times 0.5) so it doesn't drown out the sound effects.
+That `max(0.0, min(1.0, vol))` trick **clamps** the value between 0 and 1. Volume can't go below 0 or above 1. We set music a bit quieter (times 0.5) so it doesn't drown out the sound effects.
 
 ## Where to Get Free Sounds
 
@@ -226,7 +218,7 @@ The complete file is `dungeon.py` in this folder. It includes everything from le
 ## Run It!
 
 ```bash
-python dungeon.py
+python3 dungeon.py
 ```
 
 When you run it, look at the terminal output. You'll see messages like:

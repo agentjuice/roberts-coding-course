@@ -2,21 +2,7 @@
 
 **Goal:** Rebuild Snake using **classes** to organize the code like a real game developer would.
 
----
-
-## New Concepts
-
-- **Classes** and **objects** -- bundling data and behavior together
-- The `__init__()` method -- setting up a new object
-- The `self` keyword -- how an object refers to itself
-- **Methods** -- functions that belong to an object
-- Organizing a game into `Snake`, `Apple`, and `World` classes
-
----
-
-## Explanation
-
-### Why Classes?
+## Why Classes?
 
 Look at the Snake code from last lesson. The snake's data (`snake`, `snake_direction`) and the snake's behavior (movement, collision checking, drawing) are scattered all over the place. The apple's stuff is mixed in too. It works, but it's messy.
 
@@ -24,7 +10,7 @@ What if we could bundle the snake's data *and* its behavior into one neat packag
 
 Think of it like this: a class is a **blueprint**. If you had a blueprint for "Snake," it would say "a Snake has a body and a direction, and it can move, draw itself, and change direction." Then you can build an actual snake from that blueprint -- that's called an **object**.
 
-### The `self` Keyword
+## The `self` Keyword
 
 Here's the part that confuses everyone at first. When you write a method (a function inside a class), the first parameter is always `self`. It means "the object I'm talking about."
 
@@ -37,7 +23,7 @@ class Snake:
 
 `self.body` means "MY body" -- the body that belongs to THIS particular snake. `self.direction` means "MY direction." If you had two snakes, each one would have its own `self.body` and `self.direction`.
 
-### `__init__()` -- The Constructor
+## `__init__()` -- The Constructor
 
 **`__init__()`** is a special method that runs automatically when you create a new object. It's where you set up the starting values. The double underscores are Python's way of saying "this is special."
 
@@ -47,7 +33,7 @@ my_snake = Snake()  # This calls __init__() automatically!
 
 When you write `Snake()`, Python creates a new Snake object and immediately calls `__init__()` on it. You don't call `__init__()` yourself -- Python handles it.
 
-### Methods -- Functions That Belong to an Object
+## Methods -- Functions That Belong to an Object
 
 A **method** is just a function that lives inside a class. The difference from a regular function is that it always gets `self` as the first parameter, so it can access the object's data.
 
@@ -66,7 +52,7 @@ print(my_snake.score())  # prints 0 (body has 1 segment, minus 1)
 
 Notice you don't pass `self` when calling -- Python fills that in for you. You just write `my_snake.score()` and Python knows that `self` is `my_snake`.
 
-### The Three Classes
+## The Three Classes
 
 We'll split our game into three classes:
 
@@ -75,8 +61,6 @@ We'll split our game into three classes:
 - **`World`** -- has the screen, font, snake, apple, and game state. Handles input, updates everything, and draws the whole scene.
 
 The `World` is the boss -- it owns a Snake and an Apple and coordinates everything.
-
----
 
 ## Step-by-Step Build
 
@@ -281,30 +265,20 @@ Four lines! Create a world, then every frame: get input, update, draw, wait. Tha
 
 Compare that to the tangled mess of lesson 8. Same game, way cleaner code.
 
----
-
 ## The Full Code
 
 You can see the complete file in `snake.py` right next to this lesson. It puts all of the steps above together into one file.
 
----
-
 ## Run It!
 
-1. Make sure you have Pygame installed:
-   ```
-   pip install pygame
-   ```
-2. Save the file as `snake.py`
-3. Open your terminal and run:
-   ```
-   python snake.py
-   ```
-4. Same controls as before -- arrow keys to move, Space to restart, Escape to quit.
+```
+pip3 install pygame
+python3 snake.py
+```
+
+Same controls as before -- arrow keys to move, Space to restart, Escape to quit.
 
 You'll notice this version runs a bit slower (`time.sleep(1 / 4)` instead of `1 / 10`). You can change that speed in the last line.
-
----
 
 ## Experiments
 
@@ -318,13 +292,9 @@ You'll notice this version runs a bit slower (`time.sleep(1 / 4)` instead of `1 
 
 5. **Add a speed boost** -- Make the game get faster as the score goes up. Instead of a fixed `time.sleep(1 / 4)`, calculate the delay based on `world.snake.score()`.
 
----
-
 ## Challenge
 
 Add a **Poison Apple** class. It works like a regular Apple but it's colored purple and makes the snake *shorter* by one segment when eaten (use `self.body.pop()` an extra time). The World should have both a regular Apple and a Poison Apple on screen at the same time.
-
----
 
 ## What's Next
 

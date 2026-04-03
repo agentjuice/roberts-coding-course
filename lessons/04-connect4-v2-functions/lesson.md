@@ -2,27 +2,13 @@
 
 **Goal:** Refactor our Connect 4 game by organizing the messy code into clean, reusable **functions**.
 
----
+So remember the Connect 4 code from last lesson? It works, but it's one giant `while True:` loop with everything jammed together. Imagine you wanted to change how the board draws, or fix a bug in the win checker -- you'd have to hunt through the whole file to find the right lines. It's like having all your clothes, books, and games in one huge pile on the floor. It works (you can find stuff eventually), but it's a mess.
 
-## New Concepts
-
-- **Functions** -- named blocks of code you can call whenever you want
-- **`def`** keyword to define a function
-- **Return values** -- functions can send data back
-- **`global`** keyword -- letting a function change a variable from outside
-- **Refactoring** -- restructuring code without changing what it does
-
----
-
-## Explanation
-
-### The Problem
-
-Look at the code from lesson 3. It works, but it's one giant `while True:` loop with everything jammed together. Imagine you wanted to change how the board draws, or fix a bug in the win checker -- you'd have to hunt through the whole file to find the right lines. It's like having all your clothes, books, and games in one huge pile on the floor. It works (you can find stuff eventually), but it's a mess.
+We're going to fix that by learning about **functions**.
 
 ### What Are Functions?
 
-A **function** is a named block of code that does one specific job. Think of it like a recipe card. Instead of memorizing every step every time, you just say "follow the pancake recipe" and all the steps happen.
+A function is a named block of code that does one specific job. Think of it like a recipe card. Instead of memorizing every step every time, you just say "follow the pancake recipe" and all the steps happen.
 
 In Python, you create a function with the **`def`** keyword:
 
@@ -90,9 +76,7 @@ while True:
         switch()
 ```
 
-That's *so* much easier to understand.
-
----
+That's *so* much easier to understand. You can look at the main loop and immediately know what's going on without reading every single line of code.
 
 ## Step-by-Step Build
 
@@ -114,7 +98,7 @@ chip_falling_ypos = 0
 
 ### Step 2: The `draw_world()` Function
 
-We pull out all the drawing code:
+We pull out all the drawing code into its own function:
 
 ```python
 def draw_world():
@@ -202,7 +186,7 @@ def animate_chip():
     world[chip_falling_ypos][i - 1] = player
 ```
 
-This one modifies `world` directly through numpy indexing (assigning to specific cells), which works without `global` because we're changing the *contents* of `world`, not replacing the whole variable. This is a subtle but important difference -- don't worry if it doesn't fully click yet.
+This one modifies `world` directly through numpy indexing (assigning to specific cells), which works without `global` because we're changing the *contents* of `world`, not replacing the whole variable. Think of it like this: you're rearranging furniture inside a house, not replacing the house itself. Python only cares if you try to swap out the whole house.
 
 ### Step 7: The Clean Main Loop
 
@@ -231,24 +215,19 @@ while True:
 
 You can read this and immediately understand the flow: draw, get input (or animate), check winner, switch. That's the power of functions.
 
----
-
 ## The Full Code
 
 Check out `connect4.py` next to this lesson for the complete, runnable file.
 
----
-
 ## Run It!
 
-1. Make sure numpy is installed: `pip install numpy`
-2. Run it:
-   ```
-   python connect4.py
-   ```
-3. It plays exactly the same as v1 -- but the code is way more organized.
+Make sure numpy is installed (`pip3 install numpy` if you haven't already), then save your file (Cmd+S) and run:
 
----
+```bash
+python3 connect4.py
+```
+
+It plays exactly the same as v1 -- but the code is way more organized. Same game, cleaner code.
 
 ## Experiments
 
@@ -262,13 +241,9 @@ Check out `connect4.py` next to this lesson for the complete, runnable file.
 
 5. **Comment the functions** -- Add a comment at the top of each function explaining what it does. This is called **documentation** and it's a great habit.
 
----
-
 ## Challenge
 
 Create a function called `print_prompt()` that prints "Enter your move player X:" (with the right player number) and call it from the main loop before `get_input()`. This separates the prompt from the input logic -- each function does one job.
-
----
 
 ## What's Next
 

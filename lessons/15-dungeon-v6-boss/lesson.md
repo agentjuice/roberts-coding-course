@@ -2,17 +2,9 @@
 
 **Goal:** Add a boss fight to the final room with attack phases, a big health bar, and a victory screen.
 
-## New Concepts
-
-- **Boss** class — a larger, more complex enemy
-- **State machine** — the boss switches between phases (chase, charge, summon, rest)
-- **Phase timers** — controlling how long each behavior lasts
-- **Win condition** — detecting when the boss dies and showing a victory screen
-- **Game stats** — tracking time played, kills, and items used
-
 ## What Is a State Machine?
 
-A **state machine** is when something has different "modes" and switches between them based on rules. You already know state machines from real life:
+Okay, so a **state machine** is just a fancy name for when something has different "modes" and switches between them based on rules. You already know state machines from real life — you just didn't know they had a name:
 
 - A traffic light: green -> yellow -> red -> green (repeats)
 - You in the morning: sleeping -> alarm -> getting ready -> school
@@ -26,7 +18,7 @@ Our boss works the same way. It has phases:
 
 The cycle goes: chase -> charge -> rest -> chase -> summon -> charge -> rest -> repeat
 
-In code, the boss has a `phase` variable (a string like `"chase"` or `"charge"`) and a `phase_timer` that counts down. When the timer hits zero, it switches to the next phase.
+In code, the boss has a `phase` variable (a string like `"chase"` or `"charge"`) and a `phase_timer` that counts down. When the timer hits zero, it switches to the next phase. It's the same countdown idea we used for attack cooldowns, just applied to boss behavior.
 
 ## The Boss Class
 
@@ -49,6 +41,8 @@ class Boss:
         self.move_timer = 0
         self.phase_cycle = 0  # tracks position in the phase cycle
 ```
+
+That's a lot of variables, but each one does one specific job. The `phase_cycle` is just an index that tells us where we are in the list of phases.
 
 ## Phase Logic
 
@@ -85,6 +79,8 @@ def next_phase(self):
     ...
 ```
 
+That `% len(cycle)` is the trick that makes it loop forever. When `phase_cycle` reaches the end of the list, the modulo wraps it back to the beginning.
+
 ## Charge Attack
 
 The charge is the boss's scariest move. It picks the direction toward the player and then rushes that way:
@@ -98,7 +94,7 @@ if self.phase == "charge" and self.charge_dx == 0 and self.charge_dy == 0:
         self.charge_dy = 1 if player.y > self.y else -1
 ```
 
-During the charge, the boss moves every 3 frames instead of every 15. If it hits the player, it deals 3 damage — nasty!
+During the charge, the boss moves every 3 frames instead of every 15. If it hits the player, it deals 3 damage — nasty! The key to surviving is watching for the charge wind-up and getting out of the way.
 
 ## Summoning Minions
 
@@ -111,6 +107,8 @@ if self.phase == "summon" and self.minions_spawned < 2:
         enemies.append(Enemy(self.x + offset[0], self.y + offset[1], "zombie"))
     self.minions_spawned += 1
 ```
+
+This is what makes the fight hectic. You're trying to hit the boss, but suddenly there are zombies coming at you from the sides. Do you deal with the minions first, or keep focusing on the boss?
 
 ## Boss Health Bar
 
@@ -129,6 +127,8 @@ pygame.draw.rect(screen, RED, (bar_x, bar_y, int(bar_w * ratio), bar_h))
 label = font.render("DUNGEON BOSS", True, RED)
 screen.blit(label, label.get_rect(center=(SCREEN_WIDTH // 2, 30)))
 ```
+
+You know how in basically every game, bosses get their own special health bar at the top? That's what we're doing here. The dark red background shows the full bar, and the bright red foreground shrinks as the boss takes damage.
 
 ## Victory Screen
 
@@ -160,6 +160,8 @@ def draw(self, screen, cam_x, cam_y):
     pygame.draw.rect(screen, YELLOW, (sx + 42, sy + 16, 10, 8))
 ```
 
+The evil yellow eyes are a small touch but they give the boss some personality. It's not just a big red square — it's a big red square that's *staring at you*.
+
 ## Step-by-Step Build
 
 This is the big one — the whole game comes together:
@@ -177,8 +179,7 @@ The complete code is in `dungeon.py`.
 ## Run It!
 
 ```bash
-cd lessons/15-dungeon-v6-boss
-python dungeon.py
+python3 dungeon.py
 ```
 
 Fight your way through 4 rooms to reach the boss in Room 4. Use your items wisely — the boss hits hard! Defeat it to see the victory screen.

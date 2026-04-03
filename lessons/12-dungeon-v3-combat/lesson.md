@@ -2,19 +2,11 @@
 
 **Goal:** Give the hero a sword attack so they can fight back against enemies.
 
-## New Concepts
-
-- **Facing direction** — tracking which way the player last moved
-- **Attack cooldown** — limiting how fast you can swing
-- **Hit detection** — checking if your attack reaches an enemy
-- **Visual feedback** — hit flashes, death animations, attack effects
-- **Kill counter** — tracking progress
-
 ## Facing Direction
 
-Up until now, the player was just a square that moved around. But to attack, we need to know which way they're **facing**. If you press the right arrow, you're now facing right. If you attack, the sword swings to the right — hitting whatever's on the tile to your right.
+So up until now, the player was just a square scooting around. But if we want to swing a sword, we need to know which way the player is actually *looking*. Think of it like this: if you press the right arrow, you're now facing right. If you attack, the sword swings to the right and hits whatever is on the tile next to you.
 
-We store facing as a string: `"up"`, `"down"`, `"left"`, or `"right"`. Every time the player moves, we update it:
+We keep track of facing as a simple string: `"up"`, `"down"`, `"left"`, or `"right"`. Every time you move, we update it:
 
 ```python
 def move(self, dx, dy, tile_map):
@@ -31,11 +23,11 @@ def move(self, dx, dy, tile_map):
 
 ## Attack Mechanics
 
-When you press Space, the player attacks. Here's how it works:
+When you press Space, the player attacks. Here's what happens behind the scenes:
 
-1. Check if the attack cooldown is 0 (can we swing?)
+1. Check if the attack cooldown is 0 (can we swing yet?)
 2. Find the tile in front of the player (based on facing direction)
-3. Check if any enemy is on that tile
+3. Check if any enemy is standing on that tile
 4. If so, deal 3 damage to that enemy
 5. Start the attack cooldown (30 frames = 0.5 seconds)
 6. Start the attack animation (show a yellow slash for a few frames)
@@ -61,13 +53,15 @@ def attack(self, enemies):
             enemy.take_damage(3)
 ```
 
+The cooldown is important because without it, you could just mash Space and destroy everything instantly. You know how in most games there's a little pause between swings? That's exactly what `attack_timer` does.
+
 ## Enemy Hit Flash and Death
 
-When an enemy gets hit, we want visual feedback. Two effects:
+When an enemy gets hit, we want it to *feel* like it got hit. Just subtracting health silently would be boring. So we do two things:
 
-**Hit flash:** The enemy turns white for 5 frames, then goes back to normal. This tells you "your attack connected!"
+**Hit flash:** The enemy turns white for 5 frames, then goes back to normal. It's a quick "your attack connected!" signal.
 
-**Death animation:** When an enemy's health drops to 0 or below, it doesn't vanish instantly. Instead it rapidly flashes between white and its normal color for 10 frames, then disappears. This looks way better than just popping out of existence.
+**Death animation:** When an enemy's health drops to 0 or below, it doesn't just vanish. Instead it rapidly flashes between white and its normal color for 10 frames, then disappears. This looks way better than just popping out of existence.
 
 ```python
 def take_damage(self, amount):
@@ -195,10 +189,8 @@ The complete file is saved as `dungeon.py` in this folder. It has the full comba
 
 ## Run It!
 
-Save `dungeon.py` and run:
-
 ```bash
-python dungeon.py
+python3 dungeon.py
 ```
 
 Walk around with arrow keys. Press **Space** to attack in the direction you're facing. You'll see a yellow flash on the tile you hit. Enemies flash white when damaged, then flash rapidly and disappear when they die. Your kill count shows in the HUD.

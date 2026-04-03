@@ -2,20 +2,7 @@
 
 **Goal:** Clean up our Pygame Connect 4 by organizing the code into functions -- the same trick we used in Lesson 4, but now with graphics.
 
----
-
-## New Concepts
-
-- Breaking Pygame code into **functions**
-- The **`global`** keyword -- letting functions change variables outside them
-- Recognizing the pattern: messy code --> functions --> clean code
-- Why this matters more as your programs get bigger
-
----
-
-## Explanation
-
-### Here We Go Again
+## Here We Go Again
 
 Remember Lesson 4? We took the messy terminal Connect 4 and broke it into functions like `draw_world()`, `get_input()`, and `check_winner()`. The code got way easier to read.
 
@@ -23,7 +10,7 @@ Then in Lessons 5 and 6, we switched to Pygame and things got messy again. All t
 
 This is the **second time** you've felt the pain of messy code. And this time, you already know the fix: **functions**.
 
-### The Plan
+## The Plan
 
 We're going to split our code into five functions:
 
@@ -50,9 +37,9 @@ while True:
 
 See how clean that is? You can read it like English.
 
-### The `global` Keyword
+## The `global` Keyword
 
-There's one tricky thing with functions in Python. When you create a variable outside a function (like `winner = 0`), the function can *read* it just fine. But if you want the function to *change* it, you need to use the **`global`** keyword.
+Here's one tricky thing with functions in Python. When you create a variable outside a function (like `winner = 0`), the function can *read* it just fine. But if you want the function to *change* it, you need to use the **`global`** keyword.
 
 ```python
 winner = 0
@@ -62,17 +49,15 @@ def check_winner():
     winner = player
 ```
 
-Without `global`, Python would create a brand-new `winner` variable that only lives inside the function, and the real one would never change. It's like the difference between writing on the class whiteboard (global) vs. writing on a sticky note that you throw away (local).
+Without `global`, Python would create a brand-new `winner` variable that only lives inside the function, and the real one would never change. Think of it like the difference between writing on the class whiteboard (global) vs. writing on a sticky note that you throw away (local).
 
 You don't need `global` to *read* a variable or to *modify* something inside a list or array (like `world[y][x] = player`). You only need it when you're assigning a completely new value to the variable with `=`.
 
-### Why This Matters
+## Why This Matters
 
 Right now, Connect 4 is maybe 80 lines of code. That's manageable. But the Snake game we're building next will be bigger, and the dungeon game after that will be even bigger. If you don't organize your code into functions, you'll spend more time *finding* code than *writing* code.
 
-Functions are like labeled drawers in a toolbox. You don't dump all your tools in one pile -- you sort them so you can find what you need.
-
----
+Think of it like labeled drawers in a toolbox. You don't dump all your tools in one pile -- you sort them so you can find what you need.
 
 ## Step-by-Step Build
 
@@ -223,28 +208,21 @@ That's the ENTIRE main loop. Compare this to the 50+ lines we had before. You ca
 5. Draw the board
 6. Wait a bit
 
----
-
 ## The Full Code
 
 You can see the complete file in `connect4.py` right next to this lesson.
-
----
 
 ## Run It!
 
 1. Make sure you have Pygame and numpy installed:
    ```
-   pip install pygame numpy
+   pip3 install pygame numpy
    ```
-2. Save the file as `connect4.py`
-3. Run it:
+2. Run it:
    ```
-   python connect4.py
+   python3 connect4.py
    ```
-4. It looks and plays the same as the last version -- but the code is SO much cleaner.
-
----
+3. It looks and plays the same as the last version -- but the code is SO much cleaner.
 
 ## Experiments
 
@@ -258,13 +236,9 @@ You can see the complete file in `connect4.py` right next to this lesson.
 
 5. **Add a move counter** -- Create a `moves` variable, increment it in `switch()`, and display it in `draw_world()`.
 
----
-
 ## Challenge
 
 Add a **column highlight**. Track which column the mouse is hovering over (look up `pygame.mouse.get_pos()`) and draw that column's circles slightly brighter or with a different border. You'll want to do this inside `draw_world()`.
-
----
 
 ## What's Next
 

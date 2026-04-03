@@ -2,18 +2,9 @@
 
 **Goal:** Master the building blocks of logic and build a multiple-choice quiz game.
 
-## New Concepts
-
-- `if` / `elif` / `else` — making decisions
-- Comparison operators — `==`, `!=`, `<`, `>`, `<=`, `>=`
-- `while True:` and `break`
-- `for` loops and `range()`
-- **Lists** — storing multiple items in one place
-- List operations — `append()`, `pop()`, `len()`, `in`
-
 ## Making Decisions with `if`
 
-Programs need to make choices. "If the player's score is above 90, print 'Amazing!' — otherwise, print 'Keep trying!'"
+Programs need to make choices all the time. You know how in a game, if you get a high score it says something different than if you get a low score? That's exactly what `if` does.
 
 ```python
 score = 95
@@ -43,7 +34,7 @@ else:
     print("F — Try again.")
 ```
 
-Python checks each condition from top to bottom and runs the **first** one that's true, then skips the rest.
+Python checks each condition from top to bottom and runs the **first** one that's true, then skips the rest. Think of it like a bouncer at a door -- the first condition that passes gets in, and everyone else is turned away.
 
 ## Comparison Operators
 
@@ -58,13 +49,13 @@ Here are all the ways to compare things:
 | `<=` | less than or equal | `5 <= 5` is `True` |
 | `>=` | greater than or equal | `7 >= 3` is `True` |
 
-**Watch out:** `=` is for putting something in a variable. `==` is for checking if two things are equal. Mixing them up is a super common mistake.
+**Watch out:** `=` is for putting something in a variable. `==` is for checking if two things are equal. Mixing them up is a super common mistake -- you'll probably do it at least once, and that's totally normal.
 
-## Loops — Doing Things More Than Once
+## Loops -- Doing Things More Than Once
 
 ### `while` loops
 
-A `while` loop keeps running as long as its condition is true.
+A `while` loop keeps running as long as its condition is true. It's like saying "keep doing this until I tell you to stop."
 
 ```python
 count = 0
@@ -73,7 +64,7 @@ while count < 5:
     count = count + 1
 ```
 
-This prints 0, 1, 2, 3, 4 — then stops because `count` hits 5 and the condition `count < 5` becomes `False`.
+This prints 0, 1, 2, 3, 4 -- then stops because `count` hits 5 and the condition `count < 5` becomes `False`.
 
 ### `while True` and `break`
 
@@ -88,9 +79,11 @@ while True:
     print(f"You typed: {command}")
 ```
 
+Think of `break` as an emergency exit. The loop would go on forever, but `break` lets you bust out whenever you want.
+
 ### `for` loops
 
-A `for` loop goes through a collection of items, one at a time.
+A `for` loop goes through a collection of items, one at a time:
 
 ```python
 fruits = ["apple", "banana", "cherry"]
@@ -98,7 +91,7 @@ for fruit in fruits:
     print(f"I like {fruit}")
 ```
 
-### `range()` — Counting with `for`
+### `range()` -- Counting with `for`
 
 `range()` gives you a sequence of numbers. Super useful with `for`:
 
@@ -118,7 +111,7 @@ for i in range(1, 6):
 
 Notice: `range(1, 6)` goes up to but **doesn't include** 6. Yeah, it's weird. You get used to it.
 
-## Lists — Storing Multiple Things
+## Lists -- Storing Multiple Things
 
 A **list** is like a row of labeled boxes. Instead of making a separate variable for each item, you put them all in one place.
 
@@ -171,7 +164,7 @@ empty = []
 
 ## Let's Build: Quiz Game
 
-We're going to build a quiz game that:
+Alright, time to build something real! We're going to make a quiz game that:
 
 1. Stores questions, answer choices, and correct answers
 2. Asks each question one at a time
@@ -180,7 +173,7 @@ We're going to build a quiz game that:
 
 ### Step 1: Store the questions
 
-We'll use a **list of dictionaries**. A dictionary (we'll cover these more later) is like a mini form — it stores labeled pieces of information.
+We'll use a **list of dictionaries**. A dictionary (we'll cover these more later) is like a mini form -- it stores labeled pieces of information. Don't worry too much about the syntax right now, just notice how each question has three parts: the question text, a list of choices, and the correct answer letter.
 
 ```python
 questions = [
@@ -196,8 +189,6 @@ questions = [
     },
 ]
 ```
-
-Each question has three parts: the question text, a list of choices, and the correct answer letter.
 
 ### Step 2: Loop through the questions
 
@@ -312,10 +303,10 @@ else:
 
 ## Run It!
 
-Save this as `quiz_game.py` and run:
+Save the file (Cmd+S), then head to your terminal and run:
 
 ```bash
-python quiz_game.py
+python3 quiz_game.py
 ```
 
 ## Experiments
@@ -332,8 +323,8 @@ python quiz_game.py
 
 ## Challenge
 
-Add a **category** field to each question (like "Science", "Python", "Math"). After the quiz, show a breakdown: "Science: 1/2 correct, Python: 2/3 correct." You'll need to track scores per category — try using a dictionary.
+Add a **category** field to each question (like "Science", "Python", "Math"). After the quiz, show a breakdown: "Science: 1/2 correct, Python: 2/3 correct." You'll need to track scores per category -- try using a dictionary.
 
 ## What's Next
 
-In Lesson 3, we'll learn about functions (reusable blocks of code) and dictionaries (like lists, but with named keys instead of numbers) — and build a contact book app.
+In Lesson 3, we'll learn about functions (reusable blocks of code) and dictionaries (like lists, but with named keys instead of numbers) -- and build a contact book app.
