@@ -74,20 +74,21 @@ That's not a tutorial project. That's a real game. The same concepts you used he
 
 ## Taking It Further
 
-Want to see how far you can push this? Check out the advanced version in [`isometric_showcase.py`](isometric_showcase.py) — it adds:
+Want to see a bigger version? Check out [`isometric_showcase.py`](isometric_showcase.py) — it takes the same game and scales it up to a **massive 45×35 tile map** with multiple rooms, corridors, chests, and stairs to a second level.
 
-- **Custom pixel art sprites** for the hero, enemies, and dungeon props
-- **Smooth walking and attack animations**
-- **New enemy types** — goblins that throw projectiles, bats that fly diagonally
-- **Particle effects** — bursts of color on attacks and deaths
-- **Screen shake** — the world rumbles when you take damage
-- **Sound effects** — sword swings, enemy deaths, item pickups
-- **A massive 45×35 tile map** with multiple themed rooms
+And here's the thing: you now have the skills to keep going. Here are some ideas for what YOU could add next:
 
-Every single concept in that file — you learned it in this course. There's nothing in there you haven't seen. It's just all of it working together.
+- **Custom pixel art sprites** — replace the colored squares with real character art using `pygame.image.load()`
+- **Smooth walking animations** — interpolate between grid positions instead of snapping
+- **New enemy types** — a bat that moves diagonally, a goblin that throws projectiles
+- **Particle effects** — spawn small colored dots on attacks and deaths that fade out over a few frames
+- **Screen shake** — offset the camera by a random amount for a few frames when you take damage
+- **Sound effects** — use `pygame.mixer.Sound()` to play audio on attacks, deaths, and pickups
+
+Every one of these features uses concepts you already know. Sprites are just images drawn at isometric positions. Particles are lists of objects with positions and velocities. Screen shake is adding a random offset to the camera. You've got this.
 
 !!! info "🎮 Fun Fact"
-    Minecraft Dungeons was built by a team of ~60 professional developers over several years. You built a version of it by yourself. That's incredible.
+    Minecraft Dungeons was built by a team of ~60 professional developers over several years. You built your own version from scratch. That's incredible.
 
 ## Experiments
 
