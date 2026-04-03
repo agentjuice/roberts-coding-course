@@ -73,6 +73,11 @@ nav:
     - "Procedural Generation": lessons/29-dungeon-v9-procgen/lesson.md
     - "Polish & Second Level": lessons/30-dungeon-v10-polish/lesson.md
     - "Co-op Mode": lessons/31-dungeon-v11-coop/lesson.md
+  - "Bonus: Isometric":
+    - "Isometric Basics": lessons/32-isometric-basics/lesson.md
+    - "Isometric Dungeon": lessons/33-isometric-dungeon/lesson.md
+    - "Depth Sorting": lessons/34-depth-sorting/lesson.md
+    - "The Full Game": lessons/35-isometric-game/lesson.md
 
 extra:
   social: []

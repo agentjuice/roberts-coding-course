@@ -114,4 +114,4 @@ Add a **trading system**: when both players stand next to each other and one pre
 
 ## What's Next
 
-🎉 **You finished the entire course!** You built a dungeon crawler from scratch. That's incredible. Now go build something of your own!
+👉 [Lesson 32: Isometric Basics](../32-isometric-basics/lesson.md) -- ready to make your dungeon look like Minecraft Dungeons? Time to go isometric!
