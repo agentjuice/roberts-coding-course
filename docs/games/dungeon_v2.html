@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dungeon Crawler v2 - Enemies</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+canvas {
+  image-rendering: pixelated;
+  border: 2px solid #333;
+}
+</style>
+</head>
+<body>
+<canvas id="game" width="500" height="400"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const TILE = 24;
+  const COLS = 25;
+  const ROWS = 20;
+  const TARGET_FPS = 30;
+  const FRAME_TIME = 1000 / TARGET_FPS;
+
+  const MAP = [
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,0,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,0,1,1,1,1,0,0,0,0,0,1,1,1,1,0,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  ];
+
+  // Game state
+  let player, enemies, frameCount, gameOver, invincTimer;
+
+  function initGame() {
+    player = { x: 2, y: 2, hp: 10, maxHp: 10 };
+    enemies = [
+      { x: 7, y: 8, type: 'zombie', color: '#00b400', moveRate: 30, moveCount: 0 },
+      { x: 11, y: 4, type: 'zombie', color: '#00b400', moveRate: 30, moveCount: 0 },
+      { x: 20, y: 16, type: 'skeleton', color: '#dc0000', moveRate: 20, moveCount: 0 },
+      { x: 12, y: 14, type: 'skeleton', color: '#dc0000', moveRate: 20, moveCount: 0 },
+    ];
+    // Randomize initial move counters so enemies don't all move in sync
+    for (let e of enemies) {
+      e.moveCount = Math.floor(Math.random() * e.moveRate);
+    }
+    frameCount = 0;
+    gameOver = false;
+    invincTimer = 0;
+  }
+
+  initGame();
+
+  // Input
+  const keys = {};
+  let moveTimer = 0;
+  const MOVE_DELAY = 120;
+
+  // Touch
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+
+  document.addEventListener('keydown', function(e) {
+    if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+    }
+    keys[e.key] = true;
+
+    if (e.key === ' ' && gameOver) {
+      e.preventDefault();
+      initGame();
+    }
+  });
+
+  document.addEventListener('keyup', function(e) {
+    keys[e.key] = false;
+  });
+
+  canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchStartTime = performance.now();
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    if (gameOver) {
+      initGame();
+      return;
+    }
+    if (e.changedTouches.length === 0) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < 15) return; // tap, not swipe
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      tryMove(dx > 0 ? 1 : -1, 0);
+    } else {
+      tryMove(0, dy > 0 ? 1 : -1);
+    }
+  }, { passive: false });
+
+  function isWall(x, y) {
+    if (x < 0 || x >= COLS || y < 0 || y >= ROWS) return true;
+    return MAP[y][x] === 1;
+  }
+
+  function tryMove(dx, dy) {
+    const nx = player.x + dx;
+    const ny = player.y + dy;
+    if (!isWall(nx, ny)) {
+      player.x = nx;
+      player.y = ny;
+    }
+  }
+
+  function moveEnemies() {
+    for (let e of enemies) {
+      e.moveCount++;
+      if (e.moveCount < e.moveRate) continue;
+      e.moveCount = 0;
+
+      let dx = 0, dy = 0;
+      if (e.type === 'zombie') {
+        // Random movement
+        const dir = Math.floor(Math.random() * 4);
+        if (dir === 0) dy = -1;
+        else if (dir === 1) dy = 1;
+        else if (dir === 2) dx = -1;
+        else dx = 1;
+      } else {
+        // Skeleton: chase player on axis with greater distance
+        const distX = Math.abs(player.x - e.x);
+        const distY = Math.abs(player.y - e.y);
+        if (distX >= distY) {
+          dx = player.x > e.x ? 1 : (player.x < e.x ? -1 : 0);
+        } else {
+          dy = player.y > e.y ? 1 : (player.y < e.y ? -1 : 0);
+        }
+      }
+
+      const nx = e.x + dx;
+      const ny = e.y + dy;
+      if (!isWall(nx, ny)) {
+        // Don't move onto another enemy
+        let blocked = false;
+        for (let other of enemies) {
+          if (other !== e && other.x === nx && other.y === ny) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) {
+          e.x = nx;
+          e.y = ny;
+        }
+      }
+    }
+  }
+
+  function checkCollisions() {
+    if (invincTimer > 0) {
+      invincTimer--;
+      return;
+    }
+    for (let e of enemies) {
+      if (e.x === player.x && e.y === player.y) {
+        player.hp--;
+        invincTimer = 60;
+        if (player.hp <= 0) {
+          player.hp = 0;
+          gameOver = true;
+        }
+        break;
+      }
+    }
+  }
+
+  // Game loop with frame-rate control
+  let lastUpdate = 0;
+
+  function gameLoop(timestamp) {
+    requestAnimationFrame(gameLoop);
+
+    if (timestamp - lastUpdate < FRAME_TIME) return;
+    lastUpdate = timestamp;
+
+    if (!gameOver) {
+      frameCount++;
+
+      // Handle held-key movement with delay
+      if (timestamp - moveTimer >= MOVE_DELAY) {
+        if (keys['ArrowUp']) { tryMove(0, -1); moveTimer = timestamp; }
+        else if (keys['ArrowDown']) { tryMove(0, 1); moveTimer = timestamp; }
+        else if (keys['ArrowLeft']) { tryMove(-1, 0); moveTimer = timestamp; }
+        else if (keys['ArrowRight']) { tryMove(1, 0); moveTimer = timestamp; }
+      }
+
+      moveEnemies();
+      checkCollisions();
+    }
+
+    draw();
+  }
+
+  function draw() {
+    ctx.fillStyle = '#0b0b13';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Camera: center on player
+    const camX = player.x * TILE + TILE / 2 - canvas.width / 2;
+    const camY = player.y * TILE + TILE / 2 - canvas.height / 2;
+    const maxCamX = COLS * TILE - canvas.width;
+    const maxCamY = ROWS * TILE - canvas.height;
+    const cx = Math.max(0, Math.min(camX, maxCamX));
+    const cy = Math.max(0, Math.min(camY, maxCamY));
+
+    // Visible tile range
+    const startCol = Math.floor(cx / TILE);
+    const startRow = Math.floor(cy / TILE);
+    const endCol = Math.min(COLS - 1, Math.ceil((cx + canvas.width) / TILE));
+    const endRow = Math.min(ROWS - 1, Math.ceil((cy + canvas.height) / TILE));
+
+    // Draw map
+    for (let r = startRow; r <= endRow; r++) {
+      for (let c = startCol; c <= endCol; c++) {
+        const sx = c * TILE - cx;
+        const sy = r * TILE - cy;
+        ctx.fillStyle = MAP[r][c] === 1 ? '#64501e' : '#323232';
+        ctx.fillRect(sx, sy, TILE, TILE);
+      }
+    }
+
+    // Draw enemies
+    for (let e of enemies) {
+      const ex = e.x * TILE - cx + 4;
+      const ey = e.y * TILE - cy + 4;
+      ctx.fillStyle = e.color;
+      ctx.fillRect(ex, ey, TILE - 8, TILE - 8);
+    }
+
+    // Draw player (flash white when recently hit)
+    const px = player.x * TILE - cx + 3;
+    const py = player.y * TILE - cy + 3;
+    if (invincTimer > 50) {
+      ctx.fillStyle = '#ffffff';
+    } else {
+      ctx.fillStyle = '#0096ff';
+    }
+    ctx.fillRect(px, py, TILE - 6, TILE - 6);
+
+    // HUD background strip for readability
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+    ctx.fillRect(0, 0, canvas.width, 42);
+
+    // Health bar
+    const barX = 8;
+    const barY = 5;
+    const barW = 200;
+    const barH = 14;
+    // Background
+    ctx.fillStyle = '#500000';
+    ctx.fillRect(barX, barY, barW, barH);
+    // Foreground
+    const hpRatio = player.hp / player.maxHp;
+    ctx.fillStyle = '#dc0000';
+    ctx.fillRect(barX, barY, barW * hpRatio, barH);
+    // Border
+    ctx.strokeStyle = '#888';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(barX, barY, barW, barH);
+
+    // HP text
+    ctx.fillStyle = 'white';
+    ctx.font = '14px monospace';
+    ctx.fillText('HP: ' + player.hp + '/' + player.maxHp, barX + barW + 8, barY + 12);
+
+    // Position
+    ctx.fillText('Position: (' + player.x + ', ' + player.y + ')', 8, barY + barH + 16);
+
+    // Game over overlay
+    if (gameOver) {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#dc0000';
+      ctx.font = 'bold 48px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
+
+      ctx.fillStyle = 'white';
+      ctx.font = '18px monospace';
+      ctx.fillText('Press SPACE to restart', canvas.width / 2, canvas.height / 2 + 25);
+      ctx.textAlign = 'left';
+    }
+  }
+
+  requestAnimationFrame(gameLoop);
+})();
+</script>
+</body>
+</html>

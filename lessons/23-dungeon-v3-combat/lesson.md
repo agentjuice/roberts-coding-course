@@ -4,7 +4,10 @@
     Give the hero a sword attack so they can fight back against enemies.
 
 
-![Combat system in action!](/images/dungeon_v3.png)
+!!! example "🎮 Play It! — Combat Demo"
+    By the end of this section, you'll be building a playable game just like this one. **Arrow keys to move, Space to attack!**
+
+<iframe src="/games/dungeon_v3.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe>
 
 
 ## Facing Direction

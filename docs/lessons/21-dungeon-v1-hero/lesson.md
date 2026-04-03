@@ -4,7 +4,10 @@
     Build a tile-based dungeon world with a player that moves around and a camera that follows them.
 
 
-![Your first dungeon — you're the blue square!](/images/dungeon_v1.png)
+!!! example "🎮 Play It! — The Hero Demo"
+    By the end of this section, you'll be building a playable game just like this one. **Arrow keys to move!**
+
+<iframe src="/games/dungeon_v1.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe>
 
 
 ## How Tile Maps Work

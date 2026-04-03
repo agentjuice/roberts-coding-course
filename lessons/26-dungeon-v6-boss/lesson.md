@@ -4,7 +4,10 @@
     Add a boss fight to the final room with attack phases, a big health bar, and a victory screen.
 
 
-![The boss fight — can you beat it?](/images/dungeon_v6.png)
+!!! example "🎮 Play It! — The Boss Demo"
+    By the end of this section, you'll be building a playable game just like this one. **Arrow keys to move, Space to attack!**
+
+<iframe src="/games/dungeon_v6.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe>
 
 
 ## What Is a State Machine?

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dungeon Crawler v1 - The Hero</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+canvas {
+  image-rendering: pixelated;
+  border: 2px solid #333;
+}
+</style>
+</head>
+<body>
+<canvas id="game" width="500" height="400"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const TILE = 24;
+  const COLS = 25;
+  const ROWS = 20;
+
+  const MAP = [
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,0,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,0,1,1,1,1,0,0,0,0,0,1,1,1,1,0,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  ];
+
+  // Player state
+  let player = { x: 2, y: 2 };
+
+  // Input
+  const keys = {};
+  let moveTimer = 0;
+  const MOVE_DELAY = 120;
+
+  // Touch
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener('keydown', function(e) {
+    if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+    }
+    keys[e.key] = true;
+  });
+
+  document.addEventListener('keyup', function(e) {
+    keys[e.key] = false;
+  });
+
+  canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    if (e.changedTouches.length === 0) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 15) return; // too short, not a swipe
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      tryMove(dx > 0 ? 1 : -1, 0);
+    } else {
+      tryMove(0, dy > 0 ? 1 : -1);
+    }
+  }, { passive: false });
+
+  function isWall(x, y) {
+    if (x < 0 || x >= COLS || y < 0 || y >= ROWS) return true;
+    return MAP[y][x] === 1;
+  }
+
+  function tryMove(dx, dy) {
+    const nx = player.x + dx;
+    const ny = player.y + dy;
+    if (!isWall(nx, ny)) {
+      player.x = nx;
+      player.y = ny;
+    }
+  }
+
+  // Game loop
+  function gameLoop(timestamp) {
+    requestAnimationFrame(gameLoop);
+
+    // Handle held-key movement with delay
+    if (timestamp - moveTimer >= MOVE_DELAY) {
+      if (keys['ArrowUp']) { tryMove(0, -1); moveTimer = timestamp; }
+      else if (keys['ArrowDown']) { tryMove(0, 1); moveTimer = timestamp; }
+      else if (keys['ArrowLeft']) { tryMove(-1, 0); moveTimer = timestamp; }
+      else if (keys['ArrowRight']) { tryMove(1, 0); moveTimer = timestamp; }
+    }
+
+    draw();
+  }
+
+  function draw() {
+    ctx.fillStyle = '#0b0b13';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Camera: center on player
+    const camX = player.x * TILE + TILE / 2 - canvas.width / 2;
+    const camY = player.y * TILE + TILE / 2 - canvas.height / 2;
+
+    // Clamp camera
+    const maxCamX = COLS * TILE - canvas.width;
+    const maxCamY = ROWS * TILE - canvas.height;
+    const cx = Math.max(0, Math.min(camX, maxCamX));
+    const cy = Math.max(0, Math.min(camY, maxCamY));
+
+    // Determine visible tile range
+    const startCol = Math.floor(cx / TILE);
+    const startRow = Math.floor(cy / TILE);
+    const endCol = Math.min(COLS - 1, Math.ceil((cx + canvas.width) / TILE));
+    const endRow = Math.min(ROWS - 1, Math.ceil((cy + canvas.height) / TILE));
+
+    // Draw map
+    for (let r = startRow; r <= endRow; r++) {
+      for (let c = startCol; c <= endCol; c++) {
+        const sx = c * TILE - cx;
+        const sy = r * TILE - cy;
+        if (MAP[r][c] === 1) {
+          ctx.fillStyle = '#64501e';
+        } else {
+          ctx.fillStyle = '#323232';
+        }
+        ctx.fillRect(sx, sy, TILE, TILE);
+      }
+    }
+
+    // Draw player
+    const px = player.x * TILE - cx + 3;
+    const py = player.y * TILE - cy + 3;
+    ctx.fillStyle = '#0096ff';
+    ctx.fillRect(px, py, TILE - 6, TILE - 6);
+
+    // HUD
+    ctx.fillStyle = 'white';
+    ctx.font = '14px monospace';
+    ctx.fillText('Position: (' + player.x + ', ' + player.y + ')', 8, 18);
+  }
+
+  requestAnimationFrame(gameLoop);
+})();
+</script>
+</body>
+</html>

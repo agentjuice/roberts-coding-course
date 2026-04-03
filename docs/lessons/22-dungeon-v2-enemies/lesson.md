@@ -4,7 +4,10 @@
     Add wandering zombies and chasing skeletons to the dungeon, plus a health system.
 
 
-![Now with enemies roaming the dungeon!](/images/dungeon_v2.png)
+!!! example "🎮 Play It! — Enemies Demo"
+    By the end of this section, you'll be building a playable game just like this one. **Arrow keys to move!**
+
+<iframe src="/games/dungeon_v2.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe>
 
 
 ## Two Kinds of Enemy Brains
