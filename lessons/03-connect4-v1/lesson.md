@@ -1,0 +1,254 @@
+# Lesson 3: Connect 4 v1 -- Terminal Edition
+
+**Goal:** Build a working two-player Connect 4 game that runs right in your terminal.
+
+---
+
+## New Concepts
+
+- **2D arrays** (grids) with `numpy`
+- Reading player input with `input()`
+- Checking for wins in four directions
+- Detecting a draw
+- Animating a falling chip with `time.sleep()`
+- Clearing the screen with `os.system('clear')`
+
+---
+
+## Explanation
+
+### The Board Is a Grid
+
+Remember lists from lesson 2? A list is like a row of boxes. But a Connect 4 board isn't just one row -- it's a **grid** with rows *and* columns. That's called a **2D array** (two-dimensional array). Think of it like a spreadsheet or a chessboard.
+
+We're going to use a library called **numpy** to create our grid. A library is code that someone else wrote that we can use. numpy is great at working with grids of numbers.
+
+```python
+import numpy
+world = numpy.zeros((6, 6))
+```
+
+This creates a 6-by-6 grid filled with zeros. Each `0` means "empty." When player 1 drops a chip, we put a `1` there. Player 2 gets a `2`.
+
+### The Game Loop
+
+Our whole game lives inside a `while True:` loop. Every time through, we:
+
+1. **Draw** the board
+2. **Get input** from the current player
+3. **Animate** the chip falling down
+4. **Check** if someone won (or if it's a draw)
+5. **Switch** to the other player
+
+### Clearing the Screen
+
+Every time we redraw the board, we want a clean screen. `os.system('clear')` tells your computer to clear the terminal. It's like erasing a whiteboard before drawing the board again.
+
+### Chip Falling Animation
+
+Instead of just placing a chip instantly, we make it "fall" from the top. We move it down one row at a time, pausing briefly with `time.sleep(0.05)` so you can see it drop. It looks cool!
+
+### Win Detection
+
+This is the trickiest part. After a chip lands, we need to check if there are four in a row. But "in a row" can mean four directions:
+
+- **Horizontal** (left to right) -->
+- **Vertical** (top to bottom) |
+- **Diagonal down-right** \
+- **Diagonal up-right** /
+
+We loop through every cell on the board. For each cell that belongs to the current player, we check if the next three cells in each direction also belong to that player. If they do -- winner!
+
+### Draw Detection
+
+If the entire top row is full and nobody has won, it's a **draw**. No more chips can be dropped.
+
+---
+
+## Step-by-Step Build
+
+### Step 1: Imports and Setup
+
+We need three libraries:
+
+```python
+import os       # for clearing the screen
+import numpy    # for our 2D grid
+import time     # for the falling animation
+```
+
+And our game variables:
+
+```python
+world = numpy.zeros((6, 6))  # the board -- all zeros means all empty
+player = 1                    # player 1 goes first
+winner = 0                    # no winner yet (0 = nobody)
+chip_falling = False          # is a chip currently falling?
+chip_falling_ypos = 0         # which row is the chip on right now?
+```
+
+### Step 2: Draw the Board
+
+At the top of our `while True:` loop, we clear the screen and print the board:
+
+```python
+while True:
+    os.system('clear')
+    print("  1  2  3  4  5  6")
+    print("---------------------")
+    print(world)
+```
+
+numpy's `print(world)` shows the grid nicely. The numbers on top help players pick a column.
+
+### Step 3: Check for Game Over
+
+Right after drawing, we check if the game is already over:
+
+```python
+    if winner < 0:
+        print("DRAW")
+        exit()
+    elif winner > 0:
+        print("WINNER - PLAYER: %d" % winner)
+        exit()
+```
+
+The `%d` is a placeholder that gets replaced with the winner's number. `exit()` stops the whole program.
+
+### Step 4: Get Player Input
+
+If no chip is currently falling, we ask the player for a column:
+
+```python
+    if not chip_falling:
+        input_text = input("Enter your move player %d: " % player)
+        if not str.isnumeric(input_text):
+            continue
+        i = int(input_text)
+        if i == 0:
+            exit()
+        if i > 6:
+            continue
+        if world[0][i - 1] > 0:
+            continue
+        chip_falling = True
+        chip_falling_ypos = 0
+```
+
+There's a lot of checking here! We make sure:
+- The input is actually a number (`str.isnumeric`)
+- Entering `0` quits the game
+- The column isn't bigger than 6
+- The column isn't already full (`world[0][i - 1] > 0` checks the top cell)
+
+If everything's okay, we start the chip falling from row 0 (the top).
+
+### Step 5: Animate the Chip
+
+If a chip is falling, we move it down one row:
+
+```python
+    else:
+        if chip_falling_ypos > 0:
+            world[chip_falling_ypos - 1][i - 1] = 0
+        world[chip_falling_ypos][i - 1] = player
+        if chip_falling_ypos == 5 or world[chip_falling_ypos + 1][i - 1] > 0:
+            chip_falling = False
+        else:
+            chip_falling_ypos = chip_falling_ypos + 1
+            time.sleep(0.05)
+```
+
+Here's what's happening:
+- Erase the chip from its old position (set it back to 0)
+- Place it in the new position
+- If it's at the bottom (row 5) or there's a chip below it, stop falling
+- Otherwise, move it down one more row and wait 0.05 seconds
+
+### Step 6: Check for a Winner
+
+After a chip lands, we scan the whole board:
+
+```python
+    if not chip_falling:
+        for y in range(6):
+            for x in range(6):
+                if world[y][x] != player:
+                    continue
+                # horizontal
+                if x <= 2 and world[y][x + 1] == player and world[y][x + 2] == player and world[y][x + 3] == player:
+                    winner = player
+                # vertical
+                if y <= 2 and world[y + 1][x] == player and world[y + 2][x] == player and world[y + 3][x] == player:
+                    winner = player
+                # diagonal down-right
+                if x <= 2 and y <= 2 and world[y + 1][x + 1] == player and world[y + 2][x + 2] == player and world[y + 3][x + 3] == player:
+                    winner = player
+                # diagonal up-right
+                if x <= 2 and y > 2 and world[y - 1][x + 1] == player and world[y - 2][x + 2] == player and world[y - 3][x + 3] == player:
+                    winner = player
+```
+
+The `x <= 2` and `y <= 2` checks stop us from looking off the edge of the board. For example, if `x` is 4, there aren't three more cells to the right, so we don't check horizontal.
+
+### Step 7: Check for Draw and Switch Players
+
+```python
+        if world[0][0] > 0 and world[0][1] > 0 and world[0][2] > 0 and world[0][3] > 0 and world[0][4] > 0 and world[0][5] > 0:
+            winner = -1
+
+        if player == 1:
+            player = 2
+        else:
+            player = 1
+```
+
+If every cell in the top row is taken, the board is full -- it's a draw (we set `winner` to -1). Then we swap who's playing next.
+
+---
+
+## The Full Code
+
+You can see the complete file in `connect4.py` right next to this lesson. It puts all of the steps above together into one file.
+
+---
+
+## Run It!
+
+1. Make sure you have numpy installed:
+   ```
+   pip install numpy
+   ```
+2. Save the file as `connect4.py`
+3. Open your terminal and run:
+   ```
+   python connect4.py
+   ```
+4. Enter column numbers (1-6) to drop chips. Enter 0 to quit.
+
+---
+
+## Experiments
+
+1. **Change the board size** -- Try making it `numpy.zeros((8, 8))` and update the column numbers and range checks. Can you make a bigger board work?
+
+2. **Slow down the animation** -- Change `time.sleep(0.05)` to `time.sleep(0.3)`. Watch the chip fall in slow motion!
+
+3. **Change the win condition** -- What if you only needed 3 in a row instead of 4? (Hint: remove one of the checks in each direction.)
+
+4. **Change the player symbols** -- Right now players are `1.0` and `2.0`. Can you think of a way to show something different?
+
+5. **Remove the animation** -- What if you just placed the chip instantly at the bottom? Try setting `chip_falling = False` right away.
+
+---
+
+## Challenge
+
+Add a **move counter** that shows how many total moves have been made. Print it next to the board each turn. (Hint: create a variable, add 1 to it each time a chip lands.)
+
+---
+
+## What's Next
+
+This code works, but look how long it is -- and it's all crammed into one big loop. In the next lesson, we'll learn about **functions** and break this code into neat, organized pieces.
