@@ -1,4 +1,4 @@
-# Lesson 26: Dungeon v6 — The Boss
+# The Boss
 
 !!! success "🎯 Mission"
     Add a boss fight to the final room with attack phases, a big health bar, and a victory screen.

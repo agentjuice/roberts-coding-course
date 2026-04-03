@@ -1,4 +1,4 @@
-# Lesson 31: Dungeon v11 -- Co-op Mode
+# Co-op Mode
 
 !!! success "🎯 Mission"
     Add a second player to the dungeon so two people can fight through it together on the same keyboard.

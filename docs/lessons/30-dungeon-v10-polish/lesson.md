@@ -1,4 +1,4 @@
-# Lesson 30: Dungeon v10 -- Second Level & Polish
+# Polish & Second Level
 
 !!! success "🎯 Mission"
     Add multiple levels, a new exploding enemy, a start screen, pause menu, high scores, and visual polish that makes the game feel professional.

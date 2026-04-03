@@ -1,4 +1,4 @@
-# Lesson 11: Lists -- Operations
+# Lists: Operations
 
 !!! success "🎯 Mission"
     Learn how to add, remove, and search for items in lists.

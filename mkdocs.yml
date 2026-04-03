@@ -60,7 +60,7 @@ nav:
     - "The Final Version": lessons/18-connect4-v5-pygame-functions/lesson.md
   - "Snake":
     - "Snake Game": lessons/19-snake-v1/lesson.md
-    - "Classes & OOP": lessons/20-snake-v2-classes/lesson.md
+    - "Classes": lessons/20-snake-v2-classes/lesson.md
   - "Dungeon Crawler":
     - "The Hero": lessons/21-dungeon-v1-hero/lesson.md
     - "Enemies": lessons/22-dungeon-v2-enemies/lesson.md

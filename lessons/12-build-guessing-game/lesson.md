@@ -1,4 +1,4 @@
-# Lesson 12: Build -- Number Guessing Game
+# Build: Guessing Game
 
 !!! success "🎯 Mission"
     Combine everything you've learned — variables, input, if-else, comparisons, loops, and lists — to build a real number guessing game.

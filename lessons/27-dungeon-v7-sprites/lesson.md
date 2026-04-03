@@ -1,4 +1,4 @@
-# Lesson 27: Dungeon v7 -- Sprites & Art
+# Sprites & Art
 
 !!! success "🎯 Mission"
     Replace all those colored squares with actual character sprites -- drawn in code so you don't need any image files.

@@ -1,4 +1,4 @@
-# Lesson 9: For Loops
+# For Loops
 
 !!! success "🎯 Mission"
     Learn `for` loops with `range()` and build patterns with nested loops.

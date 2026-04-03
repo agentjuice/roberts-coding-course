@@ -1,4 +1,4 @@
-# Lesson 24: Dungeon v4 — Loot & Items
+# Loot & Items
 
 !!! success "🎯 Mission"
     Add an item and inventory system so defeated enemies drop loot, and you can collect and use items.

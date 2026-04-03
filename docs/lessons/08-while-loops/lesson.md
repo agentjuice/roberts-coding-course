@@ -1,4 +1,4 @@
-# Lesson 8: While Loops
+# While Loops
 
 !!! success "🎯 Mission"
     Learn how to make code repeat with `while` loops — including the powerful `while True` + `break` pattern.

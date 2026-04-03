@@ -1,4 +1,4 @@
-# Lesson 6: If-Else
+# If / Else
 
 !!! success "🎯 Mission"
     Make your program choose what to do based on a condition.

@@ -1,4 +1,4 @@
-# Lesson 28: Dungeon v8 -- Sound & Music
+# Sound & Music
 
 !!! success "🎯 Mission"
     Add sound effects and background music to the dungeon, and learn how to handle errors gracefully when files are missing.

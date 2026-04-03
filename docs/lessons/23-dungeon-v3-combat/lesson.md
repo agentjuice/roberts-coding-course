@@ -1,4 +1,4 @@
-# Lesson 23: Dungeon v3 — Combat
+# Combat
 
 !!! success "🎯 Mission"
     Give the hero a sword attack so they can fight back against enemies.

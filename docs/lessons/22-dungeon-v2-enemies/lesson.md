@@ -1,4 +1,4 @@
-# Lesson 22: Dungeon v2 -- Enemies
+# Enemies
 
 !!! success "🎯 Mission"
     Add wandering zombies and chasing skeletons to the dungeon, plus a health system.

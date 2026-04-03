@@ -1,4 +1,4 @@
-# Lesson 25: Dungeon v5 — Multiple Rooms
+# Multiple Rooms
 
 !!! success "🎯 Mission"
     Create a dungeon with 5 connected rooms, door transitions, and a minimap to track where you've been.

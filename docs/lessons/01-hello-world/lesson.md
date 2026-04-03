@@ -1,4 +1,4 @@
-# Lesson 1: Hello, World!
+# Hello World
 
 !!! success "🎯 Mission"
     Write your very first Python program and make your computer say something.

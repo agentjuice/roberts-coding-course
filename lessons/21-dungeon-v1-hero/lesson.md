@@ -1,4 +1,4 @@
-# Lesson 21: Dungeon v1 -- The Hero
+# The Hero
 
 !!! success "🎯 Mission"
     Build a tile-based dungeon world with a player that moves around and a camera that follows them.

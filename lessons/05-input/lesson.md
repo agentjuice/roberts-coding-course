@@ -1,4 +1,4 @@
-# Lesson 5: Input
+# Input
 
 !!! success "🎯 Mission"
     Make your programs interactive by asking the user to type stuff in.

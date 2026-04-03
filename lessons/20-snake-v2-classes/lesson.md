@@ -1,4 +1,4 @@
-# Lesson 20: Snake v2 -- Classes and Objects
+# Classes
 
 !!! success "🎯 Mission"
     Rebuild Snake using **classes** to organize the code like a real game developer would.

@@ -1,4 +1,4 @@
-# Lesson 29: Dungeon v9 -- Procedural Generation
+# Procedural Generation
 
 !!! success "🎯 Mission"
     Make every playthrough different by generating dungeons randomly with code instead of designing them by hand.

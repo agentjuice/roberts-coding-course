@@ -1,4 +1,4 @@
-# Lesson 10: Lists -- The Basics
+# Lists: Basics
 
 !!! success "🎯 Mission"
     Learn how to store a collection of items in a list — creating, reading, changing, and measuring.

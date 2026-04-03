@@ -1,4 +1,4 @@
-# Lesson 7: Comparisons
+# Comparisons
 
 !!! success "🎯 Mission"
     Learn all the comparison operators and how to combine them with `and`, `or`, and `not`.

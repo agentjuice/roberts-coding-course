@@ -1,4 +1,4 @@
-# Lesson 19: Snake v1 -- Pygame, Inline
+# Snake Game
 
 !!! success "🎯 Mission"
     Build a fully playable Snake game with Pygame -- movement, apples, growing, collision, score, and game over.

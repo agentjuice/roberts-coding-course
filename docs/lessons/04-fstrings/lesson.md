@@ -1,4 +1,4 @@
-# Lesson 4: f-Strings
+# f-strings
 
 !!! success "🎯 Mission"
     Learn how to mix variables into text with f-strings so your output looks clean.

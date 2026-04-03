@@ -1,4 +1,4 @@
-# Lesson 3: Types
+# Types
 
 !!! success "🎯 Mission"
     Understand the four basic types of data in Python: strings, integers, floats, and booleans.

@@ -1,4 +1,4 @@
-# Lesson 2: Variables
+# Variables
 
 !!! success "🎯 Mission"
     Learn how to store information in variables so Python can remember things.
