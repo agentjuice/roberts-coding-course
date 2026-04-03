@@ -1,4 +1,4 @@
-# Lesson 33: Isometric Dungeon
+# Isometric Dungeon
 
 !!! success "🎯 Mission"
     Take your dungeon's tile map and render it in isometric view -- floors become diamonds, walls become tall blocks, and your player walks through it all like Minecraft Dungeons.
@@ -38,7 +38,7 @@ The player still moves on the grid (up/down/left/right), but everything is *draw
 
 ## Step by Step
 
-Here's what `isometric_dungeon.py` builds:
+Here's what [`isometric_dungeon.py`](isometric_dungeon.py) builds:
 
 1. **Procedural map** -- reuses `generate_map()` from earlier lessons
 2. **Isometric rendering** -- floors as diamonds, walls as tall blocks with side faces
@@ -76,4 +76,4 @@ Add **floor patterns**. Instead of plain gray floors, alternate between two shad
 
 ## What's Next
 
-👉 [Lesson 34: Depth Sorting](../34-depth-sorting/lesson.md) -- fixing the draw order so walls and characters overlap correctly!
+👉 [Depth Sorting](../34-depth-sorting/lesson.md) -- fixing the draw order so walls and characters overlap correctly!

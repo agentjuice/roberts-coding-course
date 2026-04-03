@@ -1,4 +1,4 @@
-# Lesson 32: Isometric Basics
+# Isometric Basics
 
 !!! success "🎯 Mission"
     Learn what isometric perspective is and build a scrollable diamond-shaped grid -- the foundation for making your dungeon look like Minecraft Dungeons.
@@ -33,7 +33,7 @@ The `tile_width` is usually twice the `tile_height`. A common size is 64 wide by
 
 ## Step by Step
 
-Here's what `isometric_grid.py` builds:
+Here's what [`isometric_grid.py`](isometric_grid.py) builds:
 
 1. **Grid setup** -- a 2D list where some tiles are colored differently
 2. **Iso conversion function** -- the math that turns grid positions into screen positions
@@ -69,4 +69,4 @@ Add **elevation**. Give some tiles a `height` value of 1 or 2. Draw those tiles 
 
 ## What's Next
 
-👉 [Lesson 33: Isometric Dungeon](../33-isometric-dungeon/lesson.md) -- time to render your actual dungeon map in isometric view!
+👉 [Isometric Dungeon](../33-isometric-dungeon/lesson.md) -- time to render your actual dungeon map in isometric view!

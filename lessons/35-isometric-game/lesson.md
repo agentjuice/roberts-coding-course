@@ -1,4 +1,4 @@
-# Lesson 35: Isometric Game
+# The Full Game
 
 !!! success "🎯 Mission"
     Build the grand finale -- a complete isometric dungeon crawler with enemies, combat, loot, health bars, and a HUD. Your Minecraft Dungeons-style game is done!
@@ -47,7 +47,7 @@ This is exactly what Minecraft Dungeons does. The world is isometric, but your h
 
 ## Step by Step
 
-Here's what `isometric_game.py` builds:
+Here's what [`isometric_game.py`](isometric_game.py) builds:
 
 1. **Procedural isometric dungeon** -- generated map rendered in full isometric
 2. **Player with attack** -- move with arrows, attack with Space
@@ -74,7 +74,7 @@ That's not a tutorial project. That's a real game. The same concepts you used he
 
 ## Taking It Further
 
-Want to see how far you can push this? Check out the advanced version in [`isometric_showcase.py`](../36-the-showcase/isometric_showcase.py) — it adds:
+Want to see how far you can push this? Check out the advanced version in [`isometric_showcase.py`](isometric_showcase.py) — it adds:
 
 - **Custom pixel art sprites** for the hero, enemies, and dungeon props
 - **Smooth walking and attack animations**

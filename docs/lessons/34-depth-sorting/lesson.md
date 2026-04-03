@@ -1,4 +1,4 @@
-# Lesson 34: Depth Sorting
+# Depth Sorting
 
 !!! success "🎯 Mission"
     Fix the drawing order so walls, floors, and characters overlap correctly -- using the Painter's Algorithm to draw back-to-front, just like real isometric games do.
@@ -41,7 +41,7 @@ We also draw the left and right side faces of each wall block to give them a sol
 
 ## Step by Step
 
-Here's what `isometric_depth.py` builds:
+Here's what [`isometric_depth.py`](isometric_depth.py) builds:
 
 1. **Depth-sorted rendering** -- all tiles and entities sorted by `grid_x + grid_y`
 2. **Player and enemies in the sort** -- characters are inserted into the draw order at the right depth
@@ -77,4 +77,4 @@ Add **pillars** -- single-tile walls in the middle of rooms. They should be thin
 
 ## What's Next
 
-👉 [Lesson 35: Isometric Game](../35-isometric-game/lesson.md) -- the grand finale! Enemies, combat, loot, and a full HUD, all in beautiful isometric view.
+👉 [The Full Game](../35-isometric-game/lesson.md) -- the grand finale! Enemies, combat, loot, and a full HUD, all in beautiful isometric view.
