@@ -5,7 +5,7 @@
 
 
 !!! example "🎮 Play It! — Connect 4 Demo"
-    This is an approximate demo of the game we'll be building. **Click a column or press 1-6** to drop a chip!
+    By the end of this section, you'll be building a playable game just like this one. **Click a column or press 1-6** to drop a chip!
 
 <iframe src="/games/connect4.html" width="100%" height="480" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe>
 

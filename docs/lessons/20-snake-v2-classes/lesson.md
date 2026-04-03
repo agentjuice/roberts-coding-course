@@ -4,7 +4,6 @@
     Rebuild Snake using **classes** to organize the code like a real game developer would.
 
 
-![Same Snake game, rebuilt with classes](/images/snake_classes.png)
 
 
 ## Why Classes?
