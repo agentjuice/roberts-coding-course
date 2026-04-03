@@ -6,24 +6,24 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0000ff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: monospace; }
   canvas { cursor: pointer; }
-  #status { color: #00ff00; font-size: 16px; margin-top: 8px; font-weight: 700; font-family: monospace; }
+  #status { color: #00ff00; font-size: 14px; margin-top: 8px; font-weight: 700; font-family: monospace; }
   #restart { display: none; margin-top: 8px; padding: 6px 20px; background: #00ff00; color: #000; border: none; font-size: 14px; font-weight: 700; cursor: pointer; font-family: monospace; }
   #restart:hover { background: #00cc00; }
 </style>
 </head>
 <body>
-<canvas id="game"></canvas>
-<div id="status">Player 1's turn</div>
+<canvas id="game" tabindex="0"></canvas>
+<div id="status">Player 1's turn — press 1-6 or click</div>
 <button id="restart" onclick="init()">Play Again</button>
 <script>
-const ROWS = 6, COLS = 6, SIZE = 50, PAD = 10;
+const ROWS = 6, COLS = 6, CELL = 30, RADIUS = 10, OFFSET_X = 50, OFFSET_Y = 50;
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const status = document.getElementById('status');
 const restartBtn = document.getElementById('restart');
 
-canvas.width = COLS * SIZE + PAD * 2;
-canvas.height = ROWS * SIZE + PAD * 2 + 30;
+canvas.width = COLS * CELL + OFFSET_X + 20;
+canvas.height = ROWS * CELL + OFFSET_Y + 40;
 
 let board, player, winner, animating, animCol, animRow, animY;
 
@@ -33,73 +33,75 @@ function init() {
   winner = 0;
   animating = false;
   restartBtn.style.display = 'none';
-  status.textContent = "Player 1's turn";
-  status.style.color = '#ff4444';
+  status.textContent = "Player 1's turn — press 1-6 or click";
+  status.style.color = '#00ff00';
   draw();
+  canvas.focus();
 }
 
-function getCol(x) {
-  return Math.floor((x - PAD) / SIZE);
-}
-
-canvas.addEventListener('click', (e) => {
+function dropChip(col) {
   if (winner || animating) return;
-  const rect = canvas.getBoundingClientRect();
-  const col = getCol(e.clientX - rect.left);
   if (col < 0 || col >= COLS) return;
-  
-  // Find empty row
+
   let row = -1;
   for (let r = ROWS - 1; r >= 0; r--) {
     if (board[r][col] === 0) { row = r; break; }
   }
   if (row === -1) return;
-  
-  // Animate drop
+
   animating = true;
   animCol = col;
   animRow = row;
-  animY = 30;
+  animY = OFFSET_Y - CELL;
   animateDrop();
+}
+
+// Keyboard input (1-6)
+canvas.addEventListener('keydown', (e) => {
+  const num = parseInt(e.key);
+  if (num >= 1 && num <= 6) {
+    dropChip(num - 1);
+    e.preventDefault();
+  }
 });
 
-canvas.addEventListener('mousemove', (e) => {
-  if (winner || animating) return;
+// Mouse click
+canvas.addEventListener('click', (e) => {
   const rect = canvas.getBoundingClientRect();
-  const col = getCol(e.clientX - rect.left);
-  draw(col);
+  const x = e.clientX - rect.left;
+  const col = Math.round((x - OFFSET_X) / CELL);
+  if (col >= 0 && col < COLS) dropChip(col);
 });
 
 function animateDrop() {
-  const targetY = animRow * SIZE + SIZE/2 + 30;
-  animY += 12;
+  const targetY = animRow * CELL + OFFSET_Y;
+  animY += 8;
   if (animY >= targetY) {
     animY = targetY;
     board[animRow][animCol] = player;
     animating = false;
-    
+
     if (checkWin(animRow, animCol)) {
       winner = player;
-      status.textContent = `Player ${player} wins! 🎉`;
-      status.style.color = '#39ff14';
+      status.textContent = 'WINNER - PLAYER: ' + player;
+      status.style.color = '#00ff00';
       restartBtn.style.display = 'inline-block';
     } else if (board[0].every((_, c) => board[0][c] !== 0)) {
       winner = -1;
-      status.textContent = "It's a draw!";
-      status.style.color = '#ffcc00';
+      status.textContent = 'DRAW';
+      status.style.color = '#00ff00';
       restartBtn.style.display = 'inline-block';
     } else {
       player = player === 1 ? 2 : 1;
-      status.textContent = `Player ${player}'s turn`;
-      status.style.color = player === 1 ? '#ff4444' : '#ffcc00';
+      status.textContent = "Player " + player + "'s turn — press 1-6 or click";
+      status.style.color = '#00ff00';
     }
     draw();
     return;
   }
   draw();
-  // Draw falling chip
   ctx.beginPath();
-  ctx.arc(animCol * SIZE + SIZE/2 + PAD, animY, SIZE/2 - 4, 0, Math.PI * 2);
+  ctx.arc(animCol * CELL + OFFSET_X, animY, RADIUS, 0, Math.PI * 2);
   ctx.fillStyle = player === 1 ? '#ff0000' : '#ffff00';
   ctx.fill();
   requestAnimationFrame(animateDrop);
@@ -124,28 +126,33 @@ function checkWin(r, c) {
   return false;
 }
 
-function draw(hoverCol) {
-  // Blue background (matches Python version)
+function draw() {
   ctx.fillStyle = '#0000ff';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-  // Column numbers in green
+
+  // Column numbers
   ctx.fillStyle = '#00ff00';
   ctx.font = 'bold 14px monospace';
   ctx.textAlign = 'center';
   for (let c = 0; c < COLS; c++) {
-    ctx.fillText(c + 1, c * SIZE + SIZE/2 + PAD, 18);
+    ctx.fillText(c + 1, c * CELL + OFFSET_X, OFFSET_Y - CELL + 5);
   }
-  
-  // Cells
+
+  // Separator line
+  ctx.fillStyle = '#00ff00';
+  ctx.font = 'bold 12px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('---------------------', OFFSET_X - RADIUS - 5, OFFSET_Y - CELL + 18);
+
+  // Circles
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
-      const x = c * SIZE + SIZE/2 + PAD;
-      const y = r * SIZE + SIZE/2 + 30;
-      
+      const x = c * CELL + OFFSET_X;
+      const y = r * CELL + OFFSET_Y;
+
       ctx.beginPath();
-      ctx.arc(x, y, SIZE/2 - 4, 0, Math.PI * 2);
-      
+      ctx.arc(x, y, RADIUS, 0, Math.PI * 2);
+
       if (board[r][c] === 0) {
         ctx.fillStyle = '#000000';
       } else if (board[r][c] === 1) {
@@ -156,18 +163,18 @@ function draw(hoverCol) {
       ctx.fill();
     }
   }
-  
-  // Winner/draw text in green at bottom
+
+  // Winner/draw
   if (winner > 0) {
     ctx.fillStyle = '#00ff00';
-    ctx.font = 'bold 16px monospace';
+    ctx.font = 'bold 14px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('WINNER - PLAYER: ' + winner, PAD, ROWS * SIZE + 55);
+    ctx.fillText('WINNER - PLAYER: ' + winner, 10, ROWS * CELL + OFFSET_Y + 25);
   } else if (winner < 0) {
     ctx.fillStyle = '#00ff00';
-    ctx.font = 'bold 16px monospace';
+    ctx.font = 'bold 14px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText('DRAW', PAD, ROWS * SIZE + 55);
+    ctx.fillText('DRAW', 10, ROWS * CELL + OFFSET_Y + 25);
   }
 }
 
