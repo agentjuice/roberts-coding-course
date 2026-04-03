@@ -109,10 +109,11 @@ h3 {
   font-size: 0.85rem !important;
   font-weight: 700 !important;
   border-radius: 6px;
-  margin: 2px 0;
+  margin: 4px 0;
   transition: all 0.2s;
-  width: 90% !important;
+  width: 95% !important;
   display: block;
+  padding: 6px 12px !important;
 }
 .md-nav__item--section > .md-nav__link {
   font-size: 1.05rem !important;
@@ -135,7 +136,7 @@ h3 {
   color: #fff !important;
   box-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
   transform: scale(1.02);
-  margin-left: 8px;
+  margin-left: 0 !important;
 }
 .md-nav__item:not(.md-nav__item--section):hover > .md-nav__link:not(.md-nav__link--active) {
   background: rgba(0, 255, 204, 0.2);
