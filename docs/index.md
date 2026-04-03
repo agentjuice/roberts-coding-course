@@ -79,9 +79,7 @@ If you get an error, ask your dad to help troubleshoot -- sometimes Macs need an
 
 ### Step 3: Install VS Code
 
-![VS Code when you first open it](images/setup_vscode_app.png)
-
-*This is what VS Code looks like when you first open it.*
+![VS Code download page](images/setup_vscode_download.png)
 
 You could write Python code in any text editor — even Notepad. But **VS Code** (Visual Studio Code) is what most real programmers use. It's free, made by Microsoft, and it gives you superpowers:
 
@@ -105,6 +103,10 @@ Now let's add one helpful thing to VS Code:
 3. The first result should be "Python" by Microsoft. Click the blue **Install** button.
 
 That's it! VS Code is ready.
+
+![VS Code when you first open it](images/setup_vscode_app.png)
+
+*This is what VS Code looks like once it's installed and open.*
 
 ### Step 4: Install Pygame and NumPy
 
