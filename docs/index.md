@@ -36,7 +36,12 @@ Before you can write code, we need to install a couple of things. This only take
 
 ![Python download page](images/setup_python_download.png)
 
-Python is the programming language you're going to learn. Think of it like the language your computer speaks -- you'll write instructions in Python, and your computer will follow them.
+Python is the programming language you're going to learn. There are lots of programming languages out there — JavaScript, C++, Java, Rust — but Python is the best one to start with. Why?
+
+- **It reads like English.** `if health < 0: game_over()` — you can almost guess what that does without knowing any code.
+- **It runs your instructions top to bottom.** No weird magic happening behind the scenes. You see exactly what your program does.
+- **It's used everywhere.** Instagram, YouTube, and Spotify all use Python. So do scientists, game developers, and AI researchers.
+- **It has Pygame** — a library that makes it easy to build real games with graphics, which is exactly what we're going to do.
 
 Here's how to install it:
 
@@ -54,7 +59,9 @@ Nice! Python is installed.
 
 ![Terminal showing Python version](images/setup_terminal_python.png)
 
-Let's check that it actually installed. We're going to open something called the **Terminal**. Think of Terminal like a text message conversation with your computer -- you type a command, hit Enter, and your computer responds.
+Let's check that it actually installed. We're going to open something called the **Terminal**. 
+
+The Terminal is how programmers talk directly to the computer. Instead of clicking buttons and icons, you type commands. It might look scary at first — just a black screen with a blinking cursor — but it's actually super powerful. Think of it like a text message conversation with your computer: you type a command, hit Enter, and your computer responds.
 
 1. Press **Cmd + Space** on your keyboard (that opens Spotlight search)
 2. Type **Terminal**
@@ -76,7 +83,12 @@ If you get an error, ask your dad to help troubleshoot -- sometimes Macs need an
 
 *This is what VS Code looks like when you first open it.*
 
-VS Code is where you'll actually write your code. Think of it like Google Docs, but for code instead of essays.
+You could write Python code in any text editor — even Notepad. But **VS Code** (Visual Studio Code) is what most real programmers use. It's free, made by Microsoft, and it gives you superpowers:
+
+- **Syntax highlighting** — your code gets colored so it's easier to read. Keywords in one color, text in another, numbers in another.
+- **Error detection** — it underlines mistakes before you even run your code, like spell-check for programming.
+- **Built-in Terminal** — you can write code AND run it in the same window, side by side.
+- **Extensions** — you can add extra features, like Python support.
 
 1. Go to [code.visualstudio.com](https://code.visualstudio.com)
 2. Click the big blue **"Download for Mac"** button
@@ -94,11 +106,16 @@ Now let's add one helpful thing to VS Code:
 
 That's it! VS Code is ready.
 
-### Step 4: Install Some Extra Tools
+### Step 4: Install Pygame and NumPy
 
 ![Installing pygame and numpy](images/setup_pip_install.png)
 
-Later in the course, you'll need a couple of extra tools for making games with graphics. Let's install them now so you don't have to worry about it later.
+Python by itself can do math, print text, and work with files — but it doesn't know how to open a game window or draw graphics. That's where **libraries** come in. A library is code that someone else wrote that you can use in your own programs. Instead of building everything from scratch, you stand on their shoulders.
+
+We need two libraries:
+
+- **Pygame** — this is what turns Python into a game engine. It can open windows, draw shapes, play sounds, and handle keyboard and mouse input. Every game we build in this course (Connect 4, Snake, the dungeon crawler) uses Pygame.
+- **NumPy** — this is a math library that makes it easy to work with grids of numbers. We'll use it for the Connect 4 board.
 
 Open Terminal again (Cmd + Space, type Terminal, hit Enter) and type this command, then hit Enter:
 
@@ -106,7 +123,7 @@ Open Terminal again (Cmd + Space, type Terminal, hit Enter) and type this comman
 pip3 install pygame numpy
 ```
 
-You'll see a bunch of text scroll by -- that's normal. It's downloading and installing the tools. Think of `pip3` like an app store for Python -- it lets you install extra tools that other people have made.
+You'll see a bunch of text scroll by — that's normal. It's downloading and installing them. Think of `pip3` like an app store for Python — it lets you install extra tools that other people have made.
 
 If you see any red error text, ask your dad to help with this.
 
@@ -114,13 +131,13 @@ If you see any red error text, ask your dad to help with this.
 
 ![Your coding-course folder on the Desktop](images/setup_folder.png)
 
-You need a place to save all your code. Let's make a folder on your Desktop. In Terminal, type this and hit Enter:
+Programmers keep their projects organized in folders — one folder per project. Your Desktop is a good place to put it because it's easy to find. In Terminal, type this and hit Enter:
 
 ```bash
 mkdir ~/Desktop/coding-course
 ```
 
-That just created a folder called `coding-course` on your Desktop. You should be able to see it there! Every file you make during this course will go in that folder.
+That just created a folder called `coding-course` on your Desktop. You should be able to see it there! Every file you make during this course will go in that folder. By the end, it'll be full of games you built.
 
 ---
 
