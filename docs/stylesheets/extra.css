@@ -1,151 +1,160 @@
-/* Robert's Coding Course — Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&display=swap');
 
-/* Fun gradient header */
-.md-header {
-  background: linear-gradient(135deg, #6B21A8, #7C3AED, #2563EB) !important;
-}
-
-/* Colorful hero section on homepage */
-.md-content h1 {
-  background: linear-gradient(135deg, #7C3AED, #EC4899, #F59E0B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-size: 2.2em !important;
-  font-weight: 800 !important;
+:root {
+  --md-primary-fg-color: #ff00ff;
+  --md-accent-fg-color: #00ffcc;
+  --md-typeset-color: #e0e0e0;
 }
 
-/* Make h2 headers pop */
-.md-content h2 {
-  color: #A78BFA !important;
-  border-bottom: 2px solid #7C3AED33;
-  padding-bottom: 0.3em;
+body, .md-content {
+  font-family: 'Nunito', sans-serif !important;
+  background-color: #0b0b13 !important;
 }
 
-/* Lesson titles */
-.md-content h3 {
-  color: #F59E0B !important;
+/* Epic Headings */
+h1, h2, h3, .md-nav__title, .md-header__title {
+  font-family: 'Bangers', cursive !important;
+  letter-spacing: 2px;
 }
 
-/* Code blocks with a fun border */
-.md-content pre {
-  border-left: 4px solid #7C3AED !important;
-  border-radius: 8px !important;
+h1 {
+  font-size: 3.5rem !important;
+  color: #00ffcc !important;
+  text-shadow: 4px 4px 0px #ff00ff, -1px -1px 0px #000;
+  text-transform: uppercase;
 }
 
-/* Fun colored admonitions */
-
-/* Tip boxes — green */
-.md-typeset .admonition.tip,
-.md-typeset details.tip {
-  border-color: #10B981 !important;
-}
-.md-typeset .admonition.tip > .admonition-title,
-.md-typeset details.tip > summary {
-  background-color: #10B98120 !important;
+h2 {
+  font-size: 2.5rem !important;
+  color: #ffcc00 !important;
+  border-bottom: 4px dashed #ff00ff !important;
+  padding-bottom: 10px;
+  margin-top: 1.5em !important;
 }
 
-/* Warning boxes — amber */
-.md-typeset .admonition.warning,
-.md-typeset details.warning {
-  border-color: #F59E0B !important;
+h3 {
+  font-size: 2rem !important;
+  color: #ff00ff !important;
+  text-shadow: 2px 2px 0px #000;
 }
 
-/* Info boxes — blue */
-.md-typeset .admonition.info,
-.md-typeset details.info {
-  border-color: #3B82F6 !important;
-}
-
-/* Custom "challenge" style using abstract */
-.md-typeset .admonition.abstract,
-.md-typeset details.abstract {
-  border-color: #EC4899 !important;
-}
-.md-typeset .admonition.abstract > .admonition-title,
-.md-typeset details.abstract > summary {
-  background-color: #EC489920 !important;
-}
-
-/* Custom "experiment" style using example */
-.md-typeset .admonition.example,
-.md-typeset details.example {
-  border-color: #8B5CF6 !important;
-}
-.md-typeset .admonition.example > .admonition-title,
-.md-typeset details.example > summary {
-  background-color: #8B5CF620 !important;
-}
-
-/* Navigation sidebar — colorful active states */
-.md-nav__link--active {
-  color: #7C3AED !important;
-  font-weight: 600 !important;
-}
-
-/* Fun hover effect on nav items */
-.md-nav__item .md-nav__link:hover {
-  color: #EC4899 !important;
-}
-
-/* Progress-like styling for lesson numbering */
-.md-nav__item--nested > .md-nav__link {
-  font-weight: 700 !important;
-  color: #F59E0B !important;
-}
-
-/* Images — rounded with shadow */
-.md-content img {
+/* Code blocks - Hacker style */
+.md-typeset pre {
+  background: #151522 !important;
+  border: 2px solid #00ffcc !important;
   border-radius: 12px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-  margin: 1em 0 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2) !important;
 }
 
-/* Inline code — colorful */
-.md-typeset code:not(pre code) {
-  color: #F59E0B !important;
-  background-color: #F59E0B15 !important;
-  border-radius: 4px;
-  padding: 0.1em 0.3em;
+.md-typeset code {
+  font-weight: 800;
+  color: #00ffcc !important;
+  background: rgba(0, 255, 204, 0.1) !important;
+}
+.md-typeset pre code {
+  background: transparent !important;
+  font-weight: 500;
 }
 
-/* Tables — cleaner look */
-.md-typeset table {
+/* Buttons / Links */
+.md-typeset a {
+  color: #00ffcc !important;
+  font-weight: 900 !important;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none !important;
+}
+.md-typeset a:hover {
+  color: #ffcc00 !important;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
+}
+
+/* Admonitions (Info boxes) turned into Game Alerts */
+.md-typeset .admonition {
+  border-radius: 16px !important;
+  border: 4px solid !important;
+  box-shadow: 6px 6px 0px rgba(255,255,255,0.1) !important;
+  transform: rotate(-1deg);
+  transition: transform 0.2s;
+  background: #11111a !important;
+  margin: 1.5em 0 !important;
+}
+.md-typeset .admonition:hover {
+  transform: rotate(1deg) scale(1.02);
+}
+.md-typeset .admonition-title {
+  font-family: 'Bangers', cursive !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 1px;
+  border-bottom: none !important;
+}
+
+/* Specific Admonition Colors */
+.md-typeset .admonition.tip { border-color: #00ffcc !important; }
+.md-typeset .admonition.tip > .admonition-title { background: rgba(0,255,204,0.2) !important; color: #00ffcc !important; }
+
+.md-typeset .admonition.warning { border-color: #ffcc00 !important; }
+.md-typeset .admonition.warning > .admonition-title { background: rgba(255,204,0,0.2) !important; color: #ffcc00 !important; }
+
+.md-typeset .admonition.abstract { border-color: #ff00ff !important; }
+.md-typeset .admonition.abstract > .admonition-title { background: rgba(255,0,255,0.2) !important; color: #ff00ff !important; }
+
+.md-typeset .admonition.example { border-color: #ff4444 !important; }
+.md-typeset .admonition.example > .admonition-title { background: rgba(255,68,68,0.2) !important; color: #ff4444 !important; }
+
+/* Nav Sidebar */
+.md-nav__link {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
   border-radius: 8px;
-  overflow: hidden;
+  margin: 4px 0;
+  transition: all 0.2s;
 }
-.md-typeset table th {
-  background-color: #7C3AED !important;
-  color: white !important;
+.md-nav__link--active {
+  background: #ff00ff !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px #ff00ff;
+  transform: scale(1.05);
+  margin-left: 10px;
 }
-
-/* Footer link colors */
-.md-footer__link {
-  color: #A78BFA !important;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar-thumb {
-  background: #7C3AED !important;
-  border-radius: 4px;
+.md-nav__item:hover > .md-nav__link:not(.md-nav__link--active) {
+  background: rgba(0, 255, 204, 0.2);
+  color: #00ffcc !important;
+  transform: translateX(8px);
 }
 
-/* Fun selection color */
-::selection {
-  background: #7C3AED40 !important;
+/* Header Bar */
+.md-header {
+  background: #0b0b13 !important;
+  border-bottom: 4px solid #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5) !important;
+}
+.md-header__title {
+  color: #00ffcc !important;
+  font-size: 1.8rem !important;
+  text-shadow: 2px 2px 0px #ff00ff;
 }
 
-/* Hide the right-side table of contents entirely */
+/* Images */
+.md-content img {
+  border: 5px solid #ffcc00;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0px #ff00ff;
+  transition: transform 0.3s;
+}
+.md-content img:hover {
+  transform: scale(1.03);
+}
+
+/* Hide Right TOC */
 .md-sidebar--secondary {
   display: none !important;
 }
-
-/* Also hide TOC on all pages */
-.md-nav--secondary {
-  display: none !important;
-}
-
-/* Expand content to full width without TOC */
 .md-content {
   max-width: 100% !important;
+}
+
+/* Selection */
+::selection {
+  background: #00ffcc !important;
+  color: #000 !important;
 }
