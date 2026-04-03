@@ -6,7 +6,7 @@
 !!! example "🎮 Play It! — Isometric Dungeon Crawler"
     By the end of this section, you'll have built a game just like this one. **Arrow keys to move, Space to attack!**
 
-<iframe src="/games/isometric.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe>
+<iframe src="/games/isometric_showcase.html" width="100%" height="470" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe>
 
 ## Everything Comes Together
 
@@ -74,18 +74,19 @@ That's not a tutorial project. That's a real game. The same concepts you used he
 
 ## Taking It Further
 
-Want to see a bigger version? Check out [`isometric_showcase.py`](isometric_showcase.py) — it takes the same game and scales it up to a **massive 45×35 tile map** with multiple rooms, corridors, chests, and stairs to a second level.
+Scroll back up and play that demo again. Notice all the features packed in there:
 
-And here's the thing: you now have the skills to keep going. Here are some ideas for what YOU could add next:
+- **Smooth movement** — characters glide between tiles instead of snapping
+- **4 enemy types** — zombies wander, skeletons chase, goblins throw projectiles from a distance, bats fly diagonally
+- **Particle effects** — bursts of color on every attack, hit, and death
+- **Screen shake** — the whole world rumbles when you take damage
+- **Sound effects** — sword swings, hits, enemy deaths, and item pickups (generated with Web Audio)
+- **Attack animation** — a sword swing arc in the direction you're facing
+- **Props** — barrels, torches, and crates decorating the rooms
+- **Minimap** — see the whole dungeon and enemy positions
+- **A massive 30×25 map** with 8 connected rooms and corridors
 
-- **Custom pixel art sprites** — replace the colored squares with real character art using `pygame.image.load()`
-- **Smooth walking animations** — interpolate between grid positions instead of snapping
-- **New enemy types** — a bat that moves diagonally, a goblin that throws projectiles
-- **Particle effects** — spawn small colored dots on attacks and deaths that fade out over a few frames
-- **Screen shake** — offset the camera by a random amount for a few frames when you take damage
-- **Sound effects** — use `pygame.mixer.Sound()` to play audio on attacks, deaths, and pickups
-
-Every one of these features uses concepts you already know. Sprites are just images drawn at isometric positions. Particles are lists of objects with positions and velocities. Screen shake is adding a random offset to the camera. You've got this.
+Every one of these features uses concepts you learned in this course. Particles are just lists of objects with positions and velocities. Screen shake is a random camera offset for a few frames. Enemy AI is if/else logic. You built all of this.
 
 !!! info "🎮 Fun Fact"
     Minecraft Dungeons was built by a team of ~60 professional developers over several years. You built your own version from scratch. That's incredible.
