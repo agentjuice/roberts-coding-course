@@ -6,9 +6,13 @@
   --md-typeset-color: #e0e0e0;
 }
 
-body, .md-content, .md-typeset {
+body {
   font-family: 'Nunito', sans-serif !important;
   background-color: #0b0b13 !important;
+  color: #f8f8f2 !important;
+}
+.md-content, .md-typeset {
+  font-family: 'Nunito', sans-serif !important;
   font-size: 0.80rem !important;
   line-height: 1.7 !important;
   color: #f8f8f2 !important;
