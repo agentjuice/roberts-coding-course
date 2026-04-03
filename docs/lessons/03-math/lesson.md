@@ -98,34 +98,32 @@ else:
 
 `random.random()` gives you a decimal between 0 and 1. If it's less than 0.3, that happens about 30% of the time. This is exactly how loot drop rates work in real games.
 
-## Build: Dice Roller
+## Build: Damage Calculator
 
-Create `dice.py`:
+Create `damage.py` — a quick program that simulates a game attack:
 
 ```python
 import random
 
-print("🎲 Dice Roller 🎲")
-print()
+player_attack = 15
+enemy_armor = 4
 
-while True:
-    input("Press Enter to roll... ")
-    
-    die1 = random.randint(1, 6)
-    die2 = random.randint(1, 6)
-    total = die1 + die2
-    
-    print(f"  Die 1: {die1}")
-    print(f"  Die 2: {die2}")
-    print(f"  Total: {total}")
-    
-    if total == 12:
-        print("  🎉 DOUBLE SIXES!")
-    elif total == 2:
-        print("  💀 Snake eyes!")
-    
-    print()
+# Damage is attack minus armor, plus a random bonus
+bonus = random.randint(0, 5)
+damage = player_attack - enemy_armor + bonus
+
+print(f"Attack power: {player_attack}")
+print(f"Enemy armor: {enemy_armor}")
+print(f"Random bonus: {bonus}")
+print(f"Total damage: {damage}")
+
+# Critical hit? 20% chance
+if random.random() < 0.2:
+    damage = damage * 2
+    print(f"CRITICAL HIT! Double damage: {damage}")
 ```
+
+Run it a few times — you'll get different results each time because of the random bonus and crit chance. This is exactly how damage works in games like Zelda and Minecraft Dungeons.
 
 ## What's Next?
 

@@ -80,6 +80,37 @@ print("BLASTOFF! 🚀")
 
 The `time.sleep(1)` pauses for 1 second between each number. Run it and watch it count down in real time!
 
+## Build: Dice Roller
+
+Now that you know `while True`, let's combine it with the `random` module from the Math lesson. Create `dice.py`:
+
+```python
+import random
+
+print("🎲 Dice Roller 🎲")
+print()
+
+while True:
+    input("Press Enter to roll (or Ctrl+C to quit)... ")
+    
+    die1 = random.randint(1, 6)
+    die2 = random.randint(1, 6)
+    total = die1 + die2
+    
+    print(f"  Die 1: {die1}")
+    print(f"  Die 2: {die2}")
+    print(f"  Total: {total}")
+    
+    if total == 12:
+        print("  🎉 DOUBLE SIXES!")
+    elif total == 2:
+        print("  💀 Snake eyes!")
+    
+    print()
+```
+
+This uses everything: `while True` keeps it running, `random.randint` rolls the dice, `if/elif` checks for special rolls, and f-strings display the results. Run it and keep rolling!
+
 ## What's Next?
 
 👉 [Next: For Loops](../10-for-loops/lesson.md)
