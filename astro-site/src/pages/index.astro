@@ -52,7 +52,7 @@ const sections = [
 ];
 ---
 
-<html lang="en" class="bg-[#0b0b13] scroll-smooth">
+<html lang="en" class="bg-[#0b0b13] scroll-smooth" id="top">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -60,6 +60,7 @@ const sections = [
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body class="font-['Nunito'] text-gray-100 bg-[#0b0b13]">
+<script>if (!window.location.hash) window.scrollTo(0, 0);</script>
 
   <!-- Fixed Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0b13] border-b-4 border-[#ff00ff]" style="box-shadow: 0 0 20px rgba(255,0,255,0.5);">
@@ -2370,7 +2371,7 @@ chip_falling = False</code></pre>
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Click a column or press 1-6</strong> to drop a chip!</p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/connect4.html" width="100%" height="480" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/connect4.html" width="100%" height="480" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">Here We Go Again</h2>
 
@@ -2617,7 +2618,7 @@ font = pygame.font.Font(None, 25)</code></pre>
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Use arrow keys to move</strong> (or swipe on mobile). Press <strong class="text-white">Space</strong> to restart!</p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/snake.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/snake.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0000ff;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">Tuples: Coordinates in a Pair</h2>
 
@@ -3151,7 +3152,7 @@ python3 snake.py</code></pre>
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Arrow keys to move!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/dungeon_v1.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/dungeon_v1.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">How Tile Maps Work</h2>
 
@@ -3382,7 +3383,7 @@ FPS = 60</code></pre>
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Arrow keys to move!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/dungeon_v2.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/dungeon_v2.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">Two Kinds of Enemy Brains</h2>
 
@@ -3575,7 +3576,7 @@ pygame.draw.rect(self.screen, (220, 0, 0), (10, 10, bar_width * health_ratio, ba
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Arrow keys to move, Space to attack!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/dungeon_v3.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/dungeon_v3.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">Facing Direction</h2>
 
@@ -3799,7 +3800,7 @@ pygame.draw.rect(screen, (0, 80, 160), (10, 35, int(100 * cooldown_ratio), 8))</
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Arrow keys to move, Space to attack!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/dungeon_v4.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/dungeon_v4.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">How Loot Works in Games</h2>
 
@@ -3970,7 +3971,7 @@ pygame.draw.rect(screen, (0, 80, 160), (10, 35, int(100 * cooldown_ratio), 8))</
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Arrow keys to move, Space to attack!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/dungeon_v5.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/dungeon_v5.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">Why Multiple Rooms?</h2>
 
@@ -4139,7 +4140,7 @@ pygame.draw.rect(screen, (0, 80, 160), (10, 35, int(100 * cooldown_ratio), 8))</
           <p class="text-gray-200">By the end of this section, you&#x27;ll be building a playable game just like this one. <strong class="text-white">Arrow keys to move, Space to attack!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/dungeon_v6.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/dungeon_v6.html" width="100%" height="450" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">What Is a State Machine?</h2>
 
@@ -5582,7 +5583,7 @@ cam_y = player_iso_y - SCREEN_HEIGHT // 2</code></pre>
           <p class="text-gray-200">By the end of this section, you&#x27;ll have built a game just like this one. <strong class="text-white">Arrow keys to move, Space to attack!</strong></p>
         </div>
 
-        <div class="mb-6"><iframe src="/games/isometric_showcase.html" width="100%" height="470" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
+        <div class="mb-6"><iframe loading="lazy" src="/games/isometric_showcase.html" width="100%" height="470" style="border: 5px solid #ffcc00; border-radius: 16px; box-shadow: 6px 6px 0px #ff00ff; background: #0b0b13;"></iframe></div>
 
         <h2 class="font-['Bangers'] text-2xl text-[#ffcc00] border-b-4 border-dashed border-[#ff00ff30] pb-2 mt-10 mb-4">Everything Comes Together</h2>
 
