@@ -8,7 +8,7 @@
 
 <iframe src="/games/connect4.html" width="100%" height="480" style="border: 3px solid #ff00ff; border-radius: 12px; background: #0000ff;"></iframe>
 
-*Click a column to drop a chip. Your Python version will look just like this!*
+*Click a column to drop a chip. Your Python version will look similar to this!*
 
 ## Here We Go Again
 
