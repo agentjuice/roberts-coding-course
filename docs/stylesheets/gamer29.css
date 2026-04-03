@@ -214,6 +214,12 @@ body {
   background: #0b0b13 !important;
   border-bottom: 4px solid #ff00ff;
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.5) !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  width: 100% !important;
 }
 .md-header__title {
   color: #00ffcc !important;
