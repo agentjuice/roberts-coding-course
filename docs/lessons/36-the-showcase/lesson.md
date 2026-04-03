@@ -25,12 +25,11 @@ Every single concept in this game — variables, loops, lists, functions, classe
 
 ## The Full Source Code
 
-The complete Python game is in `isometric_showcase.py` right next to this lesson. It's about 550 lines of code — which sounds like a lot, but remember: you understand every single concept it uses. There's nothing in there you haven't seen before. It's just all put together.
+The complete Python game is in [`isometric_showcase.py`](isometric_showcase.py). It's about 550 lines of code — which sounds like a lot, but remember: you understand every single concept it uses. There's nothing in there you haven't seen before. It's just all put together.
 
-You can run it with:
+Download it, put it in your coding folder, and run it with:
 
 ```bash
-cd lessons/36-the-showcase
 python3 isometric_showcase.py
 ```
 
