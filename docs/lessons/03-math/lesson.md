@@ -84,46 +84,32 @@ drop = random.choice(weapons)
 print(f"The enemy dropped a {drop}!")
 ```
 
-And check random chances:
+We'll learn how to use random numbers for things like loot drop chances ("30% chance to drop a health potion") once we learn about conditions in a couple of lessons. For now, just know that `random` is one of the most important tools in game development.
 
-```python
-import random
+## Build: Battle Stats
 
-# 30% chance to drop loot
-if random.random() < 0.3:
-    print("The enemy dropped a health potion!")
-else:
-    print("No loot this time.")
-```
-
-`random.random()` gives you a decimal between 0 and 1. If it's less than 0.3, that happens about 30% of the time. This is exactly how loot drop rates work in real games.
-
-## Build: Damage Calculator
-
-Create `damage.py` — a quick program that simulates a game attack:
+Create `battle.py` — a quick program that simulates a game combat round:
 
 ```python
 import random
 
 player_attack = 15
 enemy_armor = 4
-
-# Damage is attack minus armor, plus a random bonus
 bonus = random.randint(0, 5)
+
 damage = player_attack - enemy_armor + bonus
+
+enemy_health = 50
+enemy_health = enemy_health - damage
 
 print(f"Attack power: {player_attack}")
 print(f"Enemy armor: {enemy_armor}")
-print(f"Random bonus: {bonus}")
-print(f"Total damage: {damage}")
-
-# Critical hit? 20% chance
-if random.random() < 0.2:
-    damage = damage * 2
-    print(f"CRITICAL HIT! Double damage: {damage}")
+print(f"Random bonus: +{bonus}")
+print(f"Damage dealt: {damage}")
+print(f"Enemy health remaining: {enemy_health}/50")
 ```
 
-Run it a few times — you'll get different results each time because of the random bonus and crit chance. This is exactly how damage works in games like Zelda and Minecraft Dungeons.
+Run it a few times — you'll get different damage each time because of the random bonus. This is exactly how damage formulas work in games like Zelda and Minecraft Dungeons.
 
 ## What's Next?
 

@@ -2,15 +2,15 @@ import random
 
 player_attack = 15
 enemy_armor = 4
-
 bonus = random.randint(0, 5)
+
 damage = player_attack - enemy_armor + bonus
+
+enemy_health = 50
+enemy_health = enemy_health - damage
 
 print(f"Attack power: {player_attack}")
 print(f"Enemy armor: {enemy_armor}")
-print(f"Random bonus: {bonus}")
-print(f"Total damage: {damage}")
-
-if random.random() < 0.2:
-    damage = damage * 2
-    print(f"CRITICAL HIT! Double damage: {damage}")
+print(f"Random bonus: +{bonus}")
+print(f"Damage dealt: {damage}")
+print(f"Enemy health remaining: {enemy_health}/50")
