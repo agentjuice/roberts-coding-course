@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Make your programs interactive by asking the user to type stuff in.
 
+Without input, a program just does the same thing every time — boring! Input is what makes programs *interactive*. When Minecraft asks you to name an enchanted sword, or when you type your username to log in to Fortnite — that's input. Your program is about to start listening.
 
 ## Getting Text from the User
 

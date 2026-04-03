@@ -16,6 +16,8 @@ Okay, so a **state machine** is just a fancy name for when something has differe
 
 Our boss works the same way. It has phases:
 
+Think of any Zelda boss — they always follow a pattern. Ganondorf charges, then rests, then summons minions, then charges again. Figuring out the pattern is how you beat them. Our boss works the same way!
+
 1. **Chase** — slowly follows the player for 5 seconds
 2. **Charge** — picks a direction and zooms toward the player for 2 seconds (ouch!)
 3. **Rest** — stops to catch its breath for 2 seconds

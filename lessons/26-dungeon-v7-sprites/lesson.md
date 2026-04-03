@@ -8,7 +8,7 @@
 
 Up until now, our player was a blue square, enemies were red and green squares, and the walls were brown rectangles. That works for testing, but it doesn't exactly look like a real game.
 
-In game development, a **sprite** is an image that represents something in your game -- the player character, an enemy, a floor tile, anything. Usually sprites are loaded from PNG files. But here's the thing: we don't have any PNG files yet. So we're going to *create* our sprites using code, which is actually pretty cool.
+In game development, a **sprite** is an image that represents something in your game -- the player character, an enemy, a floor tile, anything. Every character in Fortnite, every block in Minecraft, every kart in Mario Kart — they're all sprites (or their 3D equivalent, models). We're making 2D sprites, which is how classic games like the original Zelda did it. Usually sprites are loaded from PNG files. But here's the thing: we don't have any PNG files yet. So we're going to *create* our sprites using code, which is actually pretty cool.
 
 The trick is **pygame.Surface**. Think of a Surface as a little canvas you can draw on. The screen itself is a Surface. But you can also create *new* Surfaces, draw on them, and then paste them onto the screen. That's exactly what a sprite is -- a mini canvas with a picture on it.
 

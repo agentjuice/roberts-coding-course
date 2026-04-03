@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn how to store information in variables so Python can remember things.
 
+Every game you've ever played uses variables. In Minecraft, your health is a variable. Your hunger bar is a variable. The number of diamonds in your inventory? Variable. When a Creeper explodes near you and your health drops from 20 to 8 — that's a variable being updated.
 
 ## What's a Variable?
 
@@ -58,6 +59,8 @@ print(score)    # 15
 ```
 
 That last line looks weird, but read it right to left: "take what's in `score`, add 5, and store the result back in `score`."
+
+This is exactly what happens in Fortnite when you pick up shield potions — the game runs something like `shield = shield + 50`.
 
 ## Build: Character Stats Card
 

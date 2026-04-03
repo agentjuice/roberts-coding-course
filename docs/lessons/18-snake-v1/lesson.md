@@ -28,7 +28,7 @@ snake = [(3, 2), (2, 2), (1, 2), (0, 2)]
 
 Each tuple is one segment's position. The first one in the list is the head. When the snake moves, we stick a new head at the front and chop off the tail at the back. When it eats an apple, we skip the chop -- so the snake grows by one!
 
-!!! info "💡 Did You Know?"
+!!! info "🎮 Fun Fact"
     The original Snake game was created in 1976 for arcade machines. It became hugely famous when Nokia put it on their phones in 1998. Over 400 million people have played Snake on a Nokia phone!
 
 ## Movement and Direction
@@ -209,7 +209,7 @@ The score is just the length of the snake list. We render text to an image, then
 
 ## The Full Code
 
-You can see the complete file in `snake.py` right next to this lesson. It puts all of the steps above together into one file.
+You can see the complete file in [`snake.py`](snake.py). It puts all of the steps above together into one file.
 
 ## Run It!
 

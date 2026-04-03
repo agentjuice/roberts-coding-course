@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn how to store a collection of items in a list — creating, reading, changing, and measuring.
 
+In Minecraft, your hotbar is a list of 9 items. Your inventory is a bigger list. The list of players on a Fortnite server? That's a list too. Whenever a game needs to keep track of *multiple things* in order, it uses a list.
 
 ## What's a List?
 
@@ -27,6 +28,9 @@ print(fruits[2])    # cherry
 ```
 
 Why start at 0? It's a computer science tradition — you'll get used to it!
+
+!!! info "🎮 Fun Fact"
+    Your Minecraft hotbar slots are actually numbered 0-8 internally, even though the game shows them as 1-9 on screen. Programmers start counting at zero everywhere!
 
 ## Negative Indexing
 

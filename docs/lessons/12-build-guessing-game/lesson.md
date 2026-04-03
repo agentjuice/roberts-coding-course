@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Combine everything you've learned — variables, input, if-else, comparisons, loops, and lists — to build a real number guessing game.
 
+This is your first real game! It's simple, but it uses the same building blocks as every game ever made: storing data (variables), getting player input, making decisions (if/else), and repeating until something happens (loops). By the end, you'll have something your friends can actually play.
 
 ## The Plan
 
@@ -51,6 +52,9 @@ Run it with `python3 guessing_game.py` and try to beat it!
 3. Each guess increases the counter
 4. If the guess matches, we print the score and `break` out of the loop
 5. Otherwise, we give a hint and loop again
+
+!!! info "🎮 Fun Fact"
+    The "hot and cold" guessing mechanic has been used in tons of real games. Zelda's Sheikah Sensor beeps faster as you get closer to a shrine — that's basically the same "too high / too low" feedback loop you just built!
 
 ## Make It Better
 

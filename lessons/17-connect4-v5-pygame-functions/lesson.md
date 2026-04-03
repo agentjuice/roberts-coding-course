@@ -220,7 +220,7 @@ That's the ENTIRE main loop. Compare this to the 50+ lines we had before. You ca
 
 ## The Full Code
 
-You can see the complete file in `connect4.py` right next to this lesson.
+You can see the complete file in [`connect4.py`](connect4.py).
 
 ## Run It!
 

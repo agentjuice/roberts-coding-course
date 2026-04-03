@@ -12,7 +12,9 @@ Up to now, our Connect 4 game runs in the terminal. It works, but it looks prett
 
 That's what **Pygame** does. It's a Python library that lets you create windows, draw shapes, play sounds, and handle keyboard/mouse input. Basically, it turns Python into a game engine.
 
-!!! info "💡 Did You Know?"
+This is similar to what Unreal Engine does for Fortnite or what Unity does for tons of indie games — they handle the graphics so the developer can focus on making the game fun.
+
+!!! info "🎮 Fun Fact"
     Pygame was created in the year 2000 and is one of the most popular game libraries for Python. Thousands of games have been made with it, including some that have been sold on Steam!
 
 ## Installing Pygame
@@ -207,7 +209,7 @@ The `(x * 30 + 50, y * 30 + 50)` figures out where each circle goes. The `10` at
 
 ## The Full Code
 
-You can see the complete file in `connect4.py` right next to this lesson. It puts all the steps above together into one runnable file.
+You can see the complete file in [`connect4.py`](connect4.py). It puts all the steps above together into one runnable file.
 
 ## Run It!
 

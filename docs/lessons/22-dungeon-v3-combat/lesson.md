@@ -9,7 +9,11 @@
 
 ## Facing Direction
 
-So up until now, the player was just a square scooting around. But if we want to swing a sword, we need to know which way the player is actually *looking*. Think of it like this: if you press the right arrow, you're now facing right. If you attack, the sword swings to the right and hits whatever is on the tile next to you.
+So up until now, the player was just a square scooting around. But if we want to swing a sword, we need to know which way the player is actually *looking*.
+
+This is exactly how combat works in Zelda — Link always swings his sword in the direction he's facing. The game tracks which way you moved last and uses that to aim your attack.
+
+Think of it like this: if you press the right arrow, you're now facing right. If you attack, the sword swings to the right and hits whatever is on the tile next to you.
 
 We keep track of facing as a simple string: `"up"`, `"down"`, `"left"`, or `"right"`. Every time you move, we update it:
 

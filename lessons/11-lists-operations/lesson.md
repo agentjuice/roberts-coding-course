@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn how to add, remove, and search for items in lists.
 
+Think about picking up items in Zelda: Tears of the Kingdom. Every time you grab a Hylian Shroom, the game *appends* it to your inventory list. When you cook something, it *removes* the ingredients. When you open the menu, the game *searches* the list to show what you have. These are all list operations.
 
 ## Adding Items with append()
 

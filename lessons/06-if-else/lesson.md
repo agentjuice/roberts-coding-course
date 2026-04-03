@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Make your program choose what to do based on a condition.
 
+In Mario Kart, the game is constantly checking: Did you hit a banana peel? Did you cross the finish line? Did you fall off the track? Every one of those checks is an `if` statement. Without `if`, games would be completely brain-dead — nothing could react to anything.
 
 ## Making Decisions
 
@@ -50,6 +51,8 @@ else:
 ```
 
 Python checks each condition from top to bottom and runs the **first** one that's true. Then it skips the rest.
+
+This is exactly how Zelda decides what happens when you throw an item: *if* it's a bomb, it explodes. *Elif* it's food, a nearby NPC might run to grab it. *Else*, it just lands on the ground.
 
 ## You Can Have Multiple Lines Inside
 

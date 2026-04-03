@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn how to make code repeat with `while` loops — including the powerful `while True` + `break` pattern.
 
+Think about Minecraft — the game is constantly checking: Is it daytime? Are there mobs nearby? Is the player moving? That's a loop running 20 times per second, checking everything over and over. Every game you've ever played is powered by a loop that never stops running until you quit.
 
 ## Why Loops?
 
@@ -26,6 +27,8 @@ Here's how it works:
 - `while True:` means "keep looping forever"
 - `break` means "stop the loop right now"
 - So it keeps asking until you type "secret", then `break` escapes the loop
+
+This is the exact same pattern every game uses for its **game loop**. The game runs `while True:` to keep going forever, and when you press Escape or choose "Quit to Menu," that's a `break`.
 
 ## while with a Condition
 

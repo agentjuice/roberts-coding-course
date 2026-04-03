@@ -50,7 +50,7 @@ Without `global score`, Python would think you're trying to create a brand new v
 
 Fair warning: using `global` a lot isn't great practice. In a later lesson, we'll learn about **classes**, which are a much cleaner way to share data. But for now, `global` gets the job done.
 
-!!! info "💡 Did You Know?"
+!!! info "🎮 Fun Fact"
     Professional programmers almost never use `global` variables. Instead, they use techniques like classes (which you'll learn soon!) or pass data through function parameters. But `global` is a great starting point for understanding how data flows between functions.
 
 ### The Plan

@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn `for` loops with `range()` and build patterns with nested loops.
 
+When a game needs to do something a specific number of times, it uses a `for` loop. When Minecraft generates a new chunk, it loops through every single block position and decides what goes there — stone, dirt, diamond ore. When Mario Kart draws the 12 racers on the results screen, it loops through each one. `for` loops are how you say "do this exactly N times."
 
 ## for i in range()
 
@@ -48,6 +49,8 @@ This prints each letter on its own line: R, o, b, e, r, t.
 ## Nested Loops
 
 A loop inside a loop. The inner loop runs completely for each step of the outer loop:
+
+This is how games draw grids. Every tile-based game — from Minecraft's inventory screen to Zelda's map — uses nested loops: one loop for rows, one loop for columns.
 
 ```python
 for row in range(3):

@@ -88,7 +88,7 @@ def draw(self, screen, cam_x, cam_y):
 
 ## Screen Shake
 
-This is one of the simplest tricks that makes a game feel 10x better. You know how in movies, when something explodes, the camera shakes? Same idea. When the player takes damage, we offset the entire draw by a random few pixels:
+This is one of the simplest tricks that makes a game feel 10x better. You know how in movies, when something explodes, the camera shakes? Same idea. Fortnite uses screen shake when a rocket launcher explodes nearby, and Zelda shakes the screen when you land a charged attack. It's a tiny detail that makes everything feel way more powerful. When the player takes damage, we offset the entire draw by a random few pixels:
 
 ```python
 self.shake_frames = 0
@@ -109,6 +109,8 @@ Then add `shake_x` and `shake_y` to the camera offset. The whole screen jitters 
 ## The Creeper Enemy
 
 Creepers are the scariest enemy type. They chase you like skeletons, but slower. When they get within 3 tiles, they start a **countdown** -- flashing faster and faster. After 3 seconds, they explode and deal 5 damage to anything nearby. Yeah, you want to run.
+
+Sound familiar? These work exactly like Creepers in Minecraft — they sneak up, start hissing, and if you don't run... boom. We even named them Creepers as a tribute!
 
 ```python
 class Creeper(Enemy):

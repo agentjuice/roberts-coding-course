@@ -8,6 +8,8 @@
 
 Right now our Player class is hard-coded to use arrow keys and Space. But what if we could make it use *any* keys? That's the magic of **configuration** -- instead of baking in specific keys, we pass them in as a parameter.
 
+This is exactly how every multiplayer game works. Fortnite doesn't write separate code for each of the 100 players in a match — it uses one Player class and creates 100 *instances* of it, each with their own position, health, and inventory.
+
 Here's the trick: we use a **dictionary** to map actions to keys:
 
 ```python

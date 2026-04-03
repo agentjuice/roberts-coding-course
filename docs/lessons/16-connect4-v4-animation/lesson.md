@@ -38,7 +38,7 @@ These are called **state variables** because they track the *state* of the anima
 
 We'll change `time.sleep(0.1)` to `time.sleep(1/20)`. That means our game runs at **20 frames per second** (FPS). `1/20` is 0.05 seconds per frame. This makes the animation smoother and the chip falls at a nice speed.
 
-!!! info "💡 Did You Know?"
+!!! info "🎮 Fun Fact"
     Most movies run at 24 frames per second, TV shows at 30 FPS, and modern games at 60 FPS or higher. The human eye can notice the difference up to about 120 FPS!
 
 ## The Tricky Part
@@ -184,7 +184,7 @@ The drawing code is exactly the same. The magic is that because `world` gets upd
 
 ## The Full Code
 
-You can see the complete file in `connect4.py` right next to this lesson.
+You can see the complete file in [`connect4.py`](connect4.py).
 
 ## Run It!
 

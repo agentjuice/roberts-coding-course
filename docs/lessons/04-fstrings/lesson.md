@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn how to mix variables into text with f-strings so your output looks clean.
 
+Think about any game's HUD (heads-up display). In Minecraft, it shows "Health: 20" and in Mario Kart it shows "Lap 2/3". That text mixes words with changing numbers — and f-strings are exactly how programmers do that.
 
 ## The Problem
 
@@ -41,6 +42,9 @@ print(f"Total: ${price * quantity}")
 Output: `Total: $14.97`
 
 Anything inside `{}` gets evaluated as Python code first, then turned into text.
+
+!!! info "🎮 Fun Fact"
+    F1 racing games display things like "LAP 23/57 — Gap: 1.234s" on screen. Behind the scenes, that's built with something very similar to f-strings: `f"LAP {current_lap}/{total_laps} — Gap: {gap}s"`.
 
 ## Build: Better Character Card
 

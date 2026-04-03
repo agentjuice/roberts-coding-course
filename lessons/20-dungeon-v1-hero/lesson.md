@@ -13,6 +13,8 @@ In the Snake game, everything lived on one screen. But real dungeon crawlers hav
 
 The trick is a **tile map** -- a 2D list where each number means a different kind of tile. Think of it like graph paper where you've colored in certain squares:
 
+This is the same technique Zelda uses for its dungeon rooms. Every tile on the floor is stored as a number in a grid — walkable, wall, water, lava. Our dungeon works the same way.
+
 ```python
 tile_map = [
     [1, 1, 1, 1, 1],

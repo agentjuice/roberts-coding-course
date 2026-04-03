@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Write your very first Python program and make your computer say something.
 
+Every game, app, and website you've ever used started with someone writing their first line of code — just like you're about to. Minecraft? Started as a simple Java program. Fortnite? Somebody had to write the very first line. This is where it all begins.
 
 ## Setting Up
 
@@ -36,6 +37,9 @@ Hello, world!
 ```
 
 That's it. You just wrote a program. `print()` tells Python to display whatever you put inside the parentheses.
+
+!!! info "🎮 Fun Fact"
+    Every video game uses `print()` (or something like it) behind the scenes. When Minecraft shows "Respawn?" on screen, or when Fortnite shows your elimination count — that's the game printing text to the display.
 
 ## Print More Stuff
 

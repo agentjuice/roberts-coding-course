@@ -10,6 +10,8 @@ Alright, this is a big one -- we're building an actual game! Connect 4 is the on
 
 Remember lists from Lesson 10? A list is like a row of boxes. But a Connect 4 board isn't just one row -- it's a **grid** with rows *and* columns. That's called a **2D array** (two-dimensional array). Think of it like a spreadsheet, or better yet, like graph paper where each square can hold a value.
 
+Minecraft uses the same concept — the world is a giant 3D array of blocks. Each position holds a block type (stone, dirt, air). Our Connect 4 board is a smaller, 2D version of the same idea.
+
 We're going to use a library called **numpy** to create our grid. A library is code that someone else wrote that we can use -- no need to reinvent the wheel. numpy is great at working with grids of numbers.
 
 ```python
@@ -19,7 +21,7 @@ world = numpy.zeros((6, 6))
 
 This creates a 6-by-6 grid filled with zeros. Each `0` means "empty." When player 1 drops a chip, we put a `1` there. Player 2 gets a `2`.
 
-!!! info "💡 Did You Know?"
+!!! info "🎮 Fun Fact"
     Connect 4 was first sold in 1974 by Milton Bradley. Mathematicians later proved that if both players play perfectly, the first player can always win! It took until 1988 for a computer to figure that out.
 
 ### The Game Loop
@@ -201,7 +203,7 @@ If every cell in the top row is taken, the board is full -- it's a draw (we set 
 
 ## The Full Code
 
-You can see the complete file in `connect4.py` right next to this lesson. It puts all of the steps above together into one file.
+You can see the complete file in [`connect4.py`](connect4.py). It puts all of the steps above together into one file.
 
 ## Run It!
 

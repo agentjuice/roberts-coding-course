@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Understand the four basic types of data in Python: strings, integers, floats, and booleans.
 
+Games need to keep track of different *kinds* of information. Your player name is text, your health is a whole number, your exact position is a decimal, and whether you're alive is true/false. Python calls these different **types**, and understanding them is how you stop your code from doing weird things — like trying to subtract "hello" from 42.
 
 ## Every Value Has a Type
 
@@ -73,6 +74,8 @@ A **boolean** is either `True` or `False`. That's it — only two options:
 is_alive = True
 game_over = False
 ```
+
+In Minecraft, the game is constantly tracking booleans: `is_raining = True`, `is_player_sneaking = False`, `has_elytra_equipped = True`. Every on/off state in a game is a boolean.
 
 These become super important when we get to if-statements (Lesson 6).
 

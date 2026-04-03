@@ -15,6 +15,8 @@ What if we could bundle the snake's data *and* its behavior into one neat packag
 
 Think of it like this: a class is a **blueprint**. If you had a blueprint for "Snake," it would say "a Snake has a body and a direction, and it can move, draw itself, and change direction." Then you can build an actual snake from that blueprint -- that's called an **object**.
 
+In Minecraft, every Creeper is an *object* built from the same Creeper *class*. Each one has its own position and health, but they all share the same behavior: walk toward player, hiss, explode. One blueprint, thousands of creepers.
+
 ## The `self` Keyword
 
 Here's the part that confuses everyone at first. When you write a method (a function inside a class), the first parameter is always `self`. It means "the object I'm talking about."
@@ -272,7 +274,7 @@ Compare that to the tangled mess of Lesson 18. Same game, way cleaner code.
 
 ## The Full Code
 
-You can see the complete file in `snake.py` right next to this lesson. It puts all of the steps above together into one file.
+You can see the complete file in [`snake.py`](snake.py). It puts all of the steps above together into one file.
 
 ## Run It!
 

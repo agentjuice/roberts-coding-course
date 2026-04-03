@@ -13,6 +13,8 @@ Enemies need to decide where to move, and that decision-making is called **AI** 
 
 We'll make two enemy types, each with a different "brain":
 
+If you've played Minecraft, zombies there work almost identically to what we're about to build — they shamble randomly unless they spot you, then they chase. Our skeleton AI is basically the same as Minecraft's skeleton pathfinding (just simpler).
+
 **Zombie (green):** Dumb and random. Every 30 frames, it picks a random direction (up, down, left, right) and tries to move there. If there's a wall, it just stays put. Zombies wander around aimlessly -- think of them like bumper cars with no driver.
 
 **Skeleton (white):** Smarter and scarier. Every 20 frames, it looks at where you are and moves one tile closer. If you're to the right, the skeleton moves right. If you're above, it moves up. Skeletons hunt you down, and they're relentless.

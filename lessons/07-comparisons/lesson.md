@@ -3,6 +3,7 @@
 !!! success "🎯 Mission"
     Learn all the comparison operators and how to combine them with `and`, `or`, and `not`.
 
+Every game is constantly comparing things. Is your health greater than zero? Is your speed faster than the other racer? Did the player press the right button? In F1 games, the game compares your lap time against the leader's time every single frame. Comparisons are how programs make smart decisions.
 
 ## The Comparison Operators
 
@@ -34,6 +35,8 @@ has_ticket = True
 if age >= 13 and has_ticket:
     print("You can enter!")
 ```
+
+In Fortnite, you can only build if `has_materials and not is_swimming`. Both conditions must be true at the same time.
 
 ## Combining with `or`
 
