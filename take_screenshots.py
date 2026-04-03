@@ -9,17 +9,17 @@ os.makedirs(IMAGES_DIR, exist_ok=True)
 
 # For each game, create a wrapper that imports the game, runs a few frames, saves screenshot
 GAMES = [
-    ("lessons/05-connect4-v3-pygame/connect4.py", "connect4_pygame.png", 5),
-    ("lessons/06-connect4-v4-animation/connect4.py", "connect4_anim.png", 5),
-    ("lessons/07-connect4-v5-pygame-functions/connect4.py", "connect4_functions.png", 5),
-    ("lessons/08-snake-v1/snake.py", "snake.png", 30),
-    ("lessons/09-snake-v2-classes/snake.py", "snake_classes.png", 30),
-    ("lessons/10-dungeon-v1-hero/dungeon.py", "dungeon_v1.png", 10),
-    ("lessons/11-dungeon-v2-enemies/dungeon.py", "dungeon_v2.png", 10),
-    ("lessons/12-dungeon-v3-combat/dungeon.py", "dungeon_v3.png", 10),
-    ("lessons/13-dungeon-v4-loot/dungeon.py", "dungeon_v4.png", 10),
-    ("lessons/14-dungeon-v5-rooms/dungeon.py", "dungeon_v5.png", 10),
-    ("lessons/15-dungeon-v6-boss/dungeon.py", "dungeon_v6.png", 10),
+    ("lessons/07-connect4-v3-pygame/connect4.py", "connect4_pygame.png", 5),
+    ("lessons/08-connect4-v4-animation/connect4.py", "connect4_anim.png", 5),
+    ("lessons/09-connect4-v5-pygame-functions/connect4.py", "connect4_functions.png", 5),
+    ("lessons/10-snake-v1/snake.py", "snake.png", 30),
+    ("lessons/11-snake-v2-classes/snake.py", "snake_classes.png", 30),
+    ("lessons/12-dungeon-v1-hero/dungeon.py", "dungeon_v1.png", 10),
+    ("lessons/13-dungeon-v2-enemies/dungeon.py", "dungeon_v2.png", 10),
+    ("lessons/14-dungeon-v3-combat/dungeon.py", "dungeon_v3.png", 10),
+    ("lessons/15-dungeon-v4-loot/dungeon.py", "dungeon_v4.png", 10),
+    ("lessons/16-dungeon-v5-rooms/dungeon.py", "dungeon_v5.png", 10),
+    ("lessons/17-dungeon-v6-boss/dungeon.py", "dungeon_v6.png", 10),
 ]
 
 WRAPPER = '''

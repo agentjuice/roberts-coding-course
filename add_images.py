@@ -4,17 +4,17 @@ import os
 COURSE = os.path.dirname(os.path.abspath(__file__))
 
 LESSONS = {
-    "05-connect4-v3-pygame": ("connect4_pygame.png", "Here's what your Connect 4 game will look like when you're done with this lesson!"),
-    "06-connect4-v4-animation": ("connect4_anim.png", "Connect 4 with chip-dropping animation"),
-    "07-connect4-v5-pygame-functions": ("connect4_functions.png", "Same game, but with clean organized code"),
-    "08-snake-v1": ("snake.png", "The Snake game you're about to build!"),
-    "09-snake-v2-classes": ("snake_classes.png", "Same Snake game, rebuilt with classes"),
-    "10-dungeon-v1-hero": ("dungeon_v1.png", "Your first dungeon — you're the blue square!"),
-    "11-dungeon-v2-enemies": ("dungeon_v2.png", "Now with enemies roaming the dungeon!"),
-    "12-dungeon-v3-combat": ("dungeon_v3.png", "Combat system in action!"),
-    "13-dungeon-v4-loot": ("dungeon_v4.png", "Loot drops and an inventory bar!"),
-    "14-dungeon-v5-rooms": ("dungeon_v5.png", "Multiple rooms connected with a minimap!"),
-    "15-dungeon-v6-boss": ("dungeon_v6.png", "The boss fight — can you beat it?"),
+    "07-connect4-v3-pygame": ("connect4_pygame.png", "Here's what your Connect 4 game will look like when you're done with this lesson!"),
+    "08-connect4-v4-animation": ("connect4_anim.png", "Connect 4 with chip-dropping animation"),
+    "09-connect4-v5-pygame-functions": ("connect4_functions.png", "Same game, but with clean organized code"),
+    "10-snake-v1": ("snake.png", "The Snake game you're about to build!"),
+    "11-snake-v2-classes": ("snake_classes.png", "Same Snake game, rebuilt with classes"),
+    "12-dungeon-v1-hero": ("dungeon_v1.png", "Your first dungeon — you're the blue square!"),
+    "13-dungeon-v2-enemies": ("dungeon_v2.png", "Now with enemies roaming the dungeon!"),
+    "14-dungeon-v3-combat": ("dungeon_v3.png", "Combat system in action!"),
+    "15-dungeon-v4-loot": ("dungeon_v4.png", "Loot drops and an inventory bar!"),
+    "16-dungeon-v5-rooms": ("dungeon_v5.png", "Multiple rooms connected with a minimap!"),
+    "17-dungeon-v6-boss": ("dungeon_v6.png", "The boss fight — can you beat it?"),
 }
 
 for lesson, (img, caption) in LESSONS.items():

@@ -11,7 +11,7 @@ A comprehensive Python coding course for an 11-year-old (6th grader) who already
 
 ## Course Structure
 
-### Warm-up (2 lessons)
+### Warm-up (4 lessons)
 
 **Lesson 1 — The Basics**
 - What is a program? Instructions for the computer, run top to bottom
@@ -22,19 +22,25 @@ A comprehensive Python coding course for an 11-year-old (6th grader) who already
 - Running a script: `python lesson.py`
 - 🎯 Build: Number guessing game (computer picks random number, player guesses, hot/cold hints)
 
-**Lesson 2 — Loops, Conditions & Lists**
+**Lesson 2 — Conditions**
 - `if`/`elif`/`else` — making decisions
 - Comparison operators: `==`, `!=`, `<`, `>`, `<=`, `>=`
+- 🎯 Build: Decision-making programs (terminal)
+
+**Lesson 3 — Loops**
 - `while True:` — doing something forever, `break` to escape
 - `for` loops, `range()`
+- 🎯 Build: Loop-based programs (terminal)
+
+**Lesson 4 — Lists**
 - Lists: creating, indexing, `append()`, `pop()`, `len()`, `in`
-- 🎯 Build: A quiz game or word scramble (terminal)
+- 🎯 Build: List-based programs (terminal)
 
 ### Project 1: Connect 4 (5 versions)
 
 Reference implementations are in the `reference/` folder. The lesson content should teach toward these implementations but explain every concept along the way.
 
-**Lesson 3 — Connect 4 v1: Terminal, All Inline**
+**Lesson 5 — Connect 4 v1: Terminal, All Inline**
 - Reference: `reference/connect4.py`
 - 2D arrays with numpy (`numpy.zeros((6,6))`)
 - Nested loops for drawing the board
@@ -46,7 +52,7 @@ Reference implementations are in the `reference/` folder. The lesson content sho
 - Everything in one big while loop
 - Explain: this works but it's getting long and hard to read
 
-**Lesson 4 — Connect 4 v2: Functions**
+**Lesson 6 — Connect 4 v2: Functions**
 - Reference: `reference/connect4_functions.py`
 - Why functions? The code from v1 is messy. Let's organize it.
 - Extract: `draw_world()`, `get_input()`, `check_winner()`, `switch()`, `animate_chip()`
@@ -54,7 +60,7 @@ Reference implementations are in the `reference/` folder. The lesson content sho
 - Return values from functions
 - The main loop is now readable: draw → input → animate → check → switch
 
-**Lesson 5 — Connect 4 v3: Pygame, No Functions**
+**Lesson 7 — Connect 4 v3: Pygame, No Functions**
 - Reference: `reference/connect4_pygame_nofunc.py`
 - Installing pygame: `pip install pygame`
 - Opening a window, setting caption
@@ -66,14 +72,14 @@ Reference implementations are in the `reference/` folder. The lesson content sho
 - Coordinate system: (0,0) top-left, y goes DOWN
 - Back to messy on purpose
 
-**Lesson 6 — Connect 4 v4: Pygame with Animation**
+**Lesson 8 — Connect 4 v4: Pygame with Animation**
 - Reference: `reference/connect4_pygame_nofunc_anim.py`
 - Adding chip falling animation in the graphical version
 - State variables: `chip_falling`, `chip_x`, `chip_y`
 - Frame-by-frame updates
 - Why `time.sleep(1/20)` — frame rate
 
-**Lesson 7 — Connect 4 v5: Pygame with Functions**
+**Lesson 9 — Connect 4 v5: Pygame with Functions**
 - Reference: `reference/connect4_pygame.py`
 - Clean it up again with functions
 - Same pattern as lesson 4 but now in Pygame
@@ -81,7 +87,7 @@ Reference implementations are in the `reference/` folder. The lesson content sho
 
 ### Project 2: Snake (2 versions)
 
-**Lesson 8 — Snake v1: Pygame, Inline**
+**Lesson 10 — Snake v1: Pygame, Inline**
 - Reference: `reference/snake.py`
 - Tuples for coordinates: `(x, y)`
 - Lists as data structures (snake body as list of tuples)
@@ -93,7 +99,7 @@ Reference implementations are in the `reference/` folder. The lesson content sho
 - Score display, game over, restart with Space
 - He builds this more independently — less hand-holding
 
-**Lesson 9 — Snake v2: OOP with Classes**
+**Lesson 11 — Snake v2: OOP with Classes**
 - Reference: `reference/snake_func.py`
 - Why classes? The snake has data AND behavior. The apple has data AND behavior. Let's group them.
 - `class Snake`: body, direction, draw(), update(), change_direction(), score()
@@ -107,7 +113,7 @@ Reference implementations are in the `reference/` folder. The lesson content sho
 
 This is the big one. A top-down action game inspired by Minecraft Dungeons. Each version adds a new system. Every version is playable.
 
-**Lesson 10 — Dungeon v1: The Hero**
+**Lesson 12 — Dungeon v1: The Hero**
 - Tile-based world: 2D list where numbers mean different tiles (0=floor, 1=wall, 2=door)
 - Draw the map as colored rectangles
 - Player character (colored square) moves with arrow keys
@@ -116,7 +122,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - A larger map that scrolls
 - HUD: show player position
 
-**Lesson 11 — Dungeon v2: Enemies**
+**Lesson 13 — Dungeon v2: Enemies**
 - Enemy class with position, health, speed, color
 - Zombie: wanders randomly (picks random direction each N frames)
 - Skeleton: chases the player (move one step closer each tick using simple distance)
@@ -126,7 +132,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Health bar drawn on screen (red bar that shrinks)
 - Player death → game over screen
 
-**Lesson 12 — Dungeon v3: Combat**
+**Lesson 14 — Dungeon v3: Combat**
 - Press Space to attack (sword swing)
 - Attack affects tiles in front of player based on facing direction
 - Attack has a cooldown timer (can't spam, shown as a small bar)
@@ -136,7 +142,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Player attack animation: brief colored rectangle in attack direction
 - Kill counter on HUD
 
-**Lesson 13 — Dungeon v4: Loot & Items**
+**Lesson 15 — Dungeon v4: Loot & Items**
 - Defeated enemies sometimes drop items (random chance)
 - Item types: health potion (restores HP), speed boost (temporary), power sword (more damage)
 - Items sit on the ground as colored squares, picked up by walking over them
@@ -145,7 +151,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Treasure chests placed in the map (new tile type), open by walking into them
 - Chests contain random loot
 
-**Lesson 14 — Dungeon v5: Multiple Rooms**
+**Lesson 16 — Dungeon v5: Multiple Rooms**
 - The dungeon is now multiple rooms connected by corridors/doors
 - Each room is its own 2D map with its own enemy list
 - Doors: walk into a door tile → transition to the next room
@@ -154,7 +160,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Minimap in corner showing rooms explored (simple rectangles)
 - Current room highlighted on minimap
 
-**Lesson 15 — Dungeon v6: The Boss**
+**Lesson 17 — Dungeon v6: The Boss**
 - Final room contains a boss enemy (larger, different color, more health)
 - Boss has phases/patterns using a state machine:
   - Phase 1: Chase player slowly
@@ -165,7 +171,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Victory screen when boss dies: "YOU WIN!" with stats (time, kills, items collected)
 - Option to restart the whole game
 
-**Lesson 16 — Dungeon v7: Sprites & Art**
+**Lesson 18 — Dungeon v7: Sprites & Art**
 - Replace colored squares with images
 - `pygame.image.load()` for loading PNGs
 - Create simple pixel art (or provide pre-made assets)
@@ -175,14 +181,14 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Item sprites
 - How sprite sheets work (optional/stretch)
 
-**Lesson 17 — Dungeon v8: Sound & Music**
+**Lesson 19 — Dungeon v8: Sound & Music**
 - `pygame.mixer` for sound effects and music
 - Sound effects: sword swing, enemy hit, enemy death, item pickup, chest open, player hurt
 - Background music: different track for dungeon vs boss fight
 - Volume control
 - Provide or create simple sound assets (or use free ones from OpenGameArt)
 
-**Lesson 18 — Dungeon v9: Procedural Generation**
+**Lesson 20 — Dungeon v9: Procedural Generation**
 - Instead of hand-designed rooms, generate them randomly
 - Simple algorithm: place rooms as rectangles, connect with corridors
 - Random enemy placement per room
@@ -190,7 +196,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Every playthrough is different
 - Seed-based generation (same seed = same dungeon, for sharing with friends)
 
-**Lesson 19 — Dungeon v10: Second Level & Polish**
+**Lesson 21 — Dungeon v10: Second Level & Polish**
 - After beating the boss, a staircase appears → Level 2
 - Level 2: harder enemies (more health, faster, new types)
 - New enemy type: Creeper (explodes near player after countdown)
@@ -201,7 +207,7 @@ This is the big one. A top-down action game inspired by Minecraft Dungeons. Each
 - Save/load high scores to a file
 - Polish: screen shake on hit, particle effects (simple colored dots), smoother animations
 
-**Lesson 20 — Dungeon v11: Co-op Mode (Stretch)**
+**Lesson 22 — Dungeon v11: Co-op Mode (Stretch)**
 - Second player on same keyboard (WASD + different attack key)
 - Player 2 class (reuse Player but different controls and color/sprite)
 - Shared screen (camera follows midpoint between players)
@@ -232,17 +238,23 @@ roberts-coding-course/
 │   ├── 01-the-basics/
 │   │   ├── lesson.md
 │   │   └── guessing_game.py  (complete reference solution)
-│   ├── 02-loops-conditions-lists/
+│   ├── 02-conditions/
 │   │   ├── lesson.md
-│   │   └── quiz_game.py
-│   ├── 03-connect4-v1/
+│   │   └── conditions.py
+│   ├── 03-loops/
+│   │   ├── lesson.md
+│   │   └── loops.py
+│   ├── 04-lists/
+│   │   ├── lesson.md
+│   │   └── lists.py
+│   ├── 05-connect4-v1/
 │   │   ├── lesson.md
 │   │   └── connect4.py
-│   ├── 04-connect4-v2-functions/
+│   ├── 06-connect4-v2-functions/
 │   │   ├── lesson.md
 │   │   └── connect4.py
-│   ├── ... etc for all 20 lessons
-│   └── 20-dungeon-v11-coop/
+│   ├── ... etc for all 22 lessons
+│   └── 22-dungeon-v11-coop/
 │       ├── lesson.md
 │       └── dungeon.py
 └── assets/               # Any images, sounds, or sprites needed

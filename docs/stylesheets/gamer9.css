@@ -6,12 +6,19 @@
   --md-typeset-color: #e0e0e0;
 }
 
-body, .md-content {
+body, .md-content, .md-typeset {
   font-family: 'Nunito', sans-serif !important;
   background-color: #0b0b13 !important;
   font-size: 1.3rem !important;
   line-height: 1.8 !important;
   color: #f8f8f2 !important;
+}
+
+/* Make admonition body text match main text size */
+.md-typeset .admonition p,
+.md-typeset .admonition li {
+  font-size: 1.3rem !important;
+  line-height: 1.8 !important;
 }
 
 /* Epic Headings */
@@ -23,12 +30,14 @@ h1, h2, h3, .md-header__title {
 .md-nav__title {
   font-family: 'Bangers', cursive !important;
   color: #ff00ff !important;
-  background: transparent !important;
+  background: #0b0b13 !important;
   box-shadow: none !important;
   letter-spacing: 2px;
-  padding: 1rem 0 !important;
+  padding: 1rem 0 2rem 0 !important;
   text-shadow: 2px 2px 0px #000;
   font-size: 1.4rem !important;
+  position: relative !important;
+  z-index: 2;
 }
 .md-nav__title[for="__drawer"] {
   background: transparent !important;
