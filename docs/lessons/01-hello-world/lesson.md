@@ -7,12 +7,12 @@ Every game, app, and website you've ever used started with someone writing their
 
 ## Setting Up
 
-First, open **VS Code**. If you don't have it yet, download it from [code.visualstudio.com](https://code.visualstudio.com).
+If you followed the setup steps on the home page, you should already have VS Code and Python installed, and a `coding-course` folder on your Desktop. Let's use it!
 
-1. Open VS Code
-2. Click **File → Open Folder** and pick a folder for your coding projects (like a folder called `python-projects` on your Desktop)
+1. Open **VS Code** (Cmd + Space, type "Visual Studio Code", hit Enter)
+2. Click **File → Open Folder** and select the `coding-course` folder on your Desktop
 3. In the left sidebar, click the **New File** icon and name it `hello.py` — the `.py` ending tells your computer it's a Python file
-4. Now open the **Terminal** by clicking **Terminal → New Terminal** at the top menu (or press **Ctrl + `**)
+4. Now open the **Terminal** inside VS Code by clicking **Terminal → New Terminal** at the top menu (or press **Ctrl + `**)
 
 You should see a dark panel at the bottom of VS Code. That's your terminal — it's where you'll run your code.
 
